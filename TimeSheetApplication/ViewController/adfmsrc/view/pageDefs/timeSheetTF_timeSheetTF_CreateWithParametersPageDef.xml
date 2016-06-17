@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="timeSheetTF_timeSheetTF_CreateWithParametersPageDef" Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="TimeSheetDaysVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetDaysVO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="TimeSheetDaysVO1Iterator" id="CreateWithParams" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="WeekId" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

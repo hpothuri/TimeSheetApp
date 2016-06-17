@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="viewTimeSheetPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TimeSheetDaysVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetDaysVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="initTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initTimeSheet"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="currentDate" NDType="java.util.Date"/>
+    </methodAction>
+    <tree IterBinding="TimeSheetDaysVO1Iterator" id="TimeSheetDaysVO1">
+      <nodeDefinition DefName="model.vo.TimeSheetDaysVO" Name="TimeSheetDaysVO10">
+        <AttrNames>
+          <Item Value="WeekId"/>
+          <Item Value="Day1"/>
+          <Item Value="Day2"/>
+          <Item Value="Day3"/>
+          <Item Value="Day4"/>
+          <Item Value="Day5"/>
+          <Item Value="Day6"/>
+          <Item Value="Day7"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

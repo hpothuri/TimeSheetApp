@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="viewTimeSheetPageDef1"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TimeSheetWeekVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetWeekVO1Iterator"/>
+    <iterator Binds="TimeSheetDaysVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetDaysVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TimeSheetWeekVO1Iterator" id="TimeSheetWeekVO1">
+      <nodeDefinition DefName="model.vo.TimeSheetWeekVO" Name="TimeSheetWeekVO10">
+        <AttrNames>
+          <Item Value="TimeSheetId"/>
+          <Item Value="WeekStartDate"/>
+          <Item Value="WeekEndDate"/>
+          <Item Value="TotalHours"/>
+          <Item Value="TotalExpences"/>
+          <Item Value="ApproverComments"/>
+          <Item Value="UserId"/>
+          <Item Value="Status"/>
+          <Item Value="SubmittedBy"/>
+          <Item Value="SubmittedTs"/>
+          <Item Value="ApprovedTs"/>
+          <Item Value="ApprovedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="TimeSheetId">
+      <AttrNames>
+        <Item Value="TimeSheetId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="WeekId">
+      <AttrNames>
+        <Item Value="WeekId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day1">
+      <AttrNames>
+        <Item Value="Day1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day2">
+      <AttrNames>
+        <Item Value="Day2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day3">
+      <AttrNames>
+        <Item Value="Day3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day4">
+      <AttrNames>
+        <Item Value="Day4"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day5">
+      <AttrNames>
+        <Item Value="Day5"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day6">
+      <AttrNames>
+        <Item Value="Day6"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="Day7">
+      <AttrNames>
+        <Item Value="Day7"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="TaskId">
+      <AttrNames>
+        <Item Value="TaskId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="TimeSheetDaysVO1Iterator" id="TimeSheetDaysVO1">
+      <nodeDefinition DefName="model.vo.TimeSheetDaysVO" Name="TimeSheetDaysVO10">
+        <AttrNames>
+          <Item Value="TaskId"/>
+          <Item Value="WeekId"/>
+          <Item Value="Day1"/>
+          <Item Value="Day2"/>
+          <Item Value="Day3"/>
+          <Item Value="Day4"/>
+          <Item Value="Day5"/>
+          <Item Value="Day6"/>
+          <Item Value="Day7"/>
+          <Item Value="TimeSheetId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="addTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addTimeSheetHours"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="editTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="editTimeSheetHours" IsViewObjectMethod="false"
+                  DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="submitForApproval" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitForApproval"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="deleteTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteTimeSheetHours" IsViewObjectMethod="false"
+                  DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"
+                  ReturnName="data.TimeSheetAppControllerDataControl.methodResults.deleteTimeSheetHours_TimeSheetAppControllerDataControl_dataProvider_deleteTimeSheetHours_result">
+      <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

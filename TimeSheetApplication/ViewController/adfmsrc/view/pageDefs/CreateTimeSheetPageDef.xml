@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="CreateTimeSheetPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TimeSheetWeekHoursVO2" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetWeekHoursVO2Iterator"/>
+    <iterator Binds="TimeSheetWeekVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetWeekVO1Iterator"/>
+    <iterator Binds="WeeksVVO1" RangeSize="10" DataControl="TimeSheetAppControllerDataControl" id="WeeksVVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getWeekList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getWeekList"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"
+                  ReturnName="data.TimeSheetAppControllerDataControl.methodResults.getWeekList_TimeSheetAppControllerDataControl_dataProvider_getWeekList_result">
+      <NamedData NDName="systemDate" NDType="java.util.Date"/>
+    </methodAction>
+    <attributeValues IterBinding="TimeSheetWeekHoursVO2Iterator" id="Day">
+      <AttrNames>
+        <Item Value="Day"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetWeekHoursVO2Iterator" id="HoursPerDay">
+      <AttrNames>
+        <Item Value="HoursPerDay"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetWeekHoursVO2Iterator" id="Notes">
+      <AttrNames>
+        <Item Value="Notes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetWeekVO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WeeksVVO1Iterator" id="Week">
+      <AttrNames>
+        <Item Value="Week"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
