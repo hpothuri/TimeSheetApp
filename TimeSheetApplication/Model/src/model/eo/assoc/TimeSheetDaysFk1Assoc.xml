@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TimeSheetDaysFk1Assoc"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="TimeSheetWeekEO1"
+    Cardinality="1"
+    Source="true"
+    Owner="model.eo.TimeSheetWeekEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="TimeSheetWeekEO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.TimeSheetWeekEO.TimeSheetId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="TimeSheetDaysEO1"
+    Cardinality="-1"
+    Owner="model.eo.TimeSheetDaysEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="TimeSheetDaysEO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.TimeSheetDaysEO.TimeSheetId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
