@@ -1,42 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.0.31" id="DataBindings"
              SeparateXMLFiles="false" Package="view" ClientType="Generic">
-  <definitionFactories>
-    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
-             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
-    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
-    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
-             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
-  </definitionFactories>
-  <pageMap>
-    <page path="/WEB-INF/timeSheetTF.xml#timeSheetTF@CreateWithParameters"
-          usageId="view_timeSheetTF_timeSheetTF_CreateWithParametersPageDef"/>
-    <page path="/viewTimeSheet.jsff" usageId="view_viewTimeSheetPageDef1"/>
-    <page path="/Index.jsf" usageId="view_IndexPageDef"/>
-    <page path="/WEB-INF/timeSheetTF.xml#timeSheetTF@initTimeSheet"
-          usageId="view_timeSheetTF_timeSheetTF_initTimeSheetPageDef"/>
-    <page path="/WEB-INF/timeSheetTF.xml#timeSheetTF@SetCurrentRowWithKeyValue"
-          usageId="view_timeSheetTF_timeSheetTF_SetCurrentRowWithKeyValuePageDef"/>
-    <page path="/SubmittedTimeSheets.jsf" usageId="view_SubmittedTimeSheetsPageDef"/>
-  </pageMap>
-  <pageDefinitionUsages>
-    
-    <page id="view_viewTimeSheetPageDef" path="view.pageDefs.viewTimeSheetPageDef"/>
-    <page id="view_timeSheetTF_timeSheetTF_CreateWithParametersPageDef"
-          path="view.pageDefs.timeSheetTF_timeSheetTF_CreateWithParametersPageDef"/>
-    <page id="view_viewTimeSheetPageDef1" path="view.pageDefs.viewTimeSheetPageDef1"/>
-    <page id="view_IndexPageDef" path="view.pageDefs.IndexPageDef"/>
-    <page id="view_timeSheetTF_timeSheetTF_initTimeSheetPageDef"
-          path="view.pageDefs.timeSheetTF_timeSheetTF_initTimeSheetPageDef"/>
-    <page id="view_timeSheetTF_timeSheetTF_SetCurrentRowWithKeyValuePageDef"
-          path="view.pageDefs.timeSheetTF_timeSheetTF_SetCurrentRowWithKeyValuePageDef"/>
-    <page id="view_SubmittedTimeSheetsPageDef" path="view.pageDefs.SubmittedTimeSheetsPageDef"/>
-  </pageDefinitionUsages>
-  <dataControlUsages>
-    <BC4JDataControl id="TimeSheetAppControllerDataControl" Package="model.am"
-                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
-                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
-                     SupportsSortCollection="true" Configuration="TimeSheetAppControllerLocal" syncMode="Immediate"
-                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
-  </dataControlUsages>
+    <definitionFactories>
+        <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+                 className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+        <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+        <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+                 className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+    </definitionFactories>
+    <pageMap>
+        <page path="/viewTimeSheet.jsff" usageId="view_viewTimeSheetPageDef1"/>
+        <page path="/home.jsf" usageId="view_homePageDef"/>
+        <page path="/login.jsf" usageId="view_loginPageDef"/>
+        <page path="/TimeSheetWeeks.jsff" usageId="view_TimeSheetWeeksPageDef"/>
+        <page path="/SubmittedTimeSheets.jsff" usageId="view_SubmittedTimeSheetsPageDef1"/>
+        <page path="/WEB-INF/Ts-submitted-timeSheets-TF.xml#Ts-submitted-timeSheets-TF@Execute"
+              usageId="view_Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_ExecutePageDef"/>
+        <page path="/WEB-INF/Ts_weeks_TF.xml#Ts_weeks_TF@initSubmittedTS"
+              usageId="view_Ts_weeks_TF_Ts_weeks_TF_initSubmittedTSPageDef"/>
+        <page path="/WEB-INF/Ts-submitted-timeSheets-TF.xml#Ts-submitted-timeSheets-TF@initSubmittedTS"
+              usageId="view_Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_initSubmittedTSPageDef"/>
+        <page path="/timeSheetRoles.jsff" usageId="view_timeSheetRolesPageDef1"/>
+        <page path="/timeSheetUsers.jsff" usageId="view_timeSheetUsersPageDef"/>
+        <page path="/timeSheetTasks.jsff" usageId="view_timeSheetTasksPageDef1"/>
+    </pageMap>
+    <pageDefinitionUsages>
+        <page id="view_viewTimeSheetPageDef" path="view.pageDefs.viewTimeSheetPageDef"/>
+        <page id="view_timeSheetTF_timeSheetTF_CreateWithParametersPageDef"
+              path="view.pageDefs.timeSheetTF_timeSheetTF_CreateWithParametersPageDef"/>
+        <page id="view_viewTimeSheetPageDef1" path="view.pageDefs.viewTimeSheetPageDef1"/>
+        <page id="view_SubmittedTimeSheetsPageDef" path="view.pageDefs.SubmittedTimeSheetsPageDef"/>
+        <page id="view_userRolesPageDef" path="view.pageDefs.userRolesPageDef"/>
+        <page id="view_homePageDef" path="view.pageDefs.homePageDef"/>
+        <page id="view_timeSheetRolesPageDef" path="view.pageDefs.timeSheetRolesPageDef"/>
+        <page id="view_timeSheetTasksPageDef" path="view.pageDefs.timeSheetTasksPageDef"/>
+        <page id="view_TimeSheetAdminPagePageDef" path="view.pageDefs.TimeSheetAdminPagePageDef"/>
+        <page id="view_ViewTimeSheetsPageDef" path="view.pageDefs.ViewTimeSheetsPageDef"/>
+        <page id="view_loginPageDef" path="view.pageDefs.loginPageDef"/>
+        <page id="view_TimeSheetWeeksPageDef" path="view.pageDefs.TimeSheetWeeksPageDef"/>
+        <page id="view_SubmittedTimeSheetsPageDef1" path="view.pageDefs.SubmittedTimeSheetsPageDef1"/>
+        <page id="view_Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_ExecutePageDef"
+              path="view.pageDefs.Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_ExecutePageDef"/>
+        <page id="view_Ts_weeks_TF_Ts_weeks_TF_initSubmittedTSPageDef"
+              path="view.pageDefs.Ts_weeks_TF_Ts_weeks_TF_initSubmittedTSPageDef"/>
+        <page id="view_Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_initSubmittedTSPageDef"
+              path="view.pageDefs.Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_initSubmittedTSPageDef"/>
+        <page id="view_timeSheetRolesPageDef1" path="view.pageDefs.timeSheetRolesPageDef1"/>
+        <page id="view_timeSheetUsersPageDef" path="view.pageDefs.timeSheetUsersPageDef"/>
+        <page id="view_timeSheetTasksPageDef1" path="view.pageDefs.timeSheetTasksPageDef1"/>
+    </pageDefinitionUsages>
+    <dataControlUsages>
+        <BC4JDataControl id="TimeSheetAppControllerDataControl" Package="model.am"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="TimeSheetAppControllerLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    </dataControlUsages>
 </Application>

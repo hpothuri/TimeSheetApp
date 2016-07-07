@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TimeSheetUsersRoleIdFkAssoc"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="TimeSheetRolesEO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.eo.TimeSheetRolesEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="TimeSheetRolesEO"/>
+      <Attr Name="_foreignKey" Value="model.eo.TimeSheetRolesEO.TimeSheetRolesPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.TimeSheetRolesEO.RoleId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="TimeSheetUsersEO"
+    Cardinality="-1"
+    Owner="model.eo.TimeSheetUsersEO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="TimeSheetUsersEO"/>
+      <Attr Name="_foreignKey" Value="model.eo.TimeSheetUsersEO.TimeSheetUsersRoleIdFk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.TimeSheetUsersEO.RoleId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

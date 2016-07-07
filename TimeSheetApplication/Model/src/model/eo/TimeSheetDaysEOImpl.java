@@ -32,10 +32,10 @@ public class TimeSheetDaysEOImpl extends EntityImpl {
         Day7,
         TimeSheetId,
         TaskId,
+        Notes,
         TimeSheetWeekEO1,
         TimeSheetWeekEO;
-        static AttributesEnum[] vals = null;
-        ;
+        private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -69,6 +69,7 @@ public class TimeSheetDaysEOImpl extends EntityImpl {
     public static final int DAY7 = AttributesEnum.Day7.index();
     public static final int TIMESHEETID = AttributesEnum.TimeSheetId.index();
     public static final int TASKID = AttributesEnum.TaskId.index();
+    public static final int NOTES = AttributesEnum.Notes.index();
     public static final int TIMESHEETWEEKEO1 = AttributesEnum.TimeSheetWeekEO1.index();
     public static final int TIMESHEETWEEKEO = AttributesEnum.TimeSheetWeekEO.index();
 
@@ -245,6 +246,22 @@ public class TimeSheetDaysEOImpl extends EntityImpl {
      */
     public void setTaskId(BigDecimal value) {
         setAttributeInternal(TASKID, value);
+    }
+
+    /**
+     * Gets the attribute value for Notes, using the alias name Notes.
+     * @return the value of Notes
+     */
+    public String getNotes() {
+        return (String) getAttributeInternal(NOTES);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Notes.
+     * @param value value to set the Notes
+     */
+    public void setNotes(String value) {
+        setAttributeInternal(NOTES, value);
     }
 
     /**

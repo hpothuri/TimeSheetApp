@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">SubmittedTimeSheets</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">226.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SubmittedTimeSheets&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">184.5459</property>
+      <property
+         name="page">/SubmittedTimeSheets.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <MethodCall
+      id="MethodCall11">
+      <property
+         name="activityId">initSubmittedTS</property>
+      <property
+         name="x">-83.64844</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>initSubmittedTS&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">215.14941</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="MethodCall11"
+      to="View2">
+      <property
+         name="fromOutcome">initSubmittedTS</property>
+      <property
+         name="sdm:polyPoints">R52,L47</property>
+   </ControlFlowCase>
+</SDM>

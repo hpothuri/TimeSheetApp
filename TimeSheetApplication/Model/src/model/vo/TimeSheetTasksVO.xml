@@ -12,7 +12,13 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="model.vo.TimeSheetTasksVORowImpl"
+  ComponentClass="model.vo.TimeSheetTasksVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <EntityUsage
     Name="TimeSheetTasksEO"
     Entity="model.eo.TimeSheetTasksEO"/>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="homePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="Ts_weeks_TF1" taskFlowId="/WEB-INF/Ts_weeks_TF.xml#Ts_weeks_TF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="TssubmittedtimeSheetsTF1"
+              taskFlowId="/WEB-INF/Ts-submitted-timeSheets-TF.xml#Ts-submitted-timeSheets-TF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="TsRolesTF1" taskFlowId="/WEB-INF/Ts-Roles-TF.xml#Ts-Roles-TF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="TsTasksTF1" taskFlowId="/WEB-INF/Ts-Tasks-TF.xml#Ts-Tasks-TF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="TsUsersTF1" taskFlowId="/WEB-INF/Ts-Users-TF.xml#Ts-Users-TF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="USerRoleTransVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="USerRoleTransVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="createUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createUsers"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="createRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createRoles"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="createTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTasks"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="initSubmittedTS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initSubmittedTS"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="status" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="cancel" RequiresUpdateModel="true" Action="invokeMethod" MethodName="cancel"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="save" RequiresUpdateModel="true" Action="invokeMethod" MethodName="save"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="updatePassword" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updatePassword"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="userName" NDType="java.lang.String"/>
+      <NamedData NDName="password" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="saveRoleChange" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveRoleChange"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="userId" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="roleId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <list IterBinding="USerRoleTransVO1Iterator" StaticList="false" Uses="LOV_UserId" id="UserId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="USerRoleTransVO1Iterator" StaticList="false" Uses="LOV_RoleId" id="RoleId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

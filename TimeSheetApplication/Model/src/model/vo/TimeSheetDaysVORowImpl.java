@@ -36,6 +36,7 @@ public class TimeSheetDaysVORowImpl extends ViewRowImpl {
         Day7,
         TimeSheetId,
         TaskId,
+        Notes,
         TimeSheetTasksVO1;
         static AttributesEnum[] vals = null;
         ;
@@ -72,6 +73,7 @@ public class TimeSheetDaysVORowImpl extends ViewRowImpl {
     public static final int DAY7 = AttributesEnum.Day7.index();
     public static final int TIMESHEETID = AttributesEnum.TimeSheetId.index();
     public static final int TASKID = AttributesEnum.TaskId.index();
+    public static final int NOTES = AttributesEnum.Notes.index();
     public static final int TIMESHEETTASKSVO1 = AttributesEnum.TimeSheetTasksVO1.index();
 
     /**
@@ -247,6 +249,22 @@ public class TimeSheetDaysVORowImpl extends ViewRowImpl {
      */
     public void setTaskId(BigDecimal value) {
         setAttributeInternal(TASKID, value);
+    }
+
+    /**
+     * Gets the attribute value for NOTES using the alias name Notes.
+     * @return the NOTES
+     */
+    public String getNotes() {
+        return (String) getAttributeInternal(NOTES);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for NOTES using the alias name Notes.
+     * @param value value to set the NOTES
+     */
+    public void setNotes(String value) {
+        setAttributeInternal(NOTES, value);
     }
 
     /**

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TimeSheetUsersVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full"
+  RowClass="model.vo.TimeSheetUsersVORowImpl"
+  ComponentClass="model.vo.TimeSheetUsersVOImpl">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <ViewAccessor
+      Name="TimeSheetRolesVO1"
+      ViewObjectName="model.vo.TimeSheetRolesVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="TimeSheetUsersVO1"
+      ViewObjectName="model.vo.TimeSheetUsersVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+      Name="TimeSheetUsersVO2"
+      ViewObjectName="model.vo.TimeSheetUsersVO"
+      RowLevelBinds="true"/>
+    <ViewAccessor
+        Name="TimeSheetUsersVO3"
+        ViewObjectName="model.vo.TimeSheetUsersVO"
+        RowLevelBinds="true"/>
+    <ListBinding
+      Name="LOV_RoleId"
+      ListVOName="TimeSheetRolesVO1"
+      ListRangeSize="-1"
+      NullValueFlag="none"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="RoleId"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="RoleId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="Role"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <ListBinding
+      Name="LOV_ManagerId"
+      ListVOName="TimeSheetUsersVO1"
+      ListRangeSize="-1"
+      NullValueFlag="none"
+      MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="ManagerId"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="UserId"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="UserName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <EntityUsage
+      Name="TimeSheetUsersEO"
+      Entity="model.eo.TimeSheetUsersEO"/>
+    <ViewAttribute
+      Name="UserEmailId"
+      PrecisionRule="true"
+      EntityAttrName="UserEmailId"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="USER_EMAIL_ID"/>
+    <ViewAttribute
+      Name="CompanyName"
+      PrecisionRule="true"
+      EntityAttrName="CompanyName"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="COMPANY_NAME"/>
+    <ViewAttribute
+      Name="Password"
+      PrecisionRule="true"
+      EntityAttrName="Password"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="PASSWORD"/>
+    <ViewAttribute
+      Name="RoleId"
+      PrecisionRule="true"
+      EntityAttrName="RoleId"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="ROLE_ID"
+      LOVName="LOV_RoleId">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="choice"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="UserId"
+      IsNotNull="true"
+      PrecisionRule="true"
+      EntityAttrName="UserId"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="USER_ID"/>
+    <ViewAttribute
+      Name="ManagerId"
+      PrecisionRule="true"
+      EntityAttrName="ManagerId"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="MANAGER_ID"
+      LOVName="LOV_ManagerId">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                  Value="choice"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+      Name="UserName"
+      PrecisionRule="true"
+      EntityAttrName="UserName"
+      EntityUsage="TimeSheetUsersEO"
+      AliasName="USER_NAME"/>
+</ViewObject>

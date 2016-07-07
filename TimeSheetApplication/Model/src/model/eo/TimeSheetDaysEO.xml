@@ -93,6 +93,18 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="TIME_SHEET_DAYS"/>
+  <Attribute
+    Name="Notes"
+    Precision="245"
+    ColumnName="NOTES"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TIME_SHEET_DAYS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="245"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="TimeSheetWeekEO1"
     Association="model.eo.assoc.TimeSheetDaysFk1Assoc"

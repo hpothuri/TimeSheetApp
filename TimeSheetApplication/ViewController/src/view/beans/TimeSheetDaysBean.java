@@ -4,8 +4,17 @@ import java.math.BigDecimal;
 
 import java.util.Date;
 
+import java.util.Iterator;
+import java.util.List;
+
+import java.util.Map;
+
+import java.util.Set;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import javax.faces.model.SelectItem;
 
 import oracle.adf.model.AttributeBinding;
 import oracle.adf.model.BindingContext;
@@ -27,8 +36,19 @@ import org.apache.myfaces.trinidad.util.Service;
 public class TimeSheetDaysBean {
     private RichInputText timeSheetDate;
     private RichPopup timeSheetDaysPopup;
+    private List<SelectItem> list;
+    private Boolean flag;
 
     public TimeSheetDaysBean() {
+        
+    }
+
+    public void setList(List<SelectItem> list) {
+        this.list = list;
+    }
+
+    public List<SelectItem> getList() {
+        return list;
     }
 
     public void setTimeSheetDate(RichInputText timeSheetDate) {
@@ -51,6 +71,14 @@ public class TimeSheetDaysBean {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
     }
 
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
 
     public void cancelTimeSheetHours(ActionEvent actionEvent) {
         // Add event code here...
@@ -134,14 +162,13 @@ public class TimeSheetDaysBean {
         AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
         BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetId);
-        Boolean flag=(Boolean)opr.execute();
-        if(flag == Boolean.FALSE){
-                showPopup(timeSheetDaysPopup, false);
-            }
-        else{
-                showPopup(timeSheetDaysPopup, true);
-            }
-        
+        Boolean flag = (Boolean) opr.execute();
+        if (flag == Boolean.FALSE) {
+            showPopup(timeSheetDaysPopup, false);
+        } else {
+            showPopup(timeSheetDaysPopup, true);
+        }
+
         return null;
     }
 
@@ -180,4 +207,23 @@ public class TimeSheetDaysBean {
         opr.execute();
         return null;
     }
+
+  /*  public List<SelectItem> populateList() {
+        BindingContainer bc = getBindings();
+        OperationBinding opr = bc.getOperationBinding("populateWeekList");
+        opr.getParamsMap().put("currentDate", new Date());
+        Map weekMap = (Map) opr.execute();
+        Set keys = weekMap.keySet();
+        Iterator itr = keys.iterator();
+
+        String key;
+        List stDate;
+        while (itr.hasNext()) {
+            key = (String) itr.next();
+            stDate = (List) weekMap.get(key);
+
+        }
+        return null;
+    }*/
+
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="timeSheetTasksPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TimeSheetTasksVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetTasksVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="TimeSheetTasksVO1Iterator" id="TaskId">
+      <AttrNames>
+        <Item Value="TaskId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetTasksVO1Iterator" id="Task">
+      <AttrNames>
+        <Item Value="Task"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetTasksVO1Iterator" id="TaskDesc">
+      <AttrNames>
+        <Item Value="TaskDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTasks"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="taskId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="deleteTimeSheetTasks" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteTimeSheetTasks" IsViewObjectMethod="false"
+                  DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"
+                  ReturnName="data.TimeSheetAppControllerDataControl.methodResults.deleteTimeSheetTasks_TimeSheetAppControllerDataControl_dataProvider_deleteTimeSheetTasks_result"/>
+    <methodAction id="save" RequiresUpdateModel="true" Action="invokeMethod" MethodName="save"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="cancel" RequiresUpdateModel="true" Action="invokeMethod" MethodName="cancel"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="createTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTasks"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <tree IterBinding="TimeSheetTasksVO1Iterator" id="TimeSheetTasksVO1">
+      <nodeDefinition DefName="model.vo.TimeSheetTasksVO" Name="TimeSheetTasksVO10">
+        <AttrNames>
+          <Item Value="TaskId"/>
+          <Item Value="Task"/>
+          <Item Value="TaskDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

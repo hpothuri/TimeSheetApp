@@ -19,6 +19,18 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <Variable
+    Name="p_week_st_date"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Date"/>
+  <Variable
+    Name="p_week_en_date"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Date"/>
+  <Variable
+    Name="p_status"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="TimeSheetWeekEO"
     Entity="model.eo.TimeSheetWeekEO"/>
@@ -102,6 +114,86 @@
     EntityAttrName="TaskId"
     EntityUsage="TimeSheetWeekEO"
     AliasName="TASK_ID"/>
+  <ViewCriteria
+    Name="TsFindWeekExistsVC"
+    ViewObjectName="model.vo.TimeSheetWeekVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="TimeSheetWeekVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="WeekStartDate"
+        ViewAttribute="WeekStartDate"
+        Operator="="
+        Conjunction="AND"
+        Value=":p_week_st_date"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="WeekEndDate"
+        ViewAttribute="WeekEndDate"
+        Operator="="
+        Conjunction="OR"
+        Value=":p_week_en_date"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="TimeSheetWeekStatusVC"
+    ViewObjectName="model.vo.TimeSheetWeekVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="TimeSheetWeekVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":p_status"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="TimeSheetWeekHoursVO"
     ViewLink="model.eo.assoc.TimeSheetWeekIdFkLink"
@@ -112,4 +204,9 @@
     ViewLink="model.vl.TimeSheetWeekHoursVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="WeekStartDate"
+      Ascending="false"/>
+  </SortCriteria>
 </ViewObject>

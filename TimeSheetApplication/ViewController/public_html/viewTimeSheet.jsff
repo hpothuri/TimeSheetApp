@@ -7,11 +7,94 @@
     </af:panelBox>
     <af:panelBox text="My TimeSheets" id="pb2">
       <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:table value="#{bindings.TimeSheetWeekVO11.collectionModel}" var="row"
+                  rows="#{bindings.TimeSheetWeekVO11.rangeSize}"
+                  emptyText="#{bindings.TimeSheetWeekVO11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetWeekVO11.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.TimeSheetWeekVO11.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.TimeSheetWeekVO11.rangeSize}" id="t4" width="100%">
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.label}" id="c25" visible="false">
+            <af:outputText value="#{row.TimeSheetId}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.tooltip}" id="ot13">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.label}" id="c26">
+            <af:outputText value="#{row.WeekStartDate}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.tooltip}" id="ot14">
+              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.label}" id="c27">
+            <af:outputText value="#{row.WeekEndDate}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.tooltip}" id="ot15">
+              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TotalHours.label}" id="c28">
+            <af:outputText value="#{row.TotalHours}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.TotalHours.tooltip}"
+                           id="ot16">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.TotalHours.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.label}" id="c29">
+            <af:outputText value="#{row.TotalExpences}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.tooltip}" id="ot17">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApproverComments.label}" id="c30">
+            <af:outputText value="#{row.ApproverComments}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApproverComments.tooltip}" id="ot18"/>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.UserId.label}" id="c31" visible="false">
+            <af:outputText value="#{row.UserId}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.UserId.tooltip}"
+                           id="ot19">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.UserId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.Status.label}" id="c32">
+            <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.Status.tooltip}"
+                           id="ot20"/>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.label}" id="c33">
+            <af:outputText value="#{row.SubmittedBy}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.tooltip}" id="ot21">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.label}" id="c34">
+            <af:outputText value="#{row.SubmittedTs}"
+                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.tooltip}" id="ot22">
+              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.label}" id="c35">
+            <af:outputText value="#{row.ApprovedTs}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.tooltip}"
+                           id="ot23">
+              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.label}" id="c36">
+            <af:outputText value="#{row.ApprovedBy}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.tooltip}"
+                           id="ot24">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TaskId.label}" id="c37" visible="false">
+            <af:outputText value="#{row.TaskId}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.TaskId.tooltip}"
+                           id="ot25">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.TaskId.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+      </af:panelGroupLayout>
     </af:panelBox>
     <af:panelBox text="My Tasks" id="pb3">
       <f:facet name="toolbar"/>
       <af:panelGroupLayout id="pgl2" layout="vertical">
-        <af:toolbar id="t4"/>
         <af:table value="#{bindings.TimeSheetWeekVO1.collectionModel}" var="row"
                   rows="#{bindings.TimeSheetWeekVO1.rangeSize}"
                   emptyText="#{bindings.TimeSheetWeekVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
@@ -20,11 +103,12 @@
                   fetchSize="#{bindings.TimeSheetWeekVO1.rangeSize}" id="t1" width="100%"
                   partialTriggers="::SubmitForApprovalButton">
           <af:column id="c14">
-            <af:button text="Add Hours" id="b1" actionListener="#{TimeSheetDaysBean.showTimeSheetHours}">
+            <af:button text="Add Hours" id="b1" actionListener="#{TimeSheetDaysBean.showTimeSheetHours}"
+                       visible="#{row.Status ne 'Approved'}">
               <!--   <af:showPopupBehavior popupId="::TimeSheetHours" triggerType="click"/>-->
             </af:button>
           </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.label}" id="c1">
+          <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.label}" id="c1" visible="false">
             <af:outputText value="#{row.TimeSheetId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.tooltip}"
                            id="ot1">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.format}"/>
@@ -122,7 +206,7 @@
                 <f:validator binding="#{row.bindings.TaskId.validator}"/>
               </af:selectOneChoice>
             </af:column>
-            <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}" id="c16">
+            <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}" id="c16" visible="false">
               <af:inputText value="#{row.bindings.WeekId.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.WeekId.mandatory}"
@@ -133,7 +217,16 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.WeekId.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Mon" id="c17" align="center">
+            <af:column id="c15" headerText="Notes" align="center">
+              <af:inputText value="#{row.bindings.Notes.inputValue}"
+                            required="#{bindings.TimeSheetDaysVO1.hints.Notes.mandatory}"
+                            columns="100"
+                            maximumLength="#{bindings.TimeSheetDaysVO1.hints.Notes.precision}"
+                            shortDesc="#{bindings.TimeSheetDaysVO1.hints.Notes.tooltip}" id="it1" rows="3">
+                <f:validator binding="#{row.bindings.Notes.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="Mon" id="c17" align="center" width="50">
               <af:inputText value="#{row.bindings.Day1.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day1.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day1.mandatory}"
@@ -144,7 +237,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day1.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Tue" id="c18" align="center">
+            <af:column headerText="Tue" id="c18" align="center" width="50">
               <af:inputText value="#{row.bindings.Day2.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day2.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day2.mandatory}"
@@ -155,7 +248,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day2.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Wed" id="c19" align="center">
+            <af:column headerText="Wed" id="c19" align="center" width="50">
               <af:inputText value="#{row.bindings.Day3.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day3.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day3.mandatory}"
@@ -166,7 +259,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day3.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Thurs" id="c20" align="center">
+            <af:column headerText="Thurs" id="c20" align="center" width="50">
               <af:inputText value="#{row.bindings.Day4.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day4.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day4.mandatory}"
@@ -177,7 +270,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day4.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Fri" id="c21" align="center">
+            <af:column headerText="Fri" id="c21" align="center" width="50">
               <af:inputText value="#{row.bindings.Day5.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day5.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day5.mandatory}"
@@ -188,7 +281,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day5.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Sat" id="c22" align="center">
+            <af:column headerText="Sat" id="c22" align="center" width="50">
               <af:inputText value="#{row.bindings.Day6.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day6.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day6.mandatory}"
@@ -199,7 +292,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day6.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="Sun" id="c23" align="center">
+            <af:column headerText="Sun" id="c23" align="center" width="50">
               <af:inputText value="#{row.bindings.Day7.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.Day7.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.Day7.mandatory}"
@@ -210,7 +303,7 @@
                 <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day7.format}"/>
               </af:inputText>
             </af:column>
-            <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}" id="c24">
+            <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}" id="c24" visible="false">
               <af:inputText value="#{row.bindings.TimeSheetId.inputValue}"
                             label="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}"
                             required="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.mandatory}"

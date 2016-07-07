@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TimeSheetAttachmentsVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="model.vo.TimeSheetAttachmentsVORowImpl"
+  ComponentClass="model.vo.TimeSheetAttachmentsVOImpl"
+  SelectList="TimeSheetAttachmentsEO.ATTACHMENT_ID, 
+       TimeSheetAttachmentsEO.TIMESHEET_ID, 
+       TimeSheetAttachmentsEO.FILE_TYPE, 
+       TimeSheetAttachmentsEO.FILE_NAME, 
+       TimeSheetAttachmentsEO.ATTACHED_FILE, 
+       TimeSheetAttachmentsEO.CREATED_BY, 
+       TimeSheetAttachmentsEO.CREATED_DATE, 
+       TimeSheetAttachmentsEO.LAST_UPDATED_BY, 
+       TimeSheetAttachmentsEO.LAST_UPDATED_DATE"
+  FromList="TIME_SHEET_ATTACHMENTS TimeSheetAttachmentsEO">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <EntityUsage
+    Name="TimeSheetAttachmentsEO"
+    Entity="model.eo.TimeSheetAttachmentsEO"/>
+  <ViewAttribute
+    Name="AttachmentId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AttachmentId"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="ATTACHMENT_ID"/>
+  <ViewAttribute
+    Name="TimesheetId"
+    PrecisionRule="true"
+    EntityAttrName="TimesheetId"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="TIMESHEET_ID"/>
+  <ViewAttribute
+    Name="FileType"
+    PrecisionRule="true"
+    EntityAttrName="FileType"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="FILE_TYPE"/>
+  <ViewAttribute
+    Name="FileName"
+    PrecisionRule="true"
+    EntityAttrName="FileName"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="FILE_NAME"/>
+  <ViewAttribute
+    Name="AttachedFile"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="AttachedFile"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="ATTACHED_FILE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="TimeSheetAttachmentsEO"
+    AliasName="LAST_UPDATED_DATE"/>
+</ViewObject>

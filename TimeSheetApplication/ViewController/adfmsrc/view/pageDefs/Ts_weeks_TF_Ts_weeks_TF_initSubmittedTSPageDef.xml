@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="Ts_weeks_TF_Ts_weeks_TF_initSubmittedTSPageDef" Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="initSubmittedTS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initSubmittedTS"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="status" NDValue="#{'All'}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

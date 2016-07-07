@@ -1,13 +1,51 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
-  <managed-bean id="__1">
-    <managed-bean-name>TimeSheetDaysBean</managed-bean-name>
-    <managed-bean-class>view.beans.TimeSheetDaysBean</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
-  <managed-bean id="__2">
-    <managed-bean-name>SubmittedTimeSheetsBean</managed-bean-name>
-    <managed-bean-class>view.beans.SubmittedTimeSheetsBean</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-  </managed-bean>
+    <view id="home">
+        <page>/home.jsf</page>
+    </view>
+    <managed-bean id="__1">
+        <managed-bean-name>TimeSheetDaysBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetDaysBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+        <managed-bean-name>SubmittedTimeSheetsBean</managed-bean-name>
+        <managed-bean-class>view.beans.SubmittedTimeSheetsBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__3">
+        <managed-bean-name>TimeSheetUsersBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetUsersBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__4">
+        <managed-bean-name>TimeSheetRolesBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetRolesBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+        <managed-bean-name>TimeSheetTasksBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetTasksBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+        <managed-bean-name>TimeSheetAdminPageBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetAdminPageBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+        <managed-bean-name>TimeSheetsViewBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetsViewBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__8">
+        <managed-bean-name>LoginBean</managed-bean-name>
+        <managed-bean-class>view.beans.LoginBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__9">
+        <managed-bean-name>TimeSheetHomeBean</managed-bean-name>
+        <managed-bean-class>view.beans.TimeSheetHomeBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </adfc-config>

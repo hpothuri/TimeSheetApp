@@ -115,4 +115,10 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Notes"
+    PrecisionRule="true"
+    EntityAttrName="Notes"
+    EntityUsage="TimeSheetDaysEO"
+    AliasName="NOTES"/>
 </ViewObject>

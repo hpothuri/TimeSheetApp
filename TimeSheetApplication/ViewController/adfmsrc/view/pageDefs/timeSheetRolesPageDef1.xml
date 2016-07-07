@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="timeSheetRolesPageDef1"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TimeSheetRolesVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetRolesVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TimeSheetRolesVO1Iterator" id="TimeSheetRolesVO1">
+      <nodeDefinition DefName="model.vo.TimeSheetRolesVO" Name="TimeSheetRolesVO10">
+        <AttrNames>
+          <Item Value="RoleId"/>
+          <Item Value="Role"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="TimeSheetRolesVO1Iterator" id="RoleId">
+      <AttrNames>
+        <Item Value="RoleId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetRolesVO1Iterator" id="Role">
+      <AttrNames>
+        <Item Value="Role"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetRolesVO1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="createRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createRoles"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="deleteTimeSheetRoles" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="deleteTimeSheetRoles" IsViewObjectMethod="false"
+                  DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"
+                  ReturnName="data.TimeSheetAppControllerDataControl.methodResults.deleteTimeSheetRoles_TimeSheetAppControllerDataControl_dataProvider_deleteTimeSheetRoles_result"/>
+    <methodAction id="saveRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveRoles"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="roleId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="save" RequiresUpdateModel="true" Action="invokeMethod" MethodName="save"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <methodAction id="cancel" RequiresUpdateModel="true" Action="invokeMethod" MethodName="cancel"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

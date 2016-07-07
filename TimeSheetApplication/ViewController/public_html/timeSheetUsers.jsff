@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1">
+    <af:toolbar id="t1">
+      <af:button text="New" id="b1" action="#{TimeSheetAdminPageBean.newUsersAction}">
+        <af:showPopupBehavior popupId="usersPopup" triggerType="click"/>
+      </af:button>
+      <af:button text="Edit" id="b2">
+        <af:showPopupBehavior popupId="usersPopup" triggerType="click"/>
+      </af:button>
+      <af:button text="Delete" id="b3">
+        <af:showPopupBehavior popupId="delConfmPopup" triggerType="click"/>
+      </af:button>
+    </af:toolbar>
+  </af:panelGroupLayout>
+  <af:table value="#{bindings.TimeSheetUsersVO1.collectionModel}" var="row"
+            rows="#{bindings.TimeSheetUsersVO1.rangeSize}"
+            emptyText="#{bindings.TimeSheetUsersVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+            rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetUsersVO1.collectionModel.selectedRow}"
+            selectionListener="#{bindings.TimeSheetUsersVO1.collectionModel.makeCurrent}" rowSelection="single"
+            fetchSize="#{bindings.TimeSheetUsersVO1.rangeSize}" id="t2" width="100%" partialTriggers="::b1 ::b2 ::b3">
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserEmailId.label}" id="c1">
+      <af:outputText value="#{row.UserEmailId}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserEmailId.tooltip}"
+                     id="ot1"/>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.CompanyName.label}" id="c2">
+      <af:outputText value="#{row.CompanyName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.CompanyName.tooltip}"
+                     id="ot2"/>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.Password.label}" id="c3">
+      <af:outputText value="#{row.Password}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.Password.tooltip}" id="ot3"/>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.RoleId.label}" id="c4">
+      <af:selectOneChoice value="#{row.bindings.RoleId.inputValue}" label="#{row.bindings.RoleId.label}"
+                          required="#{bindings.TimeSheetUsersVO1.hints.RoleId.mandatory}"
+                          shortDesc="#{bindings.TimeSheetUsersVO1.hints.RoleId.tooltip}" readOnly="true" id="soc1">
+        <f:selectItems value="#{row.bindings.RoleId.items}" id="si1"/>
+        <f:validator binding="#{row.bindings.RoleId.validator}"/>
+      </af:selectOneChoice>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserId.label}" id="c5">
+      <af:outputText value="#{row.UserId}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserId.tooltip}" id="ot4">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetUsersVO1.hints.UserId.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.ManagerId.label}" id="c6">
+      <af:selectOneChoice value="#{row.bindings.ManagerId.inputValue}" label="#{row.bindings.ManagerId.label}"
+                          required="#{bindings.TimeSheetUsersVO1.hints.ManagerId.mandatory}"
+                          shortDesc="#{bindings.TimeSheetUsersVO1.hints.ManagerId.tooltip}" readOnly="true" id="soc2">
+        <f:selectItems value="#{row.bindings.ManagerId.items}" id="si2"/>
+        <f:validator binding="#{row.bindings.ManagerId.validator}"/>
+      </af:selectOneChoice>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserName.label}" id="c7">
+      <af:outputText value="#{row.UserName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserName.tooltip}" id="ot5"/>
+    </af:column>
+  </af:table>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="delConfmPopup"
+            binding="#{TimeSheetAdminPageBean.delConfrmPopup}">
+    <af:dialog id="d2" type="none" contentWidth="50">
+      <f:facet name="buttonBar"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:outputText value="Do you want to Delete the data???" id="ot7"/>
+        <af:toolbar id="t4">
+          <af:button text="Yes" id="b6" action="#{TimeSheetAdminPageBean.deleteUsersAction}"/>
+          <af:spacer width="20" height="10" id="s1"/>
+          <af:button text="No" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteUsers}"/>
+        </af:toolbar>
+      </af:panelGroupLayout>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="usersPopup" contentDelivery="lazyUncached"
+            binding="#{TimeSheetAdminPageBean.usersPopup}">
+    <af:dialog id="d1" type="none">
+      <af:panelFormLayout id="pfl1">
+        <af:panelLabelAndMessage label="#{bindings.UserId.hints.label}" id="plam1">
+          <af:outputText value="#{bindings.UserId.inputValue}" shortDesc="#{bindings.UserId.hints.tooltip}" id="ot6">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.UserId.format}"/>
+          </af:outputText>
+        </af:panelLabelAndMessage>
+        <af:inputText value="#{bindings.UserName.inputValue}" label="#{bindings.UserName.hints.label}"
+                      required="#{bindings.UserName.hints.mandatory}" columns="#{bindings.UserName.hints.displayWidth}"
+                      maximumLength="#{bindings.UserName.hints.precision}"
+                      shortDesc="#{bindings.UserName.hints.tooltip}" id="it1">
+          <f:validator binding="#{bindings.UserName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.UserEmailId.inputValue}" label="#{bindings.UserEmailId.hints.label}"
+                      required="#{bindings.UserEmailId.hints.mandatory}"
+                      columns="#{bindings.UserEmailId.hints.displayWidth}"
+                      maximumLength="#{bindings.UserEmailId.hints.precision}"
+                      shortDesc="#{bindings.UserEmailId.hints.tooltip}" id="it2">
+          <f:validator binding="#{bindings.UserEmailId.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Password.inputValue}" label="#{bindings.Password.hints.label}"
+                      required="#{bindings.Password.hints.mandatory}" columns="#{bindings.Password.hints.displayWidth}"
+                      maximumLength="#{bindings.Password.hints.precision}"
+                      shortDesc="#{bindings.Password.hints.tooltip}" id="it3" secret="true">
+          <f:validator binding="#{bindings.Password.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.CompanyName.inputValue}" label="#{bindings.CompanyName.hints.label}"
+                      required="#{bindings.CompanyName.hints.mandatory}"
+                      columns="#{bindings.CompanyName.hints.displayWidth}"
+                      maximumLength="#{bindings.CompanyName.hints.precision}"
+                      shortDesc="#{bindings.CompanyName.hints.tooltip}" id="it4">
+          <f:validator binding="#{bindings.CompanyName.validator}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.RoleId.inputValue}" label="#{bindings.RoleId.label}"
+                            required="#{bindings.RoleId.hints.mandatory}" shortDesc="#{bindings.RoleId.hints.tooltip}"
+                            id="soc3">
+          <f:selectItems value="#{bindings.RoleId.items}" id="si3"/>
+          <f:validator binding="#{bindings.RoleId.validator}"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.ManagerId.inputValue}" label="#{bindings.ManagerId.label}"
+                            required="#{bindings.ManagerId.hints.mandatory}"
+                            shortDesc="#{bindings.ManagerId.hints.tooltip}" id="soc4">
+          <f:selectItems value="#{bindings.ManagerId.items}" id="si4"/>
+          <f:validator binding="#{bindings.ManagerId.validator}"/>
+        </af:selectOneChoice>
+        <af:toolbar id="t3">
+          <af:button text="Save" id="b4" action="#{TimeSheetAdminPageBean.saveUsersAction}"/>
+          <af:button text="Cancel" id="b5" action="#{TimeSheetAdminPageBean.cancelUsersAction}" immediate="true"
+                     partialSubmit="false"/>
+        </af:toolbar>
+      </af:panelFormLayout>
+      <f:facet name="buttonBar"/>
+    </af:dialog>
+  </af:popup>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:TimeSheetAdminPageBean-->
+</ui:composition>

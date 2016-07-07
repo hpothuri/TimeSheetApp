@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1">
+    <af:toolbar id="t1">
+      <af:button text="New" id="b1" action="#{TimeSheetAdminPageBean.newTasksAction}">
+        <af:showPopupBehavior popupId="tasksPopup" triggerType="click"/>
+      </af:button>
+      <af:button text="Edit" id="b2">
+        <af:showPopupBehavior popupId="tasksPopup" triggerType="click"/>
+      </af:button>
+      <af:button text="Delete" id="b3">
+        <af:showPopupBehavior popupId="delConfrmPopup" triggerType="click"/>
+      </af:button>
+    </af:toolbar>
+  </af:panelGroupLayout>
+  <af:table value="#{bindings.TimeSheetTasksVO1.collectionModel}" var="row"
+            rows="#{bindings.TimeSheetTasksVO1.rangeSize}"
+            emptyText="#{bindings.TimeSheetTasksVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+            rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetTasksVO1.collectionModel.selectedRow}"
+            selectionListener="#{bindings.TimeSheetTasksVO1.collectionModel.makeCurrent}" rowSelection="single"
+            fetchSize="#{bindings.TimeSheetTasksVO1.rangeSize}" id="t2" width="100%" partialTriggers="::b1 ::b2 ::b3">
+    <af:column headerText="#{bindings.TimeSheetTasksVO1.hints.TaskId.label}" id="c1">
+      <af:outputText value="#{row.TaskId}" shortDesc="#{bindings.TimeSheetTasksVO1.hints.TaskId.tooltip}" id="ot1">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetTasksVO1.hints.TaskId.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetTasksVO1.hints.Task.label}" id="c2">
+      <af:outputText value="#{row.Task}" shortDesc="#{bindings.TimeSheetTasksVO1.hints.Task.tooltip}" id="ot2"/>
+    </af:column>
+    <af:column headerText="#{bindings.TimeSheetTasksVO1.hints.TaskDesc.label}" id="c3">
+      <af:outputText value="#{row.TaskDesc}" shortDesc="#{bindings.TimeSheetTasksVO1.hints.TaskDesc.tooltip}" id="ot3"/>
+    </af:column>
+  </af:table>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="delConfrmPopup"
+            binding="#{TimeSheetAdminPageBean.delTasksPopup}">
+    <af:dialog id="d2" type="none" contentWidth="100">
+      <f:facet name="buttonBar"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:outputText value="Do you want to Delete...???" id="ot5"/>
+        <af:toolbar id="t4">
+          <af:button text="Yes" id="b6" action="#{TimeSheetAdminPageBean.deleteTasksAction}"/>
+          <af:button text="No" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteTasks}"/>
+        </af:toolbar>
+      </af:panelGroupLayout>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="tasksPopup" contentDelivery="lazyUncached"
+            binding="#{TimeSheetAdminPageBean.tasksPopup}">
+    <af:dialog id="d1" type="none" contentWidth="60">
+      <f:facet name="buttonBar"/>
+      <af:panelFormLayout id="pfl1">
+        <af:panelLabelAndMessage label="#{bindings.TaskId.hints.label}" id="plam1">
+          <af:outputText value="#{bindings.TaskId.inputValue}" shortDesc="#{bindings.TaskId.hints.tooltip}" id="ot4">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.TaskId.format}"/>
+          </af:outputText>
+        </af:panelLabelAndMessage>
+        <af:inputText value="#{bindings.Task.inputValue}" label="#{bindings.Task.hints.label}"
+                      required="#{bindings.Task.hints.mandatory}" columns="50"
+                      maximumLength="#{bindings.Task.hints.precision}" shortDesc="#{bindings.Task.hints.tooltip}"
+                      id="it1" rows="1">
+          <f:validator binding="#{bindings.Task.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.TaskDesc.inputValue}" label="#{bindings.TaskDesc.hints.label}"
+                      required="#{bindings.TaskDesc.hints.mandatory}" columns="50"
+                      maximumLength="#{bindings.TaskDesc.hints.precision}"
+                      shortDesc="#{bindings.TaskDesc.hints.tooltip}" id="it2" rows="5">
+          <f:validator binding="#{bindings.TaskDesc.validator}"/>
+        </af:inputText>
+        <af:toolbar id="t3">
+          <af:button text="Save" id="b4" action="#{TimeSheetAdminPageBean.saveTasksAction}"/>
+          <af:button text="Cancel" id="b5" action="#{TimeSheetAdminPageBean.cancelTasksAction}" immediate="true"
+                     partialSubmit="false"/>
+        </af:toolbar>
+      </af:panelFormLayout>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

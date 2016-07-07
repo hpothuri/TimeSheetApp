@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:toolbar id="t1">
+      <af:button text="New" id="b1" action="#{TimeSheetAdminPageBean.newRolesAction}">
+        <af:showPopupBehavior popupId="rolesPopUp" triggerType="click"/>
+      </af:button>
+      <af:button text="Edit" id="b2">
+        <af:showPopupBehavior popupId="rolesPopUp" triggerType="click"/>
+      </af:button>
+      <af:button text="Delete" id="b3" action="#{TimeSheetAdminPageBean.deleteRolesAction}"/>
+    </af:toolbar>
+    <af:table value="#{bindings.TimeSheetRolesVO1.collectionModel}" var="row"
+              rows="#{bindings.TimeSheetRolesVO1.rangeSize}"
+              emptyText="#{bindings.TimeSheetRolesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetRolesVO1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.TimeSheetRolesVO1.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.TimeSheetRolesVO1.rangeSize}" id="t2" width="100%" partialTriggers="::b1 ::b2 ::b3">
+      <af:column headerText="#{bindings.TimeSheetRolesVO1.hints.RoleId.label}" id="c1">
+        <af:outputText value="#{row.RoleId}" shortDesc="#{bindings.TimeSheetRolesVO1.hints.RoleId.tooltip}" id="ot1">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetRolesVO1.hints.RoleId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column headerText="#{bindings.TimeSheetRolesVO1.hints.Role.label}" id="c2">
+        <af:outputText value="#{row.Role}" shortDesc="#{bindings.TimeSheetRolesVO1.hints.Role.tooltip}" id="ot2"/>
+      </af:column>
+      <af:column headerText="#{bindings.TimeSheetRolesVO1.hints.Description.label}" id="c3">
+        <af:outputText value="#{row.Description}" shortDesc="#{bindings.TimeSheetRolesVO1.hints.Description.tooltip}"
+                       id="ot3"/>
+      </af:column>
+    </af:table>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="rolesPopUp" binding="#{TimeSheetAdminPageBean.rolesPopup}"
+              contentDelivery="lazyUncached">
+      <af:dialog id="d1" type="none">
+        <f:facet name="buttonBar"/>
+        <af:panelGroupLayout id="pgl2">
+          <af:panelFormLayout id="pfl1">
+            <af:panelLabelAndMessage label="#{bindings.RoleId.hints.label}" id="plam1">
+              <af:outputText value="#{bindings.RoleId.inputValue}" shortDesc="#{bindings.RoleId.hints.tooltip}"
+                             id="ot4">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.RoleId.format}"/>
+              </af:outputText>
+            </af:panelLabelAndMessage>
+            <af:inputText value="#{bindings.Role.inputValue}" label="#{bindings.Role.hints.label}"
+                          required="#{bindings.Role.hints.mandatory}" columns="50"
+                          maximumLength="#{bindings.Role.hints.precision}" shortDesc="#{bindings.Role.hints.tooltip}"
+                          id="it1">
+              <f:validator binding="#{bindings.Role.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
+                          required="#{bindings.Description.hints.mandatory}"
+                          columns="50"
+                          maximumLength="#{bindings.Description.hints.precision}"
+                          shortDesc="#{bindings.Description.hints.tooltip}" id="it2" rows="5">
+              <f:validator binding="#{bindings.Description.validator}"/>
+            </af:inputText>
+            <af:toolbar id="t3">
+              <af:button text="Save" id="b4" action="#{TimeSheetAdminPageBean.saveRolesAction}"/>
+              <af:button text="Cancel" id="b5" action="#{TimeSheetAdminPageBean.cancelRolesAction}" immediate="true"
+                         partialSubmit="false"/>
+            </af:toolbar>
+          </af:panelFormLayout>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="delConfirmPopup"
+              binding="#{TimeSheetAdminPageBean.delRolesPopup}">
+      <af:dialog id="d2" type="none" contentWidth="100">
+        <f:facet name="buttonBar"/>
+        <af:panelGroupLayout id="pgl3" layout="vertical">
+          <af:outputText value="Do you want to Delete???" id="ot5"/>
+          <af:toolbar id="t4">
+            <af:button text="Yes" id="b6" action="#{TimeSheetAdminPageBean.deleteRolesAction}"/>
+            <af:button text="No" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteRole}"/>
+          </af:toolbar>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:TimeSheetAdminPageBean-->
+</ui:composition>

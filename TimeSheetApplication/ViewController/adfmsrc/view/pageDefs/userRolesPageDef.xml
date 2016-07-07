@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="userRolesPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TimeSheetUsersVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetUsersVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="UserEmailId">
+      <AttrNames>
+        <Item Value="UserEmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="CompanyName">
+      <AttrNames>
+        <Item Value="CompanyName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="TimeSheetUsersVO1Iterator" StaticList="false" Uses="LOV_RoleId" id="RoleId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="UserId">
+      <AttrNames>
+        <Item Value="UserId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="TimeSheetUsersVO1Iterator" StaticList="false" Uses="LOV_ManagerId" id="ManagerId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUsers"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="userId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+    <methodAction id="saveUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUsers"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+      <NamedData NDName="userId" NDType="java.math.BigDecimal"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
