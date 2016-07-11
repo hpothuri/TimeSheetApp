@@ -19,6 +19,8 @@ import java.util.Map;
 
 import model.am.common.TimeSheetAppController;
 
+import model.vo.StEnWeekVOImpl;
+import model.vo.StEnWeekVORowImpl;
 import model.vo.TimeSheetAttachmentsVOImpl;
 import model.vo.TimeSheetAttachmentsVORowImpl;
 import model.vo.TimeSheetDaysVOImpl;
@@ -329,7 +331,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         TimesheetUsersMappingVOImpl mappingVO = getTimesheetUsersMappingVO1();
         TimesheetUsersMappingVORowImpl mappingRow = (TimesheetUsersMappingVORowImpl) mappingVO.createRow();
         mappingRow.setTimeSheetId(timeSheetId);
-        //mappingRow.setSubmittedBy(value);
+        mappingRow.setSubmittedBy(getUserId());
         //mappingRow.setSubmittedTo(value);
         mappingVO.insertRow(mappingRow);
         save();
@@ -375,7 +377,8 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
             SimpleDateFormat sdfr = new SimpleDateFormat("dd/MMM/yyyy");
             String date = sdfr.format(currentDate);
             String whereClause =
-                "STATUS = 'Open' or STATUS = 'Pending' or (to_date('13-06-16') between WEEK_START_DATE and WEEK_END_DATE)";
+                "SUBMITTED_BY=" +
+                getUserId(); //+" AND STATUS = 'Open' or STATUS='Submitted'";// or STATUS = 'Pending'"// or (to_date('13-06-16') between WEEK_START_DATE and WEEK_END_DATE)";
             tsWeekVO.setWhereClause(whereClause);
             tsWeekVO.executeQuery();
         }
@@ -552,8 +555,12 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         row.setFileName(fileName);
         row.setFileType(contentType);
         row.setAttachedFile(file);
+        row.setCreatedBy(getUserId());
+        row.setCreatedDate(new Timestamp(new Date().getTime()));
         vo.insertRow(row);
         save();
+        vo.setWhereClause("CREATED_BY=" + getUserId());
+        vo.executeQuery();
     }
 
     public void initSubmittedTS(String status) {
@@ -621,5 +628,75 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         }
         vo.setWhereClause(null);
         return userId;
+    }
+
+    public void saveTimeSheet(BigDecimal timeSheetId) {
+        BigDecimal userId = getUserId();
+        TimeSheetWeekVOImpl weekVO = getTimeSheetWeekVO1();
+        TimeSheetWeekVORowImpl weekRow = (TimeSheetWeekVORowImpl) weekVO.getCurrentRow();
+        int totalHours = 0;
+        totalHours = getTimeSheetHours(timeSheetId); //weekRow.getTotalHours();
+        weekRow.setTotalHours(totalHours); // + getTimeSheetHours(timeSheetId));
+        weekRow.setStatus("Open");
+        weekRow.setSubmittedBy(userId);
+        weekRow.setSubmittedTs(new Timestamp(new Date().getTime()));
+        //   submitTimeSheet(timeSheetId);
+        save();
+    }
+
+    public void createNewTimeSheet(Date currentDate) {
+        StEnWeekVOImpl vo = getStEnWeekVO1();
+        vo.setNamedWhereClauseParam("systemdate", new java.sql.Date(currentDate.getTime()));
+        vo.executeQuery();
+        if (vo.getEstimatedRowCount() > 0) {
+            System.out.println("in side if count...");
+            StEnWeekVORowImpl row = (StEnWeekVORowImpl) vo.first();
+            TimeSheetWeekVOImpl tsWeekVo = getTimeSheetWeekVO1();
+            Date wkStDate = row.getWeekStartDate();
+            Date wkEnDate = row.getWeekEndDate();
+            SimpleDateFormat form = new SimpleDateFormat("dd/MMM/yyyy");
+            String temp = form.format(wkStDate);
+            tsWeekVo.setWhereClause("WEEK_START_DATE = '" + temp + "' AND SUBMITTED_BY=" + getUserId());
+            tsWeekVo.executeQuery();
+
+            if (tsWeekVo.getEstimatedRowCount() == 0) {
+                System.out.println("inside tsweek if " + wkStDate + "end date..." + wkEnDate);
+                TimeSheetWeekVORowImpl weekTsRow = (TimeSheetWeekVORowImpl) tsWeekVo.createRow();
+                weekTsRow.setStatus("Open");
+                weekTsRow.setTotalHours(0);
+                weekTsRow.setWeekStartDate(new Timestamp(wkStDate.getTime()));
+                weekTsRow.setWeekEndDate(new Timestamp(wkEnDate.getTime()));
+                weekTsRow.setSubmittedBy(getUserId());
+                weekTsRow.setSubmittedTs(new Timestamp(new Date().getTime()));
+                tsWeekVo.insertRow(weekTsRow);
+                System.out.println("inserted....row");
+                // tsWeekVo.setApplyViewCriteriaNames(null);
+                // tsWeekVo.setWhereClause(null);
+                //  tsWeekVo.executeQuery();
+                System.out.println("view criteia to null...");
+            }
+        }
+
+
+    }
+
+    /**
+     * Container's getter for StEnWeekVO1.
+     * @return StEnWeekVO1
+     */
+    public StEnWeekVOImpl getStEnWeekVO1() {
+        return (StEnWeekVOImpl) findViewObject("StEnWeekVO1");
+    }
+
+    public void ViewAllTs() {
+        TimeSheetWeekVOImpl tsWeekVo = getTimeSheetWeekVO1();
+        tsWeekVo.setWhereClause("SUBMITTED_BY=" + getUserId());
+        tsWeekVo.executeQuery();
+    }
+
+    public void getAttachments() {
+        TimeSheetAttachmentsVOImpl vo = getTimeSheetAttachmentsVO1();
+        vo.setWhereClause("CREATED_BY=" + getUserId());
+        vo.executeQuery();
     }
 }

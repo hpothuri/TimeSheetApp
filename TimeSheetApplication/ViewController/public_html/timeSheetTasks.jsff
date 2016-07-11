@@ -10,7 +10,7 @@
         <af:showPopupBehavior popupId="tasksPopup" triggerType="click"/>
       </af:button>
       <af:button text="Delete" id="b3">
-        <af:showPopupBehavior popupId="delConfrmPopup" triggerType="click"/>
+        <af:showPopupBehavior popupId="delTasksPopup" triggerType="click"/>
       </af:button>
     </af:toolbar>
   </af:panelGroupLayout>
@@ -32,9 +32,9 @@
       <af:outputText value="#{row.TaskDesc}" shortDesc="#{bindings.TimeSheetTasksVO1.hints.TaskDesc.tooltip}" id="ot3"/>
     </af:column>
   </af:table>
-  <af:popup childCreation="deferred" autoCancel="disabled" id="delConfrmPopup"
+  <af:popup childCreation="deferred" autoCancel="disabled" id="delTasksPopup"
             binding="#{TimeSheetAdminPageBean.delTasksPopup}">
-    <af:dialog id="d2" type="none" contentWidth="100">
+    <af:dialog id="d2" type="none" contentWidth="200">
       <f:facet name="buttonBar"/>
       <af:panelGroupLayout id="pgl2" layout="vertical">
         <af:outputText value="Do you want to Delete...???" id="ot5"/>

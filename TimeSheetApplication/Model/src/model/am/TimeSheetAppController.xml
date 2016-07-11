@@ -48,6 +48,9 @@
   <ViewUsage
     Name="USerRoleTransVO1"
     ViewObjectName="model.vo.USerRoleTransVO"/>
+  <ViewUsage
+    Name="StEnWeekVO1"
+    ViewObjectName="model.vo.StEnWeekVO"/>
   <ViewLinkUsage
     Name="TimeSheetWeekHoursVL"
     ViewLinkObjectName="model.vl.TimeSheetWeekHoursVL"
@@ -1084,6 +1087,40 @@
       <Parameter
         Name="roleId"
         Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="saveTimeSheet"
+      MethodName="saveTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="createNewTimeSheet"
+      MethodName="createNewTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="currentDate"
+        Type="java.util.Date"/>
+    </Method>
+    <Method
+      Name="ViewAllTs"
+      MethodName="ViewAllTs">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="getAttachments"
+      MethodName="getAttachments">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
     </Method>
   </ClientInterface>
 </AppModule>

@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import model.eo.TimeSheetWeekEOImpl;
 
 import oracle.jbo.RowIterator;
+import oracle.jbo.RowSet;
 import oracle.jbo.domain.BFileDomain;
 import oracle.jbo.domain.DBSequence;
 import oracle.jbo.server.ViewRowImpl;
@@ -39,7 +40,9 @@ public class TimeSheetWeekVORowImpl extends ViewRowImpl {
         ApprovedBy,
         TaskId,
         TimeSheetWeekHoursVO,
-        TimeSheetDaysVO;
+        TimeSheetDaysVO,
+        TSUSERSVVO1,
+        TSUSERSVVO2;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -80,6 +83,8 @@ public class TimeSheetWeekVORowImpl extends ViewRowImpl {
     public static final int TASKID = AttributesEnum.TaskId.index();
     public static final int TIMESHEETWEEKHOURSVO = AttributesEnum.TimeSheetWeekHoursVO.index();
     public static final int TIMESHEETDAYSVO = AttributesEnum.TimeSheetDaysVO.index();
+    public static final int TSUSERSVVO1 = AttributesEnum.TSUSERSVVO1.index();
+    public static final int TSUSERSVVO2 = AttributesEnum.TSUSERSVVO2.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -316,6 +321,20 @@ public class TimeSheetWeekVORowImpl extends ViewRowImpl {
      */
     public RowIterator getTimeSheetDaysVO() {
         return (RowIterator) getAttributeInternal(TIMESHEETDAYSVO);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> TSUSERSVVO1.
+     */
+    public RowSet getTSUSERSVVO1() {
+        return (RowSet) getAttributeInternal(TSUSERSVVO1);
+    }
+
+    /**
+     * Gets the view accessor <code>RowSet</code> TSUSERSVVO2.
+     */
+    public RowSet getTSUSERSVVO2() {
+        return (RowSet) getAttributeInternal(TSUSERSVVO2);
     }
 
 }

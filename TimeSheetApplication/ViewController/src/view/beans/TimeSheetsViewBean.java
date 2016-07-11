@@ -26,6 +26,7 @@ import oracle.adf.view.rich.component.rich.RichPopup;
 import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
+import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.server.ViewObjectImpl;
@@ -38,6 +39,9 @@ import org.apache.myfaces.trinidad.util.Service;
 public class TimeSheetsViewBean {
     private RichPopup tsDaysPopup;
     private RichPopup uploadPopup;
+    private RichPopup delTsDaysPopup;
+    private RichPopup submitConfirmPopup;
+    private RichPopup createTsPopup;
 
     public void setUploadPopup(RichPopup uploadPopup) {
         this.uploadPopup = uploadPopup;
@@ -95,15 +99,41 @@ public class TimeSheetsViewBean {
         }
     }
 
+    private int totalHours() {
+        BindingContainer bc = getBindings();
+        DCIteratorBinding itr = (DCIteratorBinding) bc.get("TimeSheetDaysVO1Iterator");
+        ViewObject vo = itr.getViewObject();
+        Row row = vo.getCurrentRow();
+        int count = 0;
+        int day1 = (Integer) row.getAttribute("Day1");
+        int day2 = (Integer) row.getAttribute("Day2");
+        int day3 = (Integer) row.getAttribute("Day3");
+        int day4 = (Integer) row.getAttribute("Day4");
+        int day5 = (Integer) row.getAttribute("Day5");
+        int day6 = (Integer) row.getAttribute("Day6");
+        int day7 = (Integer) row.getAttribute("Day7");
+        count = day1 + day2 + day3 + day4 + day5 + day6 + day7;
+        return count;
+    }
+
     public String submitTsAction() {
         // Add event code here...
-        BindingContainer bc = getBindings();
-        OperationBinding opr = bc.getOperationBinding("submitForApproval");
-        AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
-        BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
-        opr.getParamsMap().put("timeSheetId", timeSheetId);
-        opr.execute();
-        showPopup(tsDaysPopup, false);
+        if (totalHours() > 0) {
+            BindingContainer bc = getBindings();
+            OperationBinding opr = bc.getOperationBinding("submitForApproval");
+            AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
+            BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
+            opr.getParamsMap().put("timeSheetId", timeSheetId);
+            opr.execute();
+            submitConfirmPopup.hide();
+            showPopup(tsDaysPopup, false);
+        } else {
+            submitConfirmPopup.hide();
+            FacesMessage fm = new FacesMessage("Please enter time sheet hours for atleast one day");
+            fm.setSeverity(FacesMessage.SEVERITY_ERROR);
+            FacesContext ctx = FacesContext.getCurrentInstance();
+            ctx.addMessage(null, fm);
+        }
         return null;
     }
 
@@ -117,6 +147,7 @@ public class TimeSheetsViewBean {
         BigDecimal timeSheetID = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetID);
         Boolean flag = (Boolean) opr.execute();
+        delTsDaysPopup.hide();
         if (flag == Boolean.FALSE) {
             showPopup(tsDaysPopup, false);
         } else {
@@ -136,13 +167,12 @@ public class TimeSheetsViewBean {
             BigDecimal timeSheetID = (BigDecimal) attr.getInputValue();
             opr.getParamsMap().put("timeSheetId", timeSheetID);
             opr.execute();
-        }
-        else{
-            FacesMessage fm=new FacesMessage("Can't unsubmit Approved/Rejected TimeSheet");
+        } else {
+            FacesMessage fm = new FacesMessage("Can't unsubmit Approved/Rejected TimeSheet");
             fm.setSeverity(FacesMessage.SEVERITY_ERROR);
-            FacesContext ctx=FacesContext.getCurrentInstance();
+            FacesContext ctx = FacesContext.getCurrentInstance();
             ctx.addMessage(null, fm);
-            }
+        }
         return null;
     }
 
@@ -180,7 +210,9 @@ public class TimeSheetsViewBean {
             opr.getParamsMap().put("timeSheetId", (BigDecimal) attr.getInputValue());
             opr.execute();
         }
-
+        
+        OperationBinding opr1 = bc.getOperationBinding("getAttachments");
+        opr1.execute();
         //opr.getParamsMap().put("currentDate", getDate());
         System.out.println("inside editTsAction");
 
@@ -200,11 +232,15 @@ public class TimeSheetsViewBean {
 
     public String viewAllAction() {
         // Add event code here...
-        BindingContainer bc = getBindings();
+        /*BindingContainer bc = getBindings();
         DCIteratorBinding itr = (DCIteratorBinding) bc.get("TimeSheetWeekVO1Iterator");
         ViewObjectImpl vo = (ViewObjectImpl) itr.getViewObject();
         vo.setApplyViewCriteriaName(null);
         vo.executeQuery();
+        */
+        BindingContainer bc = getBindings();
+        OperationBinding opr = bc.getOperationBinding("ViewAllTs");
+        opr.execute();
         return null;
     }
 
@@ -243,6 +279,10 @@ public class TimeSheetsViewBean {
         opr.getParamsMap().put("file", createBlobDomain(myfile));
         opr.execute();
         showPopup(uploadPopup, false);
+        //execute attachment view object to time sheet days id
+    /*    ViewObject vo = ((DCIteratorBinding) bc.get("TimeSheetAttachmentsVO1Iterator")).getViewObject();
+        vo.setWhereClause("TIMESHEET_ID=" + (BigDecimal) ((AttributeBinding) bc.get("WeekId")).getInputValue());
+        vo.executeQuery();*/
         return null;
     }
 
@@ -260,5 +300,67 @@ public class TimeSheetsViewBean {
         } catch (SQLException e) {
         }
         return blobDomain;
+    }
+
+    public String undoDelete() {
+        // Add event code here...
+        delTsDaysPopup.hide();
+        return null;
+    }
+
+    public void setDelTsDaysPopup(RichPopup delTsDaysPopup) {
+        this.delTsDaysPopup = delTsDaysPopup;
+    }
+
+    public RichPopup getDelTsDaysPopup() {
+        return delTsDaysPopup;
+    }
+
+    public String saveTs() {
+        // Add event code here...
+        // Add event code here...
+        BindingContainer bc = getBindings();
+        OperationBinding opr = bc.getOperationBinding("saveTimeSheet");
+        AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
+        BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
+        opr.getParamsMap().put("timeSheetId", timeSheetId);
+        opr.execute();
+        showPopup(tsDaysPopup, false);
+        return null;
+    }
+
+    public void setSubmitConfirmPopup(RichPopup submitConfirmPopup) {
+        this.submitConfirmPopup = submitConfirmPopup;
+    }
+
+    public RichPopup getSubmitConfirmPopup() {
+        return submitConfirmPopup;
+    }
+
+    public String cancelSubmission() {
+        // Add event code here...
+        submitConfirmPopup.hide();
+        return null;
+    }
+
+    public void setCreateTsPopup(RichPopup createTsPopup) {
+        this.createTsPopup = createTsPopup;
+    }
+
+    public RichPopup getCreateTsPopup() {
+        return createTsPopup;
+    }
+
+    public String createTsForSelectDate() {
+        // Add event code here...
+        BindingContainer bc = getBindings();
+        OperationBinding opr = bc.getOperationBinding("createNewTimeSheet");
+        AttributeBinding attr = (AttributeBinding) bc.get("currentDate");
+        Date selectedDate = (Date) attr.getInputValue();
+        opr.getParamsMap().put("currentDate",selectedDate);
+        System.out.println("selectedDate..."+selectedDate);
+        System.out.println("inside newTsAction");
+        opr.execute();
+        return null;
     }
 }

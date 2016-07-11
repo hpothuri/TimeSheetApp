@@ -25,9 +25,10 @@
                                         </af:toolbar>
                                     </f:facet>
                                     <af:inputText label="New Password" id="it1" binding="#{TimeSheetHomeBean.newPwd}"
-                                                  secret="true"/>
+                                                  secret="true" required="true"/>
                                     <af:inputText label="Confirm New Password" id="it2"
-                                                  binding="#{TimeSheetHomeBean.confirmNewPwd}" secret="true"/>
+                                                  binding="#{TimeSheetHomeBean.confirmNewPwd}" secret="true"
+                                                  required="true"/>
                                 </af:panelFormLayout>
                                 <f:facet name="buttonBar"/>
                             </af:dialog>

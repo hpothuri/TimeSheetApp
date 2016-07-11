@@ -10,7 +10,8 @@
   DBObjectName="TIME_SHEET_DAYS"
   AliasName="TimeSheetDaysEO"
   BindingStyle="OracleName"
-  RowClass="model.eo.TimeSheetDaysEOImpl">
+  RowClass="model.eo.TimeSheetDaysEOImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Init|Access"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -92,7 +93,15 @@
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
-    TableName="TIME_SHEET_DAYS"/>
+    TableName="TIME_SHEET_DAYS">
+    <validation:ListValidationBean
+      Name="TaskIdRule0"
+      ResId="model.eo.TimeSheetDaysEO.TaskId_Rule_0"
+      OnAttribute="TaskId"
+      OperandType="JBO"
+      Inverse="false"
+      ListValue="model.vo.TimeSheetTasksVO.TaskId"/>
+  </Attribute>
   <Attribute
     Name="Notes"
     Precision="245"
@@ -162,4 +171,8 @@
       <Item Value="model.eo.TimeSheetDaysEO.TaskId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

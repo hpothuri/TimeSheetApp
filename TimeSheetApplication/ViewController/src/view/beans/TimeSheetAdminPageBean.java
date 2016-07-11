@@ -41,6 +41,7 @@ public class TimeSheetAdminPageBean {
     private RichPopup delConfrmPopup;
     private RichPopup delTasksPopup;
     private RichPopup delRolesPopup;
+    private RichPopup delTsDaysPopup;
 
 
     public TimeSheetAdminPageBean() {
@@ -301,5 +302,13 @@ public class TimeSheetAdminPageBean {
 
     public RichPopup getDelRolesPopup() {
         return delRolesPopup;
+    }
+
+    public void setDelTsDaysPopup(RichPopup delTsDaysPopup) {
+        this.delTsDaysPopup = delTsDaysPopup;
+    }
+
+    public RichPopup getDelTsDaysPopup() {
+        return delTsDaysPopup;
     }
 }

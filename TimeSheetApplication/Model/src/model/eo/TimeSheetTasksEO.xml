@@ -10,7 +10,8 @@
   DBObjectName="TIME_SHEET_TASKS"
   AliasName="TimeSheetTasksEO"
   BindingStyle="OracleName"
-  RowClass="model.eo.TimeSheetTasksEOImpl">
+  RowClass="model.eo.TimeSheetTasksEOImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Init|Access"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -35,6 +36,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="250"/>
     </DesignTime>
+    <validation:LengthValidationBean
+      Name="TaskRule0"
+      ResId="model.eo.TimeSheetTasksEO.Task_Rule_0"
+      OnAttribute="Task"
+      CompareType="GREATERTHAN"
+      DataType="CHARACTER"
+      CompareLength="0"
+      Inverse="false"/>
   </Attribute>
   <Attribute
     Name="TaskDesc"
@@ -58,4 +67,8 @@
       <Item Value="model.eo.TimeSheetTasksEO.TaskId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

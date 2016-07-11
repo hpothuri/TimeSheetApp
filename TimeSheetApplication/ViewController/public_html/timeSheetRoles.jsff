@@ -9,7 +9,9 @@
       <af:button text="Edit" id="b2">
         <af:showPopupBehavior popupId="rolesPopUp" triggerType="click"/>
       </af:button>
-      <af:button text="Delete" id="b3" action="#{TimeSheetAdminPageBean.deleteRolesAction}"/>
+      <af:button text="Delete" id="b3">
+        <af:showPopupBehavior popupId="delRolesPopup" triggerType="click"/>
+      </af:button>
     </af:toolbar>
     <af:table value="#{bindings.TimeSheetRolesVO1.collectionModel}" var="row"
               rows="#{bindings.TimeSheetRolesVO1.rangeSize}"
@@ -64,9 +66,9 @@
         </af:panelGroupLayout>
       </af:dialog>
     </af:popup>
-    <af:popup childCreation="deferred" autoCancel="disabled" id="delConfirmPopup"
+    <af:popup childCreation="deferred" autoCancel="disabled" id="delRolesPopup"
               binding="#{TimeSheetAdminPageBean.delRolesPopup}">
-      <af:dialog id="d2" type="none" contentWidth="100">
+      <af:dialog id="d2" type="none" contentWidth="200">
         <f:facet name="buttonBar"/>
         <af:panelGroupLayout id="pgl3" layout="vertical">
           <af:outputText value="Do you want to Delete???" id="ot5"/>

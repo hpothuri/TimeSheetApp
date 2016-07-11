@@ -6,18 +6,15 @@
   Name="TimeSheetWeekVO"
   Version="12.2.1.0.31"
   InheritPersonalization="merge"
-  SelectListFlags="1"
-  FromListFlags="1"
-  WhereFlags="1"
   BindingStyle="OracleName"
-  CustomQuery="false"
-  SelectAllAttributes="false"
+  CustomQuery="true"
   PageIterMode="Full"
   RowClass="model.vo.TimeSheetWeekVORowImpl"
   ComponentClass="model.vo.TimeSheetWeekVOImpl">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
   <Variable
     Name="p_week_st_date"
@@ -31,6 +28,66 @@
     Name="p_status"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <ViewAccessor
+    Name="TSUSERSVVO1"
+    ViewObjectName="model.vo.TSUSERSVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="TSUSERSVVO2"
+    ViewObjectName="model.vo.TSUSERSVVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_SubmittedBy"
+    ListVOName="TSUSERSVVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SubmittedBy"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ApprovedBy"
+    ListVOName="TSUSERSVVO2"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ApprovedBy"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT TimeSheetWeekEO.TIME_SHEET_ID,      
+       TimeSheetWeekEO.WEEK_START_DATE,      
+       TimeSheetWeekEO.WEEK_END_DATE,      
+       TimeSheetWeekEO.TOTAL_HOURS,      
+       TimeSheetWeekEO.TOTAL_EXPENCES,      
+       TimeSheetWeekEO.APPROVER_COMMENTS,      
+       TimeSheetWeekEO.USER_ID,      
+       TimeSheetWeekEO.STATUS,      
+       TimeSheetWeekEO.SUBMITTED_BY,      
+       TimeSheetWeekEO.SUBMITTED_TS,      
+       TimeSheetWeekEO.APPROVED_TS,      
+       TimeSheetWeekEO.APPROVED_BY,      
+       TimeSheetWeekEO.TASK_ID     
+FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE desc]]></SQLQuery>
   <EntityUsage
     Name="TimeSheetWeekEO"
     Entity="model.eo.TimeSheetWeekEO"/>
@@ -89,7 +146,15 @@
     PrecisionRule="true"
     EntityAttrName="SubmittedBy"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="SUBMITTED_BY"/>
+    AliasName="SUBMITTED_BY"
+    LOVName="LOV_SubmittedBy">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SubmittedTs"
     PrecisionRule="true"
@@ -107,7 +172,15 @@
     PrecisionRule="true"
     EntityAttrName="ApprovedBy"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="APPROVED_BY"/>
+    AliasName="APPROVED_BY"
+    LOVName="LOV_ApprovedBy">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TaskId"
     PrecisionRule="true"
@@ -204,9 +277,4 @@
     ViewLink="model.vl.TimeSheetWeekHoursVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
-  <SortCriteria>
-    <Sort
-      Attribute="WeekStartDate"
-      Ascending="false"/>
-  </SortCriteria>
 </ViewObject>

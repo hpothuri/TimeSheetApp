@@ -63,5 +63,13 @@ public interface TimeSheetAppController extends ApplicationModule {
     void updatePassword(String userName,String password);
 
     void saveRoleChange(BigDecimal userId, BigDecimal roleId);
+
+    void saveTimeSheet(BigDecimal timeSheetId);
+
+    void createNewTimeSheet(Date currentDate);
+
+    void ViewAllTs();
+
+    void getAttachments();
 }
 

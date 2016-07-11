@@ -38,6 +38,7 @@ public class TimeSheetDaysBean {
     private RichPopup timeSheetDaysPopup;
     private List<SelectItem> list;
     private Boolean flag;
+    private RichPopup delTsDaysPopup;
 
     public TimeSheetDaysBean() {
         
@@ -163,6 +164,7 @@ public class TimeSheetDaysBean {
         BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetId);
         Boolean flag = (Boolean) opr.execute();
+        
         if (flag == Boolean.FALSE) {
             showPopup(timeSheetDaysPopup, false);
         } else {
@@ -225,5 +227,7 @@ public class TimeSheetDaysBean {
         }
         return null;
     }*/
+
+  
 
 }

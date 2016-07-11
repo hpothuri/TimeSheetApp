@@ -55,14 +55,16 @@
         <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.UserId.format}"/>
       </af:outputText>
     </af:column>
+    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9">
+      <af:selectOneChoice value="#{row.bindings.SubmittedBy.inputValue}" label="#{row.bindings.SubmittedBy.label}"
+                          required="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.mandatory}"
+                          shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.tooltip}" id="soc2" readOnly="true">
+        <f:selectItems value="#{row.bindings.SubmittedBy.items}" id="si2"/>
+        <f:validator binding="#{row.bindings.SubmittedBy.validator}"/>
+      </af:selectOneChoice>
+    </af:column>
     <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.Status.label}" id="c8" width="100">
       <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.Status.tooltip}" id="ot8"/>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9" width="100">
-      <af:outputText value="#{row.SubmittedBy}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.tooltip}"
-                     id="ot9">
-        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.format}"/>
-      </af:outputText>
     </af:column>
     <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.label}" id="c10" width="100">
       <af:outputText value="#{row.SubmittedTs}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.tooltip}"
@@ -70,13 +72,13 @@
         <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.format}"/>
       </af:outputText>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.label}" id="c11" width="100">
+    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.label}" id="c11" width="100" visible="false">
       <af:outputText value="#{row.ApprovedTs}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.tooltip}"
                      id="ot11">
         <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.format}"/>
       </af:outputText>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.label}" id="c12" width="100">
+    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.label}" id="c12" width="100" visible="false">
       <af:outputText value="#{row.ApprovedBy}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.tooltip}"
                      id="ot12">
         <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.format}"/>

@@ -10,7 +10,7 @@
         <af:showPopupBehavior popupId="usersPopup" triggerType="click"/>
       </af:button>
       <af:button text="Delete" id="b3">
-        <af:showPopupBehavior popupId="delConfmPopup" triggerType="click"/>
+        <af:showPopupBehavior popupId="delConfrmPopup" triggerType="click"/>
       </af:button>
     </af:toolbar>
   </af:panelGroupLayout>
@@ -56,9 +56,9 @@
       <af:outputText value="#{row.UserName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserName.tooltip}" id="ot5"/>
     </af:column>
   </af:table>
-  <af:popup childCreation="deferred" autoCancel="disabled" id="delConfmPopup"
+  <af:popup childCreation="deferred" autoCancel="disabled" id="delConfrmPopup"
             binding="#{TimeSheetAdminPageBean.delConfrmPopup}">
-    <af:dialog id="d2" type="none" contentWidth="50">
+    <af:dialog id="d2" type="none" contentWidth="200">
       <f:facet name="buttonBar"/>
       <af:panelGroupLayout id="pgl2" layout="vertical">
         <af:outputText value="Do you want to Delete the data???" id="ot7"/>
@@ -82,7 +82,7 @@
         <af:inputText value="#{bindings.UserName.inputValue}" label="#{bindings.UserName.hints.label}"
                       required="#{bindings.UserName.hints.mandatory}" columns="#{bindings.UserName.hints.displayWidth}"
                       maximumLength="#{bindings.UserName.hints.precision}"
-                      shortDesc="#{bindings.UserName.hints.tooltip}" id="it1">
+                      shortDesc="#{bindings.UserName.hints.tooltip}" id="it1" showRequired="true">
           <f:validator binding="#{bindings.UserName.validator}"/>
         </af:inputText>
         <af:inputText value="#{bindings.UserEmailId.inputValue}" label="#{bindings.UserEmailId.hints.label}"
