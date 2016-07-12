@@ -10,15 +10,17 @@
                 <af:image source="/images/SkyBridge-Sign_Doc Logo.jpg" id="i1"/>
             </af:panelGroupLayout>
             <af:spacer width="10" height="30" id="s2"/>
-            <af:panelGroupLayout id="pgl2" layout="vertical" halign="center"
-                                 inlineStyle='background-image:url("images/loginBackground.png"); background-repeat:no-repeat; background-position:center;'>
+            <af:panelGroupLayout id="pgl2" layout="scroll" halign="center"
+                                 inlineStyle='background-image:url("images/loginBackground.png"); background-repeat:no-repeat; background-position:50% 0%; background-size:auto auto;'>
                 <af:panelFormLayout id="pfl1">
+                    <af:spacer width="10" height="10" id="s4"/>
                     <af:inputText label="#{viewcontrollerBundle.Username}" id="it1" value="#{LoginBean.userName}"/>
                     <af:inputText label="#{viewcontrollerBundle.Password}" id="it2" secret="true"
                                   value="#{LoginBean.password}"/>
                     <f:facet name="footer">
-                        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="end" styleClass="AFStretchWidth">
-                            <af:button text="#{viewcontrollerBundle.Login}" id="b1" action="#{LoginBean.doLogin}"/>
+                        <af:panelGroupLayout id="pgl3" layout="vertical" halign="center" styleClass="AFStretchWidth">
+                            <af:spacer width="10" height="10" id="s3"/>
+                            <af:link id="l1" icon="/images/loginButton.png" action="#{LoginBean.doLogin}"/>
                         </af:panelGroupLayout>
                     </f:facet>
                 </af:panelFormLayout>
