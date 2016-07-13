@@ -28,17 +28,42 @@
     PrecisionRule="true"
     EntityAttrName="TaskId"
     EntityUsage="TimeSheetTasksEO"
-    AliasName="TASK_ID"/>
+    AliasName="TASK_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetTasksVO.TaskId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Task"
     PrecisionRule="true"
     EntityAttrName="Task"
     EntityUsage="TimeSheetTasksEO"
-    AliasName="TASK"/>
+    AliasName="TASK">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetTasksVO.Task_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TaskDesc"
     PrecisionRule="true"
     EntityAttrName="TaskDesc"
     EntityUsage="TimeSheetTasksEO"
-    AliasName="TASK_DESC"/>
+    AliasName="TASK_DESC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetTasksVO.TaskDesc_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

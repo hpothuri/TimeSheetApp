@@ -52,55 +52,118 @@
     EntityAttrName="WeekId"
     EntityUsage="TimeSheetDaysEO"
     AliasName="WEEK_ID"
-    IsUpdateable="while_insert"/>
+    IsUpdateable="while_insert">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.WeekId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day1"
     PrecisionRule="true"
     EntityAttrName="Day1"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY1"/>
+    AliasName="DAY1">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day1_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day2"
     PrecisionRule="true"
     EntityAttrName="Day2"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY2"/>
+    AliasName="DAY2">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day2_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day3"
     PrecisionRule="true"
     EntityAttrName="Day3"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY3"/>
+    AliasName="DAY3">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day3_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day4"
     PrecisionRule="true"
     EntityAttrName="Day4"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY4"/>
+    AliasName="DAY4">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day4_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day5"
     PrecisionRule="true"
     EntityAttrName="Day5"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY5"/>
+    AliasName="DAY5">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day5_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day6"
     PrecisionRule="true"
     EntityAttrName="Day6"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY6"/>
+    AliasName="DAY6">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day6_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day7"
     PrecisionRule="true"
     EntityAttrName="Day7"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="DAY7"/>
+    AliasName="DAY7">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Day7_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TimeSheetId"
     PrecisionRule="true"
     EntityAttrName="TimeSheetId"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="TIME_SHEET_ID"/>
+    AliasName="TIME_SHEET_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.TimeSheetId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TaskId"
     PrecisionRule="true"
@@ -112,6 +175,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.TaskId_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -120,5 +185,16 @@
     PrecisionRule="true"
     EntityAttrName="Notes"
     EntityUsage="TimeSheetDaysEO"
-    AliasName="NOTES"/>
+    AliasName="NOTES">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetDaysVO.Notes_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

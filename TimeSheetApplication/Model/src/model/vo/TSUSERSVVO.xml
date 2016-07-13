@@ -35,7 +35,14 @@ FROM
     ColumnType="NUMBER"
     AliasName="USER_ID"
     Expression="USER_ID"
-    SQLType="NUMERIC"/>
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TSUSERSVVO.UserId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="UserName"
     IsUpdateable="false"
@@ -50,6 +57,12 @@ FROM
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TSUSERSVVO.UserName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="UserId"/>

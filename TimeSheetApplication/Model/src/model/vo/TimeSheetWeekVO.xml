@@ -98,49 +98,105 @@ FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE d
     EntityAttrName="TimeSheetId"
     EntityUsage="TimeSheetWeekEO"
     AliasName="TIME_SHEET_ID"
-    IsUpdateable="while_insert"/>
+    IsUpdateable="while_insert">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.TimeSheetId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="WeekStartDate"
     PrecisionRule="true"
     EntityAttrName="WeekStartDate"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="WEEK_START_DATE"/>
+    AliasName="WEEK_START_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.WeekStartDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="WeekEndDate"
     PrecisionRule="true"
     EntityAttrName="WeekEndDate"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="WEEK_END_DATE"/>
+    AliasName="WEEK_END_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.WeekEndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TotalHours"
     PrecisionRule="true"
     EntityAttrName="TotalHours"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="TOTAL_HOURS"/>
+    AliasName="TOTAL_HOURS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.TotalHours_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TotalExpences"
     PrecisionRule="true"
     EntityAttrName="TotalExpences"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="TOTAL_EXPENCES"/>
+    AliasName="TOTAL_EXPENCES">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.TotalExpences_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ApproverComments"
     PrecisionRule="true"
     EntityAttrName="ApproverComments"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="APPROVER_COMMENTS"/>
+    AliasName="APPROVER_COMMENTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.ApproverComments_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="UserId"
     PrecisionRule="true"
     EntityAttrName="UserId"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="USER_ID"/>
+    AliasName="USER_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.UserId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Status"
     PrecisionRule="true"
     EntityAttrName="Status"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="STATUS"/>
+    AliasName="STATUS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.Status_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SubmittedBy"
     PrecisionRule="true"
@@ -152,6 +208,8 @@ FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE d
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.SubmittedBy_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -160,13 +218,27 @@ FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE d
     PrecisionRule="true"
     EntityAttrName="SubmittedTs"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="SUBMITTED_TS"/>
+    AliasName="SUBMITTED_TS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.SubmittedTs_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ApprovedTs"
     PrecisionRule="true"
     EntityAttrName="ApprovedTs"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="APPROVED_TS"/>
+    AliasName="APPROVED_TS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.ApprovedTs_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ApprovedBy"
     PrecisionRule="true"
@@ -178,6 +250,8 @@ FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE d
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.ApprovedBy_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -186,7 +260,14 @@ FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE d
     PrecisionRule="true"
     EntityAttrName="TaskId"
     EntityUsage="TimeSheetWeekEO"
-    AliasName="TASK_ID"/>
+    AliasName="TASK_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekVO.TaskId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewCriteria
     Name="TsFindWeekExistsVC"
     ViewObjectName="model.vo.TimeSheetWeekVO"
@@ -277,4 +358,8 @@ FROM  TIME_SHEET_WEEK TimeSheetWeekEO ORDER BY TimeSheetWeekEO.WEEK_START_DATE d
     ViewLink="model.vl.TimeSheetWeekHoursVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

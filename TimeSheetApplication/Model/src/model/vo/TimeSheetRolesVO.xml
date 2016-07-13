@@ -28,23 +28,48 @@
     PrecisionRule="true"
     EntityAttrName="RoleId"
     EntityUsage="TimeSheetRolesEO"
-    AliasName="ROLE_ID"/>
+    AliasName="ROLE_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetRolesVO.RoleId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Role"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Role"
     EntityUsage="TimeSheetRolesEO"
-    AliasName="ROLE"/>
+    AliasName="ROLE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetRolesVO.Role_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Description"
     PrecisionRule="true"
     EntityAttrName="Description"
     EntityUsage="TimeSheetRolesEO"
-    AliasName="DESCRIPTION"/>
+    AliasName="DESCRIPTION">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetRolesVO.Description_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewLinkAccessor
     Name="TimeSheetUsersVO"
     ViewLink="model.vl.TimeSheetUsersRoleIdFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

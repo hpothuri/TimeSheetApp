@@ -27,24 +27,56 @@
     PrecisionRule="true"
     EntityAttrName="TimeSheetId"
     EntityUsage="TimesheetUsersMappingEO"
-    AliasName="TIME_SHEET_ID"/>
+    AliasName="TIME_SHEET_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimesheetUsersMappingVO.TimeSheetId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SubmittedBy"
     PrecisionRule="true"
     EntityAttrName="SubmittedBy"
     EntityUsage="TimesheetUsersMappingEO"
-    AliasName="SUBMITTED_BY"/>
+    AliasName="SUBMITTED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimesheetUsersMappingVO.SubmittedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="SubmittedTo"
     PrecisionRule="true"
     EntityAttrName="SubmittedTo"
     EntityUsage="TimesheetUsersMappingEO"
-    AliasName="SUBMITTED_TO"/>
+    AliasName="SUBMITTED_TO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimesheetUsersMappingVO.SubmittedTo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MappingId"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="MappingId"
     EntityUsage="TimesheetUsersMappingEO"
-    AliasName="MAPPING_ID"/>
+    AliasName="MAPPING_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimesheetUsersMappingVO.MappingId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

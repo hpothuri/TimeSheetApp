@@ -28,7 +28,14 @@
     PrecisionRule="true"
     EntityAttrName="TimeSheetId"
     EntityUsage="TimeSheetWeekHoursEO"
-    AliasName="TIME_SHEET_ID"/>
+    AliasName="TIME_SHEET_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekHoursVO.TimeSheetId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="DayId"
     IsNotNull="true"
@@ -36,23 +43,55 @@
     EntityAttrName="DayId"
     EntityUsage="TimeSheetWeekHoursEO"
     AliasName="DAY_ID"
-    IsUpdateable="while_insert"/>
+    IsUpdateable="while_insert">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekHoursVO.DayId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Day"
     PrecisionRule="true"
     EntityAttrName="Day"
     EntityUsage="TimeSheetWeekHoursEO"
-    AliasName="DAY"/>
+    AliasName="DAY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekHoursVO.Day_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="HoursPerDay"
     PrecisionRule="true"
     EntityAttrName="HoursPerDay"
     EntityUsage="TimeSheetWeekHoursEO"
-    AliasName="HOURS_PER_DAY"/>
+    AliasName="HOURS_PER_DAY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekHoursVO.HoursPerDay_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Notes"
     PrecisionRule="true"
     EntityAttrName="Notes"
     EntityUsage="TimeSheetWeekHoursEO"
-    AliasName="NOTES"/>
+    AliasName="NOTES">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetWeekHoursVO.Notes_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

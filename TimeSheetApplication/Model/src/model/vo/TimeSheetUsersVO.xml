@@ -79,19 +79,40 @@
       PrecisionRule="true"
       EntityAttrName="UserEmailId"
       EntityUsage="TimeSheetUsersEO"
-      AliasName="USER_EMAIL_ID"/>
+      AliasName="USER_EMAIL_ID">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.UserEmailId_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
     <ViewAttribute
       Name="CompanyName"
       PrecisionRule="true"
       EntityAttrName="CompanyName"
       EntityUsage="TimeSheetUsersEO"
-      AliasName="COMPANY_NAME"/>
+      AliasName="COMPANY_NAME">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.CompanyName_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
     <ViewAttribute
       Name="Password"
       PrecisionRule="true"
       EntityAttrName="Password"
       EntityUsage="TimeSheetUsersEO"
-      AliasName="PASSWORD"/>
+      AliasName="PASSWORD">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.Password_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
     <ViewAttribute
       Name="RoleId"
       PrecisionRule="true"
@@ -103,6 +124,8 @@
             <SchemaBasedProperties>
                 <CONTROLTYPE
                   Value="choice"/>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.RoleId_LABEL"/>
             </SchemaBasedProperties>
         </Properties>
     </ViewAttribute>
@@ -112,7 +135,14 @@
       PrecisionRule="true"
       EntityAttrName="UserId"
       EntityUsage="TimeSheetUsersEO"
-      AliasName="USER_ID"/>
+      AliasName="USER_ID">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.UserId_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
     <ViewAttribute
       Name="ManagerId"
       PrecisionRule="true"
@@ -124,6 +154,8 @@
             <SchemaBasedProperties>
                 <CONTROLTYPE
                   Value="choice"/>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.ManagerId_LABEL"/>
             </SchemaBasedProperties>
         </Properties>
     </ViewAttribute>
@@ -132,5 +164,16 @@
       PrecisionRule="true"
       EntityAttrName="UserName"
       EntityUsage="TimeSheetUsersEO"
-      AliasName="USER_NAME"/>
+      AliasName="USER_NAME">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="model.vo.TimeSheetUsersVO.UserName_LABEL"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle
+            PropertiesFile="model.ModelBundle"/>
+    </ResourceBundle>
 </ViewObject>

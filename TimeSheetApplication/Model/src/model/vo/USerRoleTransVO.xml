@@ -76,6 +76,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="model.vo.USerRoleTransVO.UserId_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -92,6 +94,8 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LABEL
+          ResId="model.vo.USerRoleTransVO.RoleId_LABEL"/>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>

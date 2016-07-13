@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
   <af:table value="#{bindings.TimeSheetWeekVO1.collectionModel}" var="row" rows="#{bindings.TimeSheetWeekVO1.rangeSize}"
             emptyText="#{bindings.TimeSheetWeekVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
             rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetWeekVO1.collectionModel.selectedRow}"
@@ -107,37 +108,37 @@
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.WeekId.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="MonDay" id="c16">
+          <af:column id="c16" headerText="#{viewcontrollerBundle.MONDAY}">
             <af:outputText value="#{row.Day1}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day1.tooltip}" id="ot15">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day1.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="TuesDay" id="c17">
+          <af:column headerText="#{viewcontrollerBundle.TUESDAY}" id="c17">
             <af:outputText value="#{row.Day2}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day2.tooltip}" id="ot16">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day2.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="WebnessDay" id="c18">
+          <af:column headerText="#{viewcontrollerBundle.WEBNESSDAY}" id="c18">
             <af:outputText value="#{row.Day3}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day3.tooltip}" id="ot17">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day3.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="ThursDay" id="c19">
+          <af:column headerText="#{viewcontrollerBundle.THURSDAY}" id="c19">
             <af:outputText value="#{row.Day4}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day4.tooltip}" id="ot18">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day4.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="FriDay" id="c20">
+          <af:column headerText="#{viewcontrollerBundle.FRIDAY}" id="c20">
             <af:outputText value="#{row.Day5}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day5.tooltip}" id="ot19">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day5.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="SaturDay" id="c21">
+          <af:column headerText="#{viewcontrollerBundle.SATURDAY}" id="c21">
             <af:outputText value="#{row.Day6}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day6.tooltip}" id="ot20">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day6.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="SunDay" id="c22">
+          <af:column headerText="#{viewcontrollerBundle.SUNDAY}" id="c22">
             <af:outputText value="#{row.Day7}" shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day7.tooltip}" id="ot21">
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day7.format}"/>
             </af:outputText>
@@ -148,7 +149,7 @@
               <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.format}"/>
             </af:outputText>
           </af:column>
-          <af:column headerText="Tasks" id="c24" visible="true">
+          <af:column headerText="#{viewcontrollerBundle.Tasks}" id="c24" visible="true">
             <af:selectOneChoice value="#{row.bindings.TaskId.inputValue}" label="#{row.bindings.TaskId.label}"
                                 required="#{bindings.TimeSheetDaysVO1.hints.TaskId.mandatory}"
                                 shortDesc="#{bindings.TimeSheetDaysVO1.hints.TaskId.tooltip}" readOnly="true" id="soc1">
@@ -161,9 +162,9 @@
           </af:column>
         </af:table>
         <af:toolbar id="t3" visible="#{bindings.Status ne 'Approved'}">
-          <af:inputText label="Comments" id="it1" columns="25" rows="9" binding="#{SubmittedTimeSheetsBean.comments}"/>
-          <af:button text="Approve" id="b1" action="#{SubmittedTimeSheetsBean.approveTS}"/>
-          <af:button text="Reject" id="b2" action="#{SubmittedTimeSheetsBean.rejectTS}"/>
+          <af:inputText label="#{viewcontrollerBundle.Comments}" id="it1" columns="25" rows="9" binding="#{SubmittedTimeSheetsBean.comments}"/>
+          <af:button text="#{viewcontrollerBundle.Approve}" id="b1" action="#{SubmittedTimeSheetsBean.approveTS}"/>
+          <af:button text="#{viewcontrollerBundle.Reject}" id="b2" action="#{SubmittedTimeSheetsBean.rejectTS}"/>
         </af:toolbar>
       </af:panelGroupLayout>
     </af:dialog>
@@ -205,7 +206,7 @@
                          shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.AttachedFile.tooltip}" id="ot28"/>
         </af:column>
         <af:column id="c36">
-          <af:link text="Download" id="l3">
+          <af:link text="#{viewcontrollerBundle.Download}" id="l3">
             <af:fileDownloadActionListener filename="#{row.FileName}" method="#{SubmittedTimeSheetsBean.downloadFile}"/>
           </af:link>
         </af:column>

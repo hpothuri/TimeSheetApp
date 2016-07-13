@@ -34,54 +34,121 @@
     PrecisionRule="true"
     EntityAttrName="AttachmentId"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="ATTACHMENT_ID"/>
+    AliasName="ATTACHMENT_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.AttachmentId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TimesheetId"
     PrecisionRule="true"
     EntityAttrName="TimesheetId"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="TIMESHEET_ID"/>
+    AliasName="TIMESHEET_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.TimesheetId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="FileType"
     PrecisionRule="true"
     EntityAttrName="FileType"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="FILE_TYPE"/>
+    AliasName="FILE_TYPE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.FileType_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="FileName"
     PrecisionRule="true"
     EntityAttrName="FileName"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="FILE_NAME"/>
+    AliasName="FILE_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.FileName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="AttachedFile"
     IsQueriable="false"
     PrecisionRule="true"
     EntityAttrName="AttachedFile"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="ATTACHED_FILE"/>
+    AliasName="ATTACHED_FILE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.AttachedFile_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreatedBy"
     PrecisionRule="true"
     EntityAttrName="CreatedBy"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="CREATED_BY"/>
+    AliasName="CREATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.CreatedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreatedDate"
     PrecisionRule="true"
     EntityAttrName="CreatedDate"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="CREATED_DATE"/>
+    AliasName="CREATED_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.CreatedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedBy"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedBy"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="LAST_UPDATED_BY"/>
+    AliasName="LAST_UPDATED_BY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.LastUpdatedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="LastUpdatedDate"
     PrecisionRule="true"
     EntityAttrName="LastUpdatedDate"
     EntityUsage="TimeSheetAttachmentsEO"
-    AliasName="LAST_UPDATED_DATE"/>
+    AliasName="LAST_UPDATED_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.TimeSheetAttachmentsVO.LastUpdatedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

@@ -50,7 +50,14 @@ CONNECT BY LEVEL <= ROUND((trunc(last_day(to_date(:systemdate))) - trunc(to_date
     ColumnType="DATE"
     AliasName="GIVEN_DATE"
     Expression="GIVEN_DATE"
-    SQLType="DATE"/>
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.WeeksVVO.GivenDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="EndDate"
     IsUpdateable="false"
@@ -60,7 +67,14 @@ CONNECT BY LEVEL <= ROUND((trunc(last_day(to_date(:systemdate))) - trunc(to_date
     ColumnType="DATE"
     AliasName="END_DATE"
     Expression="END_DATE"
-    SQLType="DATE"/>
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.WeeksVVO.EndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="WkStarts"
     IsUpdateable="false"
@@ -70,7 +84,14 @@ CONNECT BY LEVEL <= ROUND((trunc(last_day(to_date(:systemdate))) - trunc(to_date
     ColumnType="DATE"
     AliasName="WK_STARTS"
     Expression="WK_STARTS"
-    SQLType="DATE"/>
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.WeeksVVO.WkStarts_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="WkEnds"
     IsUpdateable="false"
@@ -80,7 +101,14 @@ CONNECT BY LEVEL <= ROUND((trunc(last_day(to_date(:systemdate))) - trunc(to_date
     ColumnType="DATE"
     AliasName="WK_ENDS"
     Expression="WK_ENDS"
-    SQLType="DATE"/>
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.WeeksVVO.WkEnds_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Week"
     IsUpdateable="false"
@@ -95,6 +123,12 @@ CONNECT BY LEVEL <= ROUND((trunc(last_day(to_date(:systemdate))) - trunc(to_date
     <DesignTime>
       <Attr Name="_DisplaySize" Value="17"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.WeeksVVO.Week_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="WkNumber"
@@ -110,6 +144,12 @@ CONNECT BY LEVEL <= ROUND((trunc(last_day(to_date(:systemdate))) - trunc(to_date
     <DesignTime>
       <Attr Name="_DisplaySize" Value="2"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.WeeksVVO.WkNumber_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </ViewAttribute>
   <ViewAttribute
     Name="CalcStartDate"
