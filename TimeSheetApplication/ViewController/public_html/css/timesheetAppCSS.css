@@ -1,13 +1,10 @@
 @charset "UTF-8";
+
 .AFDefaultFontFamily:alias {
-           font-family: Tahoma, Verdana, Helvetica, sans-serif;
-           font-weight: bolder;
-           color: Red;
-         }
-
-         /* Component-specific selector.  */
-         af|inputText::content
-         {
-           background-color: red;
-         }
-
+    font-family: Tahoma, Verdana, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+/* Component-specific selector.  */
+af|inputText::content {
+    background-color: red;
+}
