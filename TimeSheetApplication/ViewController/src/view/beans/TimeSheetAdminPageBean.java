@@ -26,7 +26,6 @@ import oracle.jbo.ViewCriteria;
 import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.server.ViewObjectImpl;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.myfaces.trinidad.event.DisclosureEvent;
 import org.apache.myfaces.trinidad.model.UploadedFile;
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
