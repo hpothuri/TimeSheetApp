@@ -23,6 +23,10 @@
         <page path="/timeSheetRoles.jsff" usageId="view_timeSheetRolesPageDef1"/>
         <page path="/timeSheetUsers.jsff" usageId="view_timeSheetUsersPageDef"/>
         <page path="/timeSheetTasks.jsff" usageId="view_timeSheetTasksPageDef1"/>
+        <page path="/WEB-INF/Ts-Users-TF.xml#Ts-Users-TF@Execute"
+              usageId="view_Ts_Users_TF_Ts_Users_TF_ExecutePageDef"/>
+        <page path="/WEB-INF/Ts-Users-TF.xml#Ts-Users-TF@getUsersList"
+              usageId="view_Ts_Users_TF_Ts_Users_TF_getUsersListPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="view_viewTimeSheetPageDef" path="view.pageDefs.viewTimeSheetPageDef"/>
@@ -48,6 +52,10 @@
         <page id="view_timeSheetRolesPageDef1" path="view.pageDefs.timeSheetRolesPageDef1"/>
         <page id="view_timeSheetUsersPageDef" path="view.pageDefs.timeSheetUsersPageDef"/>
         <page id="view_timeSheetTasksPageDef1" path="view.pageDefs.timeSheetTasksPageDef1"/>
+        <page id="view_Ts_Users_TF_Ts_Users_TF_ExecutePageDef"
+              path="view.pageDefs.Ts_Users_TF_Ts_Users_TF_ExecutePageDef"/>
+        <page id="view_Ts_Users_TF_Ts_Users_TF_getUsersListPageDef"
+              path="view.pageDefs.Ts_Users_TF_Ts_Users_TF_getUsersListPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <BC4JDataControl id="TimeSheetAppControllerDataControl" Package="model.am"

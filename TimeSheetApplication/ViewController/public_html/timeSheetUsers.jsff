@@ -25,14 +25,17 @@
       <af:outputText value="#{row.UserEmailId}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserEmailId.tooltip}"
                      id="ot1"/>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.CompanyName.label}" id="c2">
-      <af:outputText value="#{row.CompanyName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.CompanyName.tooltip}"
-                     id="ot2"/>
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserName.label}" id="c7">
+      <af:outputText value="#{row.UserName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserName.tooltip}" id="ot5"/>
     </af:column>
     <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.Password.label}" id="c3">
       <af:outputText value="#{row.Password}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.Password.tooltip}" id="ot3"/>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.RoleId.label}" id="c4">
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.CompanyName.label}" id="c2">
+      <af:outputText value="#{row.CompanyName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.CompanyName.tooltip}"
+                     id="ot2"/>
+    </af:column>
+    <af:column headerText="#{viewcontrollerBundle.Role}" id="c4">
       <af:selectOneChoice value="#{row.bindings.RoleId.inputValue}" label="#{row.bindings.RoleId.label}"
                           required="#{bindings.TimeSheetUsersVO1.hints.RoleId.mandatory}"
                           shortDesc="#{bindings.TimeSheetUsersVO1.hints.RoleId.tooltip}" readOnly="true" id="soc1">
@@ -40,21 +43,18 @@
         <f:validator binding="#{row.bindings.RoleId.validator}"/>
       </af:selectOneChoice>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserId.label}" id="c5">
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserId.label}" id="c5" visible="false">
       <af:outputText value="#{row.UserId}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserId.tooltip}" id="ot4">
         <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetUsersVO1.hints.UserId.format}"/>
       </af:outputText>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.ManagerId.label}" id="c6">
+    <af:column headerText="#{viewcontrollerBundle.Manager}" id="c6">
       <af:selectOneChoice value="#{row.bindings.ManagerId.inputValue}" label="#{row.bindings.ManagerId.label}"
                           required="#{bindings.TimeSheetUsersVO1.hints.ManagerId.mandatory}"
                           shortDesc="#{bindings.TimeSheetUsersVO1.hints.ManagerId.tooltip}" readOnly="true" id="soc2">
         <f:selectItems value="#{row.bindings.ManagerId.items}" id="si2"/>
         <f:validator binding="#{row.bindings.ManagerId.validator}"/>
       </af:selectOneChoice>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.UserName.label}" id="c7">
-      <af:outputText value="#{row.UserName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.UserName.tooltip}" id="ot5"/>
     </af:column>
   </af:table>
   <af:popup childCreation="deferred" autoCancel="disabled" id="delConfrmPopup"

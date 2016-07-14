@@ -1122,5 +1122,12 @@
         Name="_return_type_"
         Type="void"/>
     </Method>
+    <Method
+      Name="getUsersList"
+      MethodName="getUsersList">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
   </ClientInterface>
 </AppModule>

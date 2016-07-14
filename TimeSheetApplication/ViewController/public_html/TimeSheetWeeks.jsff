@@ -59,7 +59,7 @@
     <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.Status.label}" id="c8" width="100">
       <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.Status.tooltip}" id="ot8"/>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9">
+    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9" visible="false">
       <af:selectOneChoice value="#{row.bindings.SubmittedBy.inputValue}" label="#{row.bindings.SubmittedBy.label}"
                           required="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.mandatory}"
                           shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.tooltip}" id="soc2" readOnly="true">
@@ -324,14 +324,14 @@
       <f:facet name="buttonBar"/>
       <af:panelFormLayout id="pfl1">
         <af:panelGroupLayout id="pgl2">
-          <af:inputDate value="#{bindings.currentDate.inputValue}" label="#{bindings.currentDate.hints.label}"
+          <af:inputDate value="#{bindings.currentDate.inputValue}" label="#{viewcontrollerBundle.SelectDate}"
                         required="#{bindings.currentDate.hints.mandatory}"
                         columns="#{bindings.currentDate.hints.displayWidth}"
                         shortDesc="#{bindings.currentDate.hints.tooltip}" id="id1">
             <f:validator binding="#{bindings.currentDate.validator}"/>
             <af:convertDateTime pattern="#{bindings.currentDate.format}"/>
           </af:inputDate>
-          <af:button text="#{viewcontrollerBundle.createTimeSheet}"
+          <af:button text="#{viewcontrollerBundle.CreateTimesheet}"
                      disabled="#{!bindings.createTimeSheet.enabled}" id="b14"
                      action="#{TimeSheetsViewBean.createTsForSelectDate}"/>
         </af:panelGroupLayout>
@@ -423,7 +423,7 @@
             </af:outputText>
           </af:column>
         </af:table>
-        <af:button text="Edit" id="b15">
+        <af:button text="Edit" id="b15" action="#{TimeSheetsViewBean.editTsAction}">
           <af:showPopupBehavior popupId="tsDaysPopup" triggerType="click"/>
         </af:button>
       </af:panelFormLayout>

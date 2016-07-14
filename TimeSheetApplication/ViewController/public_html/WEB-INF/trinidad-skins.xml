@@ -3,7 +3,7 @@
   <skin>
     <id>mySkin.desktop</id>
     <family>timesheetAppCSS</family>
-    <extends>alta</extends>
+    <extends>alta-v1.desktop</extends>
     <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
     <style-sheet-name>/css/timesheetAppCSS.css</style-sheet-name>
   </skin>

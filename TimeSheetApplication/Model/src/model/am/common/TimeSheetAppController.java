@@ -71,5 +71,7 @@ public interface TimeSheetAppController extends ApplicationModule {
     void ViewAllTs();
 
     void getAttachments();
+
+    void getUsersList();
 }
 

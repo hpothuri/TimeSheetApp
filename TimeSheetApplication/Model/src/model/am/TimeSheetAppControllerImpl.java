@@ -699,4 +699,10 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         vo.setWhereClause("CREATED_BY=" + getUserId());
         vo.executeQuery();
     }
+    public void getUsersList(){
+        TimeSheetUsersVOImpl vo = getTimeSheetUsersVO1();
+        vo.setWhereClause(null);
+        vo.executeQuery();
+        
+    }
 }

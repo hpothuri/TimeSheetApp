@@ -11,9 +11,9 @@
       <property
          name="x">306.68262</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>timeSheetUsers&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>timeSheetUsers&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="y">217.09766</property>
       <property
@@ -21,4 +21,29 @@
       <property
          name="exceptionHandler">false</property>
    </View>
+   <MethodCall
+      id="MethodCall4">
+      <property
+         name="activityId">getUsersList</property>
+      <property
+         name="x">140.3457</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>getUsersList&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">325.1494</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="MethodCall4"
+      to="View2">
+      <property
+         name="fromOutcome">getUsersList</property>
+      <property
+         name="sdm:polyPoints">T50,140.3457,270.79883,265.68262,216.74707,L50</property>
+   </ControlFlowCase>
 </SDM>
