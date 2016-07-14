@@ -1,12 +1,18 @@
 package view.beans;
 
+import java.math.BigDecimal;
+
 import oracle.adf.model.BindingContext;
 
 import oracle.adf.model.OperationBinding;
 
 import oracle.binding.BindingContainer;
+
 import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.jbo.ViewObject;
 import oracle.jbo.server.ViewObjectImpl;
+
 public class SubmittedTimeSheetsTFBean {
     public SubmittedTimeSheetsTFBean() {
     }
@@ -18,10 +24,11 @@ public class SubmittedTimeSheetsTFBean {
         opr.getParamsMap().put("status", "Submitted");
         opr.execute();
         return "view";
-       
+
     }
 
-    public BindingContainer getBindings(){
+    public BindingContainer getBindings() {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
-        }
+    }
+
 }

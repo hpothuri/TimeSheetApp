@@ -303,10 +303,12 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         weekRow.setStatus("Open");
         if (count == 0) {
             weekRow.setTotalHours(0);
+            save();
             return Boolean.FALSE;
         } else {
             int totalHours = getTimeSheetHours(timeSheetId);
             weekRow.setTotalHours(totalHours);
+            save();
             return Boolean.TRUE;
         }
     }
@@ -317,6 +319,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         if (weekRow.getStatus().equalsIgnoreCase("Submitted")) {
             weekRow.remove();
         }
+        save();
     }
 
     /**
@@ -362,7 +365,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         //mappingRow.setSubmittedBy(value);
         //mappingRow.setSubmittedTo(value);
         //mappingRow.setApprovedBy(value);
-        getDBTransaction().commit();
+        save();
     }
 
     public void viewTs() {
@@ -426,12 +429,14 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         TimeSheetUsersVOImpl usersVO = getTimeSheetUsersVO1();
         TimeSheetUsersVORowImpl row = (TimeSheetUsersVORowImpl) usersVO.createRow();
         usersVO.insertRow(row);
+        save();
     }
 
     public void createRoles() {
         TimeSheetRolesVOImpl rolesVO = getTimeSheetRolesVO1();
         TimeSheetRolesVORowImpl row = (TimeSheetRolesVORowImpl) rolesVO.createRow();
         rolesVO.insertRow(row);
+        save();
     }
 
     public void saveRoles(BigDecimal roleId) {
@@ -448,9 +453,11 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         long count = rolesVO.getEstimatedRowCount();
         if (count == 0) {
             //     getDBTransaction().commit();
+            save();
             return Boolean.FALSE;
         } else {
             //getDBTransaction().commit();
+            save();
             return Boolean.TRUE;
         }
     }
@@ -467,6 +474,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         TimeSheetTasksVOImpl tasksVO = getTimeSheetTasksVO1();
         TimeSheetTasksVORowImpl tasksRow = (TimeSheetTasksVORowImpl) tasksVO.createRow();
         tasksVO.insertRow(tasksRow);
+        save();
     }
 
     public void saveTasks(BigDecimal taskId) {
@@ -614,6 +622,10 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         vo.executeQuery();
     }
 
+    public void saveUserChange() {
+        save();
+    }
+
     private BigDecimal getUserId() {
         Map sessionScope = ADFContext.getCurrent().getSessionScope();
         String userName = (String) sessionScope.get("userName");
@@ -699,10 +711,11 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         vo.setWhereClause("CREATED_BY=" + getUserId());
         vo.executeQuery();
     }
-    public void getUsersList(){
+
+    public void getUsersList() {
         TimeSheetUsersVOImpl vo = getTimeSheetUsersVO1();
         vo.setWhereClause(null);
         vo.executeQuery();
-        
+
     }
 }

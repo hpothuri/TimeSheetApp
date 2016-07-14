@@ -59,7 +59,7 @@
     <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.Status.label}" id="c8" width="100">
       <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.Status.tooltip}" id="ot8"/>
     </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9" visible="false">
+    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9">
       <af:selectOneChoice value="#{row.bindings.SubmittedBy.inputValue}" label="#{row.bindings.SubmittedBy.label}"
                           required="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.mandatory}"
                           shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.tooltip}" id="soc2" readOnly="true">
@@ -117,7 +117,7 @@
   </af:popup>
   <af:popup childCreation="deferred" autoCancel="disabled" id="tsDaysPopup"
             binding="#{TimeSheetsViewBean.tsDaysPopup}" contentDelivery="lazyUncached">
-    <af:dialog id="d1" type="none">
+    <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.TimesheetDetails}">
       <af:table value="#{bindings.TimeSheetDaysVO1.collectionModel}" var="row"
                 rows="#{bindings.TimeSheetDaysVO1.rangeSize}"
                 emptyText="#{bindings.TimeSheetDaysVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
@@ -320,18 +320,18 @@
   </af:popup>
   <af:popup childCreation="deferred" autoCancel="disabled" id="createTsPopup"
             binding="#{TimeSheetsViewBean.createTsPopup}">
-    <af:dialog id="d4">
+    <af:dialog id="d4" title="#{viewcontrollerBundle.NewTimesheet}">
       <f:facet name="buttonBar"/>
       <af:panelFormLayout id="pfl1">
         <af:panelGroupLayout id="pgl2">
-          <af:inputDate value="#{bindings.currentDate.inputValue}" label="#{viewcontrollerBundle.SelectDate}"
+          <af:inputDate value="#{bindings.currentDate.inputValue}" label="#{bindings.currentDate.hints.label}"
                         required="#{bindings.currentDate.hints.mandatory}"
                         columns="#{bindings.currentDate.hints.displayWidth}"
                         shortDesc="#{bindings.currentDate.hints.tooltip}" id="id1">
             <f:validator binding="#{bindings.currentDate.validator}"/>
             <af:convertDateTime pattern="#{bindings.currentDate.format}"/>
           </af:inputDate>
-          <af:button text="#{viewcontrollerBundle.CreateTimesheet}"
+          <af:button text="#{viewcontrollerBundle.createTimeSheet}"
                      disabled="#{!bindings.createTimeSheet.enabled}" id="b14"
                      action="#{TimeSheetsViewBean.createTsForSelectDate}"/>
         </af:panelGroupLayout>
@@ -423,7 +423,7 @@
             </af:outputText>
           </af:column>
         </af:table>
-        <af:button text="Edit" id="b15" action="#{TimeSheetsViewBean.editTsAction}">
+        <af:button text="Edit" id="b15">
           <af:showPopupBehavior popupId="tsDaysPopup" triggerType="click"/>
         </af:button>
       </af:panelFormLayout>

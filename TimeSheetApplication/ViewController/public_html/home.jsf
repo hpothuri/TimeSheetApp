@@ -28,18 +28,18 @@
                                 <af:commandMenuItem text="#{viewcontrollerBundle.ChangePassword}" id="cmi1">
                                     <af:showPopupBehavior popupId="changePwdPopup" triggerType="click"/>
                                 </af:commandMenuItem>
-                                <af:commandMenuItem text="#{viewcontrollerBundle.ChangeRole}" id="cmi2"
+                                <af:commandMenuItem text="#{viewcontrollerBundle.CHANGE_USER_PROFILE}" id="cmi2"
                                                     action="#{TimeSheetHomeBean.createUserRole}"
                                                     disabled="#{!securityContext.userInRole['Admin']}"/>
                             </af:menu>
                         </af:menuBar>
                         <af:spacer width="40" height="10" id="s4"/>
-                        <af:button text="#{viewcontrollerBundle.Save}" id="b5" icon="/images/save.png"
+                        <!--<af:button text="#{viewcontrollerBundle.Save}" id="b5" icon="/images/save.png"
                                    action="#{TimeSheetHomeBean.saveAction}"/>
-                        <!--<af:link text="#{viewcontrollerBundle.Save}" id="l2" action="#{TimeSheetHomeBean.saveAction}"/>-->
+                        --><!--<af:link text="#{viewcontrollerBundle.Save}" id="l2" action="#{TimeSheetHomeBean.saveAction}"/>--><!--
                         <af:spacer width="25" height="10" id="s5"/>
                         <af:button text="#{viewcontrollerBundle.Cancel}" id="b6" icon="/images/redo.png"
-                                   action="#{TimeSheetHomeBean.cancelAction}"/>
+                                   action="#{TimeSheetHomeBean.cancelAction}"/>-->
                         <!--<af:link text="#{viewcontrollerBundle.Cancel}" id="l3"
                                  action="#{TimeSheetHomeBean.cancelAction}"/>-->
                     </af:panelGroupLayout>
@@ -77,7 +77,7 @@
                                 <af:dialog id="d3" type="none" contentWidth="150" contentHeight="100">
                                     <f:facet name="buttonBar"/>
                                     <af:panelFormLayout id="pfl2">
-                                        <af:panelFormLayout id="pfl3" labelAlignment="start">
+                                        <!--<af:panelFormLayout id="pfl3" labelAlignment="start">
                                             <af:selectOneChoice value="#{bindings.UserId.inputValue}"
                                                                 label="#{bindings.UserId.label}"
                                                                 required="#{bindings.UserId.hints.mandatory}"
@@ -92,12 +92,38 @@
                                                 <f:selectItems value="#{bindings.RoleId.items}" id="si2"/>
                                                 <f:validator binding="#{bindings.RoleId.validator}"/>
                                             </af:selectOneChoice>
+                                        </af:panelFormLayout>-->
+                                        <af:panelFormLayout id="pfl4" labelAlignment="start">
+                                            <af:inputText value="#{bindings.UserEmailId.inputValue}"
+                                                          label="#{bindings.UserEmailId.hints.label}"
+                                                          required="#{bindings.UserEmailId.hints.mandatory}"
+                                                          columns="#{bindings.UserEmailId.hints.displayWidth}"
+                                                          maximumLength="#{bindings.UserEmailId.hints.precision}"
+                                                          shortDesc="#{bindings.UserEmailId.hints.tooltip}" id="it3">
+                                                <f:validator binding="#{bindings.UserEmailId.validator}"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{bindings.CompanyName.inputValue}"
+                                                          label="#{bindings.CompanyName.hints.label}"
+                                                          required="#{bindings.CompanyName.hints.mandatory}"
+                                                          columns="#{bindings.CompanyName.hints.displayWidth}"
+                                                          maximumLength="#{bindings.CompanyName.hints.precision}"
+                                                          shortDesc="#{bindings.CompanyName.hints.tooltip}" id="it4">
+                                                <f:validator binding="#{bindings.CompanyName.validator}"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{bindings.UserName.inputValue}"
+                                                          label="#{bindings.UserName.hints.label}"
+                                                          required="#{bindings.UserName.hints.mandatory}"
+                                                          columns="#{bindings.UserName.hints.displayWidth}"
+                                                          maximumLength="#{bindings.UserName.hints.precision}"
+                                                          shortDesc="#{bindings.UserName.hints.tooltip}" id="it5">
+                                                <f:validator binding="#{bindings.UserName.validator}"/>
+                                            </af:inputText>
                                         </af:panelFormLayout>
                                         <f:facet name="footer"/>
                                     </af:panelFormLayout>
                                     <af:toolbar id="t3">
                                         <af:button text="#{viewcontrollerBundle.Save}" id="b3"
-                                                   action="#{TimeSheetHomeBean.saveRoleChange}"/>
+                                                   action="#{TimeSheetHomeBean.saveUserProfile}"/>
                                         <af:button text="#{viewcontrollerBundle.Cancel}" id="b4" partialSubmit="false"
                                                    action="#{TimeSheetHomeBean.cancelChangeRole}"/>
                                     </af:toolbar>

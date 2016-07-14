@@ -177,7 +177,7 @@ public class TimeSheetHomeBean {
 
     }
 
-    public String saveRoleChange() {
+ /*   public String saveRoleChange() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("saveRoleChange");
@@ -193,7 +193,7 @@ public class TimeSheetHomeBean {
         System.out.println("after execute");
         changeRolePopup.hide();
         return null;
-    }
+    }*/
 
     public String createUserRole() {
         // Add event code here...
@@ -209,5 +209,13 @@ public class TimeSheetHomeBean {
     }
 
 
-    
+    public String saveUserProfile() {
+        // Add event code here...
+        BindingContainer bc = getBindings();
+        OperationBinding opr = bc.getOperationBinding("saveUserChange");
+        opr.execute();
+        System.out.println("after execute");
+        changeRolePopup.hide();
+        return null;
+    }
 }

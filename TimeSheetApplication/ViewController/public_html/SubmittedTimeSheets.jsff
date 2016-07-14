@@ -8,7 +8,8 @@
             selectionListener="#{bindings.TimeSheetWeekVO1.collectionModel.makeCurrent}" rowSelection="single"
             fetchSize="#{bindings.TimeSheetWeekVO1.rangeSize}" id="t1">
     <af:column id="c26" width="22">
-      <af:link id="l2" icon="#{resource['images:atchLinkImg.png']}" action="#{SubmittedTimeSheetsBean.showAttachments}">
+      <af:link id="l2" action="#{SubmittedTimeSheetsBean.showAttachments}" icon="/images/atchLinkImg.png"
+               disabled="#{SubmittedTimeSheetsBean.flag}">
         <!--<af:showPopupBehavior popupId="::attachmentsPopup" triggerType="click"/>-->
       </af:link>
     </af:column>
@@ -93,7 +94,7 @@
   </af:table>
   <af:popup childCreation="deferred" autoCancel="disabled" id="submittedTSPopup" contentDelivery="lazyUncached"
             binding="#{SubmittedTimeSheetsBean.submittedTSPopup}">
-    <af:dialog id="d1" type="none">
+    <af:dialog id="d1" type="none" title="Timesheet Details">
       <f:facet name="buttonBar"/>
       <af:panelGroupLayout id="pgl1" layout="vertical">
         <af:table value="#{bindings.TimeSheetDaysVO1.collectionModel}" var="row"
@@ -171,7 +172,7 @@
   </af:popup>
   <af:popup childCreation="deferred" autoCancel="disabled" id="attachmentsPopup" contentDelivery="lazyUncached"
             binding="#{SubmittedTimeSheetsBean.attachmentsPopup}">
-    <af:dialog id="d2" type="none">
+    <af:dialog id="d2" type="none" title="Attached Files">
       <f:facet name="buttonBar"/>
       <af:table value="#{bindings.TimeSheetAttachmentsVO1.collectionModel}" var="row"
                 rows="#{bindings.TimeSheetAttachmentsVO1.rangeSize}"

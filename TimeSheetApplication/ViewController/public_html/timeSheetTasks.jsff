@@ -48,7 +48,7 @@
   </af:popup>
   <af:popup childCreation="deferred" autoCancel="disabled" id="tasksPopup" contentDelivery="lazyUncached"
             binding="#{TimeSheetAdminPageBean.tasksPopup}">
-    <af:dialog id="d1" type="none" contentWidth="60">
+    <af:dialog id="d1" type="none" contentWidth="60" title="#{viewcontrollerBundle.TaskDetails}">
       <f:facet name="buttonBar"/>
       <af:panelFormLayout id="pfl1">
         <af:panelLabelAndMessage label="#{bindings.TaskId.hints.label}" id="plam1">

@@ -35,7 +35,7 @@
     </af:table>
     <af:popup childCreation="deferred" autoCancel="disabled" id="rolesPopUp" binding="#{TimeSheetAdminPageBean.rolesPopup}"
               contentDelivery="lazyUncached">
-      <af:dialog id="d1" type="none">
+      <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.RoleDetails}">
         <f:facet name="buttonBar"/>
         <af:panelGroupLayout id="pgl2">
           <af:panelFormLayout id="pfl1">

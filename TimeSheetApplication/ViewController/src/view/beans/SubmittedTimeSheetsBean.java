@@ -34,6 +34,7 @@ public class SubmittedTimeSheetsBean {
     private RichPopup submittedTSPopup;
     private RichInputText comments;
     private RichPopup attachmentsPopup;
+    Boolean flag = Boolean.FALSE;
 
     public SubmittedTimeSheetsBean() {
     }
@@ -129,12 +130,20 @@ public class SubmittedTimeSheetsBean {
         return null;
     }
 
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
     public String showAttachments() {
         // Add event code here...
         AttributeBinding idAttr = (AttributeBinding) getBindings().get("WeekId");
         BigDecimal weekId = (BigDecimal) idAttr.getInputValue();
         filterAttachmentViewObject(weekId);
-        System.out.println("111 time sheet id..."+weekId);
+        System.out.println("111 time sheet id..." + weekId);
         RichPopup.PopupHints ph = new RichPopup.PopupHints();
         attachmentsPopup.show(new RichPopup.PopupHints());
         return null;
@@ -157,14 +166,16 @@ public class SubmittedTimeSheetsBean {
         }
     }
 
-    private void filterAttachmentViewObject(BigDecimal weekId) {
+    public void filterAttachmentViewObject(BigDecimal weekId) {
         DCIteratorBinding itr = (DCIteratorBinding) getBindings().get("TimeSheetAttachmentsVO1Iterator");
         ViewObject vo = itr.getViewObject();
         vo.setWhereClause("TIMESHEET_ID=" + weekId);
-        System.out.println("time sheet id..."+weekId);
+        System.out.println("time sheet id..." + weekId);
         vo.executeQuery();
-        if(vo.getEstimatedRowCount() > 0){
-                System.out.println("count..."+vo.getEstimatedRowCount());
-            }
+        if (vo.getEstimatedRowCount() > 0) {
+            this.flag = Boolean.TRUE;
+        } else {
+            this.flag = Boolean.FALSE;
+        }
     }
 }

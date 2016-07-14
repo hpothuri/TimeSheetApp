@@ -27,6 +27,8 @@
               usageId="view_Ts_Users_TF_Ts_Users_TF_ExecutePageDef"/>
         <page path="/WEB-INF/Ts-Users-TF.xml#Ts-Users-TF@getUsersList"
               usageId="view_Ts_Users_TF_Ts_Users_TF_getUsersListPageDef"/>
+        <page path="/WEB-INF/Ts-submitted-timeSheets-TF.xml#Ts-submitted-timeSheets-TF@methodCall1"
+              usageId="view_Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_methodCall1PageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="view_viewTimeSheetPageDef" path="view.pageDefs.viewTimeSheetPageDef"/>
@@ -56,6 +58,8 @@
               path="view.pageDefs.Ts_Users_TF_Ts_Users_TF_ExecutePageDef"/>
         <page id="view_Ts_Users_TF_Ts_Users_TF_getUsersListPageDef"
               path="view.pageDefs.Ts_Users_TF_Ts_Users_TF_getUsersListPageDef"/>
+        <page id="view_Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_methodCall1PageDef"
+              path="view.pageDefs.Ts_submitted_timeSheets_TF_Ts_submitted_timeSheets_TF_methodCall1PageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <BC4JDataControl id="TimeSheetAppControllerDataControl" Package="model.am"

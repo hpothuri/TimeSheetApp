@@ -35,7 +35,7 @@
       <af:outputText value="#{row.CompanyName}" shortDesc="#{bindings.TimeSheetUsersVO1.hints.CompanyName.tooltip}"
                      id="ot2"/>
     </af:column>
-    <af:column headerText="#{viewcontrollerBundle.Role}" id="c4">
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.RoleId.label}" id="c4">
       <af:selectOneChoice value="#{row.bindings.RoleId.inputValue}" label="#{row.bindings.RoleId.label}"
                           required="#{bindings.TimeSheetUsersVO1.hints.RoleId.mandatory}"
                           shortDesc="#{bindings.TimeSheetUsersVO1.hints.RoleId.tooltip}" readOnly="true" id="soc1">
@@ -48,7 +48,7 @@
         <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetUsersVO1.hints.UserId.format}"/>
       </af:outputText>
     </af:column>
-    <af:column headerText="#{viewcontrollerBundle.Manager}" id="c6">
+    <af:column headerText="#{bindings.TimeSheetUsersVO1.hints.ManagerId.label}" id="c6">
       <af:selectOneChoice value="#{row.bindings.ManagerId.inputValue}" label="#{row.bindings.ManagerId.label}"
                           required="#{bindings.TimeSheetUsersVO1.hints.ManagerId.mandatory}"
                           shortDesc="#{bindings.TimeSheetUsersVO1.hints.ManagerId.tooltip}" readOnly="true" id="soc2">
@@ -73,7 +73,7 @@
   </af:popup>
   <af:popup childCreation="deferred" autoCancel="disabled" id="usersPopup" contentDelivery="lazyUncached"
             binding="#{TimeSheetAdminPageBean.usersPopup}">
-    <af:dialog id="d1" type="none">
+    <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.UserDetails}">
       <af:panelFormLayout id="pfl1">
         <af:panelLabelAndMessage label="#{bindings.UserId.hints.label}" id="plam1">
           <af:outputText value="#{bindings.UserId.inputValue}" shortDesc="#{bindings.UserId.hints.tooltip}" id="ot6">

@@ -17,6 +17,8 @@
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
     <iterator Binds="USerRoleTransVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
               id="USerRoleTransVO1Iterator"/>
+    <iterator Binds="TimeSheetUsersVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetUsersVO1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="createUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createUsers"
@@ -55,5 +57,23 @@
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="USerRoleTransVO1Iterator" StaticList="false" Uses="LOV_RoleId" id="RoleId"
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="UserEmailId">
+      <AttrNames>
+        <Item Value="UserEmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="CompanyName">
+      <AttrNames>
+        <Item Value="CompanyName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TimeSheetUsersVO1Iterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveUserChange" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUserChange"
+                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
   </bindings>
 </pageDefinition>
