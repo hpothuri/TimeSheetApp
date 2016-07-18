@@ -24,7 +24,7 @@ public class TimeSheetRolesBean {
     public TimeSheetRolesBean() {
     }
 
-    public String addRoles() {
+ /*   public String addRoles() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("saveRoles");
@@ -34,15 +34,15 @@ public class TimeSheetRolesBean {
         opr.execute();
         return "home";
     }
-
-    public String createRolesView() {
+*/
+  /*  public String createRolesView() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("createRoles");
         opr.execute();
         return "createRoles";
     }
-
+*/
     private BindingContainer getBindings() {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
     }
@@ -51,7 +51,6 @@ public class TimeSheetRolesBean {
         // Add event code here...
         showPopup(tsRolesPopup, false);
         return null;
-
     }
 
     private void showPopup(RichPopup pop, boolean visible) {
@@ -85,7 +84,7 @@ public class TimeSheetRolesBean {
         return tsRolesPopup;
     }
 
-    public String deleteTsRoles() {
+  /*  public String deleteTsRoles() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("deleteTimeSheetRoles");
@@ -98,7 +97,7 @@ public class TimeSheetRolesBean {
             return null;
         }
     }
-
+*/
     public String saveTsRoles() {
         // Add event code here...
         BindingContainer bc = getBindings();

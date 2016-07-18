@@ -17,7 +17,7 @@ public class SubmittedTimeSheetsTFBean {
     public SubmittedTimeSheetsTFBean() {
     }
 
-    public String initSumittedTS() {
+  /*  public String initSumittedTS() {
         // Add event code here...
         BindingContainer bc = getBindings();
         oracle.binding.OperationBinding opr = bc.getOperationBinding("initSubmittedTS");
@@ -25,7 +25,7 @@ public class SubmittedTimeSheetsTFBean {
         opr.execute();
         return "view";
 
-    }
+    }*/
 
     public BindingContainer getBindings() {
         return BindingContext.getCurrent().getCurrentBindingsEntry();

@@ -12,6 +12,8 @@
               id="TimeSheetDaysVO1Iterator"/>
     <iterator Binds="TimeSheetAttachmentsVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
               id="TimeSheetAttachmentsVO1Iterator"/>
+    <iterator Binds="TimeSheetAttachmentsVO3" RangeSize="10" DataControl="TimeSheetAppControllerDataControl"
+              id="TimeSheetAttachmentsVO3Iterator"/>
   </executables>
   <bindings>
     <tree IterBinding="TimeSheetWeekVO1Iterator" id="TimeSheetWeekVO1">
@@ -77,11 +79,11 @@
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
     </methodAction>
-    <methodAction id="createTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTimeSheet"
+    <!--<methodAction id="createTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTimeSheet"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="currentDate" NDType="java.util.Date" NDValue="${bindings.createTimeSheet_currentDate}"/>
-    </methodAction>
+    </methodAction>-->
     <methodAction id="addTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addTimeSheetHours"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
@@ -105,18 +107,18 @@
       <NamedData NDName="contentType" NDType="java.lang.String"/>
       <NamedData NDName="file" NDType="oracle.jbo.domain.BlobDomain"/>
     </methodAction>
-    <tree IterBinding="TimeSheetAttachmentsVO1Iterator" id="TimeSheetAttachmentsVO1">
+    <tree id="TimeSheetAttachmentsVO1" IterBinding="TimeSheetAttachmentsVO3Iterator">
       <nodeDefinition DefName="model.vo.TimeSheetAttachmentsVO" Name="TimeSheetAttachmentsVO10">
         <AttrNames>
           <Item Value="AttachmentId"/>
-          <Item Value="TimesheetId"/>
-          <Item Value="FileType"/>
-          <Item Value="FileName"/>
           <Item Value="AttachedFile"/>
           <Item Value="CreatedBy"/>
           <Item Value="CreatedDate"/>
+          <Item Value="FileName"/>
+          <Item Value="FileType"/>
           <Item Value="LastUpdatedBy"/>
           <Item Value="LastUpdatedDate"/>
+          <Item Value="TimesheetId"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -161,5 +163,20 @@
     <methodAction id="getAttachments" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getAttachments"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+    <tree IterBinding="TimeSheetAttachmentsVO3Iterator" id="TimeSheetAttachmentsVO3">
+      <nodeDefinition DefName="model.vo.TimeSheetAttachmentsVO" Name="TimeSheetAttachmentsVO30">
+        <AttrNames>
+          <Item Value="AttachmentId"/>
+          <Item Value="TimesheetId"/>
+          <Item Value="FileType"/>
+          <Item Value="FileName"/>
+          <Item Value="AttachedFile"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

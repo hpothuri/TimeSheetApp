@@ -4,13 +4,14 @@
   <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
   <af:panelGroupLayout id="pgl1">
     <af:toolbar id="t1">
-      <af:button text="#{viewcontrollerBundle.New}" id="b1" action="#{TimeSheetAdminPageBean.newUsersAction}">
+      <af:button text="#{viewcontrollerBundle.New}" id="b1" action="#{TimeSheetAdminPageBean.newUsersAction}"
+                 icon="/images/New-icon.png">
         <af:showPopupBehavior popupId="usersPopup" triggerType="click"/>
       </af:button>
-      <af:button text="#{viewcontrollerBundle.Edit}" id="b2">
+      <af:button text="#{viewcontrollerBundle.Edit}" id="b2" icon="/images/edit_icon.png">
         <af:showPopupBehavior popupId="usersPopup" triggerType="click"/>
       </af:button>
-      <af:button text="#{viewcontrollerBundle.Delete}" id="b3">
+      <af:button text="#{viewcontrollerBundle.Delete}" id="b3" icon="/images/delete_16.png">
         <af:showPopupBehavior popupId="delConfrmPopup" triggerType="click"/>
       </af:button>
     </af:toolbar>
@@ -59,21 +60,24 @@
   </af:table>
   <af:popup childCreation="deferred" autoCancel="disabled" id="delConfrmPopup"
             binding="#{TimeSheetAdminPageBean.delConfrmPopup}">
-    <af:dialog id="d2" type="none" contentWidth="200">
+    <af:dialog id="d2" type="none" contentWidth="150">
       <f:facet name="buttonBar"/>
       <af:panelGroupLayout id="pgl2" layout="vertical">
-        <af:outputText value="#{viewcontrollerBundle.DoyouwanttoDeletethedata}" id="ot7"/>
+        <af:outputText value="#{viewcontrollerBundle.DoyouwanttoDeletethedata}" id="ot7"
+                       inlineStyle="font-weight:bold;"/>
         <af:toolbar id="t4">
-          <af:button text="#{viewcontrollerBundle.Yes}" id="b6" action="#{TimeSheetAdminPageBean.deleteUsersAction}"/>
+          <af:button text="#{viewcontrollerBundle.Yes}" id="b6" action="#{TimeSheetAdminPageBean.deleteUsersAction}"
+                     icon="/images/yes-icone.png"/>
           <af:spacer width="20" height="10" id="s1"/>
-          <af:button text="#{viewcontrollerBundle.No}" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteUsers}"/>
+          <af:button text="#{viewcontrollerBundle.No}" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteUsers}"
+                     icon="/images/No_icon.png"/>
         </af:toolbar>
       </af:panelGroupLayout>
     </af:dialog>
   </af:popup>
   <af:popup childCreation="deferred" autoCancel="disabled" id="usersPopup" contentDelivery="lazyUncached"
             binding="#{TimeSheetAdminPageBean.usersPopup}">
-    <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.UserDetails}">
+    <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.UserDetails}" contentWidth="150">
       <af:panelFormLayout id="pfl1">
         <af:panelLabelAndMessage label="#{bindings.UserId.hints.label}" id="plam1">
           <af:outputText value="#{bindings.UserId.inputValue}" shortDesc="#{bindings.UserId.hints.tooltip}" id="ot6">
@@ -119,9 +123,10 @@
           <f:validator binding="#{bindings.ManagerId.validator}"/>
         </af:selectOneChoice>
         <af:toolbar id="t3">
-          <af:button text="#{viewcontrollerBundle.Save}" id="b4" action="#{TimeSheetAdminPageBean.saveUsersAction}"/>
+          <af:button text="#{viewcontrollerBundle.Save}" id="b4" action="#{TimeSheetAdminPageBean.saveUsersAction}"
+                     icon="/images/save.png"/>
           <af:button text="#{viewcontrollerBundle.Cancel}" id="b5" action="#{TimeSheetAdminPageBean.cancelUsersAction}" immediate="true"
-                     partialSubmit="false"/>
+                     partialSubmit="false" icon="/images/No_icon.png"/>
         </af:toolbar>
       </af:panelFormLayout>
       <f:facet name="buttonBar"/>

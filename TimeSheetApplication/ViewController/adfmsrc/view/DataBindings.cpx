@@ -9,7 +9,6 @@
                  className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
     </definitionFactories>
     <pageMap>
-        <page path="/viewTimeSheet.jsff" usageId="view_viewTimeSheetPageDef1"/>
         <page path="/home.jsf" usageId="view_homePageDef"/>
         <page path="/login.jsf" usageId="view_loginPageDef"/>
         <page path="/TimeSheetWeeks.jsff" usageId="view_TimeSheetWeeksPageDef"/>
@@ -34,7 +33,6 @@
         <page id="view_viewTimeSheetPageDef" path="view.pageDefs.viewTimeSheetPageDef"/>
         <page id="view_timeSheetTF_timeSheetTF_CreateWithParametersPageDef"
               path="view.pageDefs.timeSheetTF_timeSheetTF_CreateWithParametersPageDef"/>
-        <page id="view_viewTimeSheetPageDef1" path="view.pageDefs.viewTimeSheetPageDef1"/>
         <page id="view_SubmittedTimeSheetsPageDef" path="view.pageDefs.SubmittedTimeSheetsPageDef"/>
         <page id="view_userRolesPageDef" path="view.pageDefs.userRolesPageDef"/>
         <page id="view_homePageDef" path="view.pageDefs.homePageDef"/>

@@ -106,18 +106,6 @@ public class TimeSheetAdminPageBean {
         return null;
     }
 
-    /*   public String editRolesAction() {
-        // Add event code here...
-        BindingContainer bc = getBindings();
-        OperationBinding opr = bc.getOperationBinding("saveTasks");
-        AttributeBinding attr = (AttributeBinding) bc.get("TaskId");
-        BigDecimal taskId = (BigDecimal) attr.getInputValue();
-        opr.getParamsMap().put("taskId", taskId);
-        opr.execute();
-        //   showPopup(tasksPopup, false);
-        return null;
-    }*/
-
     public String deleteTasksAction() {
         // Add event code here...
         BindingContainer bc = getBindings();
@@ -248,7 +236,6 @@ public class TimeSheetAdminPageBean {
         ViewCriteria vc = vo.getViewCriteria("TimeSheetWeekStatusVC");
         vo.applyViewCriteria(vc);
         vo.setNamedWhereClauseParam("p_status", "Submitted");
-        //  vo.setNamedWhereClauseParam("p_week_en_date", getDate(weekEn));
         vo.executeQuery();
     }
 

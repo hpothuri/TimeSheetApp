@@ -1,433 +1,582 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
-  <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
-  <af:toolbar id="t1">
-    <af:button text="New" id="b1">
-      <af:showPopupBehavior popupId="createTsPopup" triggerType="click"/>
-    </af:button>
-    <af:button text="Edit" id="b2" action="#{TimeSheetsViewBean.editTsAction}">
-      <af:showPopupBehavior popupId="tsDaysPopup" triggerType="click"/>
-    </af:button>
-    <af:button text="UnSubmit" id="b3" action="#{TimeSheetsViewBean.unSubmitAction}"/>
-    <af:button text="View All" id="b4" action="#{TimeSheetsViewBean.viewAllAction}"/>
-  </af:toolbar>
-  <af:table value="#{bindings.TimeSheetWeekVO1.collectionModel}" var="row" rows="#{bindings.TimeSheetWeekVO1.rangeSize}"
-            emptyText="#{bindings.TimeSheetWeekVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
-            rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetWeekVO1.collectionModel.selectedRow}"
-            selectionListener="#{bindings.TimeSheetWeekVO1.collectionModel.makeCurrent}" rowSelection="single"
-            fetchSize="#{bindings.TimeSheetWeekVO1.rangeSize}" id="t2" width="100%" partialTriggers="::b1 ::b2 ::b3">
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.label}" id="c1" visible="false">
-      <af:outputText value="#{row.TimeSheetId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.tooltip}"
-                     id="ot1">
-        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.WeekStartDate.label}" id="c2" width="100">
-      <af:outputText value="#{row.WeekStartDate}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.WeekStartDate.tooltip}"
-                     id="ot2">
-        <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.WeekStartDate.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.WeekEndDate.label}" id="c3" width="101">
-      <af:outputText value="#{row.WeekEndDate}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.WeekEndDate.tooltip}"
-                     id="ot3">
-        <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.WeekEndDate.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TotalHours.label}" id="c4" width="99">
-      <af:outputText value="#{row.TotalHours}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TotalHours.tooltip}"
-                     id="ot4">
-        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TotalHours.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TotalExpences.label}" id="c5" width="100">
-      <af:outputText value="#{row.TotalExpences}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TotalExpences.tooltip}"
-                     id="ot5">
-        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TotalExpences.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApproverComments.label}" id="c6" width="100">
-      <af:outputText value="#{row.ApproverComments}"
-                     shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApproverComments.tooltip}" id="ot6"/>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.UserId.label}" id="c7" visible="false">
-      <af:outputText value="#{row.UserId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.UserId.tooltip}" id="ot7">
-        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.UserId.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.Status.label}" id="c8" width="100">
-      <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.Status.tooltip}" id="ot8"/>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9">
-      <af:selectOneChoice value="#{row.bindings.SubmittedBy.inputValue}" label="#{row.bindings.SubmittedBy.label}"
-                          required="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.mandatory}"
-                          shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.tooltip}" id="soc2" readOnly="true">
-        <f:selectItems value="#{row.bindings.SubmittedBy.items}" id="si2"/>
-        <f:validator binding="#{row.bindings.SubmittedBy.validator}"/>
-      </af:selectOneChoice>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.label}" id="c25">
-      <af:selectOneChoice value="#{row.bindings.ApprovedBy.inputValue}" label="#{row.bindings.ApprovedBy.label}"
-                          required="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.mandatory}"
-                          shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.tooltip}" id="soc3" readOnly="true">
-        <f:selectItems value="#{row.bindings.ApprovedBy.items}" id="si3"/>
-        <f:validator binding="#{row.bindings.ApprovedBy.validator}"/>
-      </af:selectOneChoice>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.label}" id="c10" width="100">
-      <af:outputText value="#{row.SubmittedTs}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.tooltip}"
-                     id="ot10">
-        <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.label}" id="c11" width="100">
-      <af:outputText value="#{row.ApprovedTs}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.tooltip}"
-                     id="ot11">
-        <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.format}"/>
-      </af:outputText>
-    </af:column>
-    <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TaskId.label}" id="c13" visible="false">
-      <af:outputText value="#{row.TaskId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TaskId.tooltip}" id="ot13">
-        <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TaskId.format}"/>
-      </af:outputText>
-    </af:column>
-  </af:table>
-  <af:popup childCreation="deferred" autoCancel="disabled" id="submitConfrmPopup"
-            binding="#{TimeSheetsViewBean.submitConfirmPopup}">
-    <af:dialog id="d3" type="none">
-      <f:facet name="buttonBar"/>
-      <af:outputText value="#{viewcontrollerBundle.DoyouwanttoSubmittheTimeSheet}" id="ot22"/>
-      <af:button text="#{viewcontrollerBundle.Yes}" id="b12" action="#{TimeSheetsViewBean.submitTsAction}"/>
-      <af:button text="#{viewcontrollerBundle.No}" id="b13" action="#{TimeSheetsViewBean.cancelSubmission}"/>
-    </af:dialog>
-  </af:popup>
-  <af:popup childCreation="deferred" autoCancel="disabled" id="delTsDaysPopup"
-            binding="#{TimeSheetsViewBean.delTsDaysPopup}">
-    <af:dialog id="d2" type="none">
-      <f:facet name="buttonBar"/>
-      <af:panelGroupLayout id="pgl1" layout="vertical">
-        <af:outputText value="#{viewcontrollerBundle.DoyouwanttoDelete}" id="ot9"/>
-        <af:toolbar id="t5">
-          <af:button text="#{viewcontrollerBundle.Yes}" id="b9" action="#{TimeSheetsViewBean.deleteTsAction}"/>
-          <af:button text="#{viewcontrollerBundle.No}" id="b10" action="#{TimeSheetsViewBean.undoDelete}"/>
-        </af:toolbar>
-      </af:panelGroupLayout>
-    </af:dialog>
-  </af:popup>
-  <af:popup childCreation="deferred" autoCancel="disabled" id="tsDaysPopup"
-            binding="#{TimeSheetsViewBean.tsDaysPopup}" contentDelivery="lazyUncached">
-    <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.TimesheetDetails}">
-      <af:table value="#{bindings.TimeSheetDaysVO1.collectionModel}" var="row"
-                rows="#{bindings.TimeSheetDaysVO1.rangeSize}"
-                emptyText="#{bindings.TimeSheetDaysVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetDaysVO1.collectionModel.selectedRow}"
-                selectionListener="#{bindings.TimeSheetDaysVO1.collectionModel.makeCurrent}" rowSelection="single"
-                fetchSize="#{bindings.TimeSheetDaysVO1.rangeSize}" id="t3" width="100%" partialTriggers="::b7">
-        <af:column headerText="Tasks" id="c23">
-          <af:selectOneChoice value="#{row.bindings.TaskId.inputValue}" label="#{row.bindings.TaskId.label}"
-                              shortDesc="#{bindings.TimeSheetDaysVO1.hints.TaskId.tooltip}" id="soc1"
-                              readOnly="#{bindings.Status eq 'Approved'}" required="true">
-            <f:selectItems value="#{row.bindings.TaskId.items}" id="si1"/>
-            <f:validator binding="#{row.bindings.TaskId.validator}"/>
-          </af:selectOneChoice>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}" id="c14" visible="false">
-          <af:inputText value="#{row.bindings.WeekId.inputValue}"
-                        label="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.WeekId.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.WeekId.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.WeekId.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.WeekId.tooltip}" id="it1">
-            <f:validator binding="#{row.bindings.WeekId.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.WeekId.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.MONDAY}" id="c15">
-          <af:inputText value="#{row.bindings.Day1.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day1.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day1.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day1.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day1.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day1.tooltip}" id="it2"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day1.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day1.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.TUESDAY}" id="c16">
-          <af:inputText value="#{row.bindings.Day2.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day2.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day2.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day2.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day2.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day2.tooltip}" id="it3"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day2.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day2.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.WEBNESSDAY}" id="c17">
-          <af:inputText value="#{row.bindings.Day3.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day3.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day3.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day3.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day3.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day3.tooltip}" id="it4"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day3.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day3.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.THURSDAY}" id="c18">
-          <af:inputText value="#{row.bindings.Day4.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day4.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day4.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day4.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day4.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day4.tooltip}" id="it5"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day4.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day4.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.FRIDAY}" id="c19">
-          <af:inputText value="#{row.bindings.Day5.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day5.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day5.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day5.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day5.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day5.tooltip}" id="it6"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day5.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day5.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.SATURDAY}" id="c20">
-          <af:inputText value="#{row.bindings.Day6.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day6.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day6.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day6.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day6.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day6.tooltip}" id="it7"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day6.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day6.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{viewcontrollerBundle.SUNDAY}" id="c21">
-          <af:inputText value="#{row.bindings.Day7.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Day7.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Day7.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Day7.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day7.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day7.tooltip}" id="it8"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Day7.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.Day7.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}" id="c22" visible="false">
-          <af:inputText value="#{row.bindings.TimeSheetId.inputValue}"
-                        label="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.tooltip}" id="it9">
-            <f:validator binding="#{row.bindings.TimeSheetId.validator}"/>
-            <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.format}"/>
-          </af:inputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.Notes.label}" id="c24">
-          <af:inputText value="#{row.bindings.Notes.inputValue}" label="#{bindings.TimeSheetDaysVO1.hints.Notes.label}"
-                        required="#{bindings.TimeSheetDaysVO1.hints.Notes.mandatory}"
-                        columns="#{bindings.TimeSheetDaysVO1.hints.Notes.displayWidth}"
-                        maximumLength="#{bindings.TimeSheetDaysVO1.hints.Notes.precision}"
-                        shortDesc="#{bindings.TimeSheetDaysVO1.hints.Notes.tooltip}" id="it10"
-                        readOnly="#{bindings.Status eq 'Approved'}">
-            <f:validator binding="#{row.bindings.Notes.validator}"/>
-          </af:inputText>
-        </af:column>
-      </af:table>
-      <af:toolbar id="t4" visible="#{bindings.Status ne 'Approved'}">
-        <af:inputFile label="#{viewcontrollerBundle.File}" id="if1" value="#{TimeSheetsViewBean.myFile}"/>
-        <af:button text="#{viewcontrollerBundle.Upload}" id="b8" action="#{TimeSheetsViewBean.uploadFile}"/>
-        <af:button text="#{viewcontrollerBundle.Add}" id="b5" action="#{TimeSheetsViewBean.addTsHourssAction}"/>
-        <af:button text="#{viewcontrollerBundle.Save}" id="b11" action="#{TimeSheetsViewBean.saveTs}"/>
-        <af:button text="#{viewcontrollerBundle.Submit}" id="b6">
-          <af:showPopupBehavior popupId="submitConfrmPopup" triggerType="click"/>
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
+    <af:toolbar id="t1">
+        <af:button text="New" id="b1" icon="/images/New-icon.png">
+            <af:showPopupBehavior popupId="createTsPopup" triggerType="click"/>
         </af:button>
-        <af:button text="#{viewcontrollerBundle.Delete}" id="b7">
-          <af:showPopupBehavior popupId="delTsDaysPopup" triggerType="click"/>
+        <af:button text="Edit" id="b2" action="#{TimeSheetsViewBean.editTsAction}" icon="/images/edit_icon.png">
+            <af:showPopupBehavior popupId="tsDaysPopup" triggerType="click"/>
         </af:button>
-      </af:toolbar>
-      <af:table value="#{bindings.TimeSheetAttachmentsVO1.collectionModel}" var="row"
-                rows="#{bindings.TimeSheetAttachmentsVO1.rangeSize}"
-                emptyText="#{bindings.TimeSheetAttachmentsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetAttachmentsVO1.collectionModel.selectedRow}"
-                selectionListener="#{bindings.TimeSheetAttachmentsVO1.collectionModel.makeCurrent}"
-                rowSelection="single" fetchSize="#{bindings.TimeSheetAttachmentsVO1.rangeSize}" id="t6"
-                partialTriggers="::b8">
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.AttachmentId.label}" id="c12" visible="false">
-          <af:outputText value="#{row.AttachmentId}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.AttachmentId.tooltip}" id="ot12">
-            <af:convertNumber groupingUsed="false"
-                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.AttachmentId.format}"/>
-          </af:outputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.TimesheetId.label}" id="c26" visible="false">
-          <af:outputText value="#{row.TimesheetId}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.TimesheetId.tooltip}" id="ot14">
-            <af:convertNumber groupingUsed="false"
-                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.TimesheetId.format}"/>
-          </af:outputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.FileType.label}" id="c27">
-          <af:outputText value="#{row.FileType}" shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.FileType.tooltip}"
-                         id="ot15"/>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.FileName.label}" id="c28">
-          <af:outputText value="#{row.FileName}" shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.FileName.tooltip}"
-                         id="ot16"/>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.AttachedFile.label}" id="c29">
-          <af:outputText value="#{row.AttachedFile}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.AttachedFile.tooltip}" id="ot17"/>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedBy.label}" id="c30" visible="false">
-          <af:outputText value="#{row.CreatedBy}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedBy.tooltip}" id="ot18">
-            <af:convertNumber groupingUsed="false"
-                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedBy.format}"/>
-          </af:outputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedDate.label}" id="c31" visible="false">
-          <af:outputText value="#{row.CreatedDate}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedDate.tooltip}" id="ot19">
-            <af:convertDateTime pattern="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedDate.format}"/>
-          </af:outputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedBy.label}" id="c32" visible="false">
-          <af:outputText value="#{row.LastUpdatedBy}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedBy.tooltip}" id="ot20">
-            <af:convertNumber groupingUsed="false"
-                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedBy.format}"/>
-          </af:outputText>
-        </af:column>
-        <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedDate.label}" id="c33"
-                   visible="false">
-          <af:outputText value="#{row.LastUpdatedDate}"
-                         shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedDate.tooltip}" id="ot21">
-            <af:convertDateTime pattern="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedDate.format}"/>
-          </af:outputText>
-        </af:column>
-      </af:table>
-      <f:facet name="buttonBar"/>
-    </af:dialog>
-  </af:popup>
-  <af:popup childCreation="deferred" autoCancel="disabled" id="createTsPopup"
-            binding="#{TimeSheetsViewBean.createTsPopup}">
-    <af:dialog id="d4" title="#{viewcontrollerBundle.NewTimesheet}">
-      <f:facet name="buttonBar"/>
-      <af:panelFormLayout id="pfl1">
-        <af:panelGroupLayout id="pgl2">
-          <af:inputDate value="#{bindings.currentDate.inputValue}" label="#{bindings.currentDate.hints.label}"
-                        required="#{bindings.currentDate.hints.mandatory}"
-                        columns="#{bindings.currentDate.hints.displayWidth}"
-                        shortDesc="#{bindings.currentDate.hints.tooltip}" id="id1">
-            <f:validator binding="#{bindings.currentDate.validator}"/>
-            <af:convertDateTime pattern="#{bindings.currentDate.format}"/>
-          </af:inputDate>
-          <af:button text="#{viewcontrollerBundle.createTimeSheet}"
-                     disabled="#{!bindings.createTimeSheet.enabled}" id="b14"
-                     action="#{TimeSheetsViewBean.createTsForSelectDate}"/>
-        </af:panelGroupLayout>
-        <af:table value="#{bindings.TimeSheetWeekVO11.collectionModel}" var="row"
-                  rows="#{bindings.TimeSheetWeekVO11.rangeSize}"
-                  emptyText="#{bindings.TimeSheetWeekVO11.viewable ? 'No data to display.' : 'Access Denied.'}"
-                  rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetWeekVO11.collectionModel.selectedRow}"
-                  selectionListener="#{bindings.TimeSheetWeekVO11.collectionModel.makeCurrent}" rowSelection="single"
-                  fetchSize="#{bindings.TimeSheetWeekVO11.rangeSize}" id="t7" width="100%">
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.label}" id="c34" visible="false">
-            <af:outputText value="#{row.TimeSheetId}"
-                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.tooltip}" id="ot23">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.format}"/>
+        <af:button text="UnSubmit" id="b3" action="#{TimeSheetsViewBean.unSubmitAction}" icon="/images/delete_16.png"/>
+        <af:button text="View All" id="b4" action="#{TimeSheetsViewBean.viewAllAction}"
+                   icon="/images/view_list_details.png"/>
+    </af:toolbar>
+    <af:table value="#{bindings.TimeSheetWeekVO1.collectionModel}" var="row"
+              rows="#{bindings.TimeSheetWeekVO1.rangeSize}"
+              emptyText="#{bindings.TimeSheetWeekVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.TimeSheetWeekVO1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.TimeSheetWeekVO1.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.TimeSheetWeekVO1.rangeSize}" id="t2" width="100%" partialTriggers="::b1 ::b2 ::b3">
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.label}" id="c1" visible="false">
+            <af:outputText value="#{row.TimeSheetId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.tooltip}"
+                           id="ot1">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TimeSheetId.format}"/>
             </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.label}" id="c35">
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.WeekStartDate.label}" id="c2" width="100">
             <af:outputText value="#{row.WeekStartDate}"
-                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.tooltip}" id="ot24">
-              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.format}"/>
+                           shortDesc="#{bindings.TimeSheetWeekVO1.hints.WeekStartDate.tooltip}" id="ot2">
+                <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.WeekStartDate.format}"/>
             </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.label}" id="c36">
-            <af:outputText value="#{row.WeekEndDate}"
-                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.tooltip}" id="ot25">
-              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.format}"/>
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.WeekEndDate.label}" id="c3" width="101">
+            <af:outputText value="#{row.WeekEndDate}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.WeekEndDate.tooltip}"
+                           id="ot3">
+                <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.WeekEndDate.format}"/>
             </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TotalHours.label}" id="c37">
-            <af:outputText value="#{row.TotalHours}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.TotalHours.tooltip}"
-                           id="ot26">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.TotalHours.format}"/>
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TotalHours.label}" id="c4" width="99">
+            <af:outputText value="#{row.TotalHours}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TotalHours.tooltip}"
+                           id="ot4">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TotalHours.format}"/>
             </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.label}" id="c38">
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TotalExpences.label}" id="c5" width="100">
             <af:outputText value="#{row.TotalExpences}"
-                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.tooltip}" id="ot27">
-              <af:convertNumber groupingUsed="false"
-                                pattern="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.format}"/>
+                           shortDesc="#{bindings.TimeSheetWeekVO1.hints.TotalExpences.tooltip}" id="ot5">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.TimeSheetWeekVO1.hints.TotalExpences.format}"/>
             </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApproverComments.label}" id="c39" visible="false">
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApproverComments.label}" id="c6" width="100">
             <af:outputText value="#{row.ApproverComments}"
-                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApproverComments.tooltip}" id="ot28"/>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.UserId.label}" id="c40" visible="false">
-            <af:outputText value="#{row.UserId}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.UserId.tooltip}"
-                           id="ot29">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.UserId.format}"/>
+                           shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApproverComments.tooltip}" id="ot6"/>
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.UserId.label}" id="c7" visible="false">
+            <af:outputText value="#{row.UserId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.UserId.tooltip}" id="ot7">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.UserId.format}"/>
             </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.Status.label}" id="c41">
-            <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.Status.tooltip}"
-                           id="ot30"/>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.label}" id="c42" visible="false">
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.Status.label}" id="c8" width="100">
+            <af:outputText value="#{row.Status}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.Status.tooltip}"
+                           id="ot8"/>
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.label}" id="c9">
             <af:selectOneChoice value="#{row.bindings.SubmittedBy.inputValue}" label="#{row.bindings.SubmittedBy.label}"
-                                required="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.mandatory}"
-                                shortDesc="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.tooltip}" readOnly="true"
-                                id="soc4">
-              <f:selectItems value="#{row.bindings.SubmittedBy.items}" id="si4"/>
-              <f:validator binding="#{row.bindings.SubmittedBy.validator}"/>
+                                required="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.mandatory}"
+                                shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedBy.tooltip}" id="soc2"
+                                readOnly="true">
+                <f:selectItems value="#{row.bindings.SubmittedBy.items}" id="si2"/>
+                <f:validator binding="#{row.bindings.SubmittedBy.validator}"/>
             </af:selectOneChoice>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.label}" id="c43" visible="false">
-            <af:outputText value="#{row.SubmittedTs}"
-                           shortDesc="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.tooltip}" id="ot31">
-              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.format}"/>
-            </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.label}" id="c44" visible="false">
-            <af:outputText value="#{row.ApprovedTs}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.tooltip}"
-                           id="ot32">
-              <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.format}"/>
-            </af:outputText>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.label}" id="c45" visible="false">
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.label}" id="c25">
             <af:selectOneChoice value="#{row.bindings.ApprovedBy.inputValue}" label="#{row.bindings.ApprovedBy.label}"
-                                required="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.mandatory}"
-                                shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.tooltip}" readOnly="true"
-                                id="soc5">
-              <f:selectItems value="#{row.bindings.ApprovedBy.items}" id="si5"/>
-              <f:validator binding="#{row.bindings.ApprovedBy.validator}"/>
+                                required="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.mandatory}"
+                                shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApprovedBy.tooltip}" id="soc3"
+                                readOnly="true">
+                <f:selectItems value="#{row.bindings.ApprovedBy.items}" id="si3"/>
+                <f:validator binding="#{row.bindings.ApprovedBy.validator}"/>
             </af:selectOneChoice>
-          </af:column>
-          <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TaskId.label}" id="c46" visible="false">
-            <af:outputText value="#{row.TaskId}" shortDesc="#{bindings.TimeSheetWeekVO11.hints.TaskId.tooltip}"
-                           id="ot33">
-              <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO11.hints.TaskId.format}"/>
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.label}" id="c10" width="100">
+            <af:outputText value="#{row.SubmittedTs}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.tooltip}"
+                           id="ot10">
+                <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.SubmittedTs.format}"/>
             </af:outputText>
-          </af:column>
-        </af:table>
-        <af:button text="Edit" id="b15">
-          <af:showPopupBehavior popupId="tsDaysPopup" triggerType="click"/>
-        </af:button>
-      </af:panelFormLayout>
-    </af:dialog>
-  </af:popup>
-  <!--oracle-jdev-comment:preferred-managed-bean-name:TimeSheetsViewBean-->
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.label}" id="c11" width="100">
+            <af:outputText value="#{row.ApprovedTs}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.tooltip}"
+                           id="ot11">
+                <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO1.hints.ApprovedTs.format}"/>
+            </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.TimeSheetWeekVO1.hints.TaskId.label}" id="c13" visible="false">
+            <af:outputText value="#{row.TaskId}" shortDesc="#{bindings.TimeSheetWeekVO1.hints.TaskId.tooltip}"
+                           id="ot13">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.TimeSheetWeekVO1.hints.TaskId.format}"/>
+            </af:outputText>
+        </af:column>
+    </af:table>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="submitConfrmPopup"
+              binding="#{TimeSheetsViewBean.submitConfirmPopup}">
+        <af:dialog id="d3" type="none">
+            <f:facet name="buttonBar"/>
+            <af:outputText value="#{viewcontrollerBundle.DoyouwanttoSubmittheTimeSheet}" id="ot22"
+                           inlineStyle="font-weight:bold;"/>
+            <af:button id="b12" action="#{TimeSheetsViewBean.submitTsAction}" icon="/images/yes-icone.png"/>
+            <af:spacer width="20" height="10" id="s1"/>
+            <af:button id="b13" action="#{TimeSheetsViewBean.cancelSubmission}" icon="/images/No_icon.png"/>
+        </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="delTsDaysPopup"
+              binding="#{TimeSheetsViewBean.delTsDaysPopup}">
+        <af:dialog id="d2" type="none" contentWidth="100">
+            <f:facet name="buttonBar"/>
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+                <af:outputText value="#{viewcontrollerBundle.DoyouwanttoDelete}" id="ot9"
+                               inlineStyle="font-weight:bold;"/>
+                <af:toolbar id="t5">
+                    <af:button text="#{viewcontrollerBundle.Yes}" id="b9" action="#{TimeSheetsViewBean.deleteTsAction}"
+                               icon="/images/yes-icone.png"/>
+                    <af:button text="#{viewcontrollerBundle.No}" id="b10" action="#{TimeSheetsViewBean.undoDelete}"
+                               icon="/images/No_icon.png"/>
+                </af:toolbar>
+            </af:panelGroupLayout>
+        </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="tsDaysPopup"
+              binding="#{TimeSheetsViewBean.tsDaysPopup}" contentDelivery="lazyUncached">
+        <af:dialog id="d1" type="none" title="#{viewcontrollerBundle.TimesheetDetails}">
+            <f:facet name="buttonBar"/>
+            <af:panelGroupLayout id="pgl4" halign="center" valign="middle" layout="vertical">
+                <af:table value="#{bindings.TimeSheetDaysVO1.collectionModel}" var="row"
+                          rows="#{bindings.TimeSheetDaysVO1.rangeSize}"
+                          emptyText="#{bindings.TimeSheetDaysVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.TimeSheetDaysVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.TimeSheetDaysVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.TimeSheetDaysVO1.rangeSize}" id="t3" width="100%"
+                          partialTriggers="::b7">
+                    <af:column headerText="Tasks" id="c23">
+                        <af:selectOneChoice value="#{row.bindings.TaskId.inputValue}"
+                                            label="#{row.bindings.TaskId.label}"
+                                            shortDesc="#{bindings.TimeSheetDaysVO1.hints.TaskId.tooltip}" id="soc1"
+                                            readOnly="#{bindings.Status eq 'Approved'}" required="true">
+                            <f:selectItems value="#{row.bindings.TaskId.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.TaskId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}" id="c14" visible="false">
+                        <af:inputText value="#{row.bindings.WeekId.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.WeekId.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.WeekId.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.WeekId.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.WeekId.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.WeekId.tooltip}" id="it1">
+                            <f:validator binding="#{row.bindings.WeekId.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.WeekId.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.MONDAY}" id="c15">
+                        <af:inputText value="#{row.bindings.Day1.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day1.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day1.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day1.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day1.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day1.tooltip}" id="it2"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day1.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day1.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.TUESDAY}" id="c16">
+                        <af:inputText value="#{row.bindings.Day2.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day2.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day2.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day2.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day2.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day2.tooltip}" id="it3"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day2.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day2.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.WEBNESSDAY}" id="c17">
+                        <af:inputText value="#{row.bindings.Day3.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day3.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day3.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day3.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day3.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day3.tooltip}" id="it4"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day3.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day3.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.THURSDAY}" id="c18">
+                        <af:inputText value="#{row.bindings.Day4.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day4.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day4.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day4.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day4.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day4.tooltip}" id="it5"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day4.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day4.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.FRIDAY}" id="c19">
+                        <af:inputText value="#{row.bindings.Day5.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day5.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day5.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day5.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day5.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day5.tooltip}" id="it6"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day5.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day5.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.SATURDAY}" id="c20">
+                        <af:inputText value="#{row.bindings.Day6.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day6.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day6.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day6.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day6.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day6.tooltip}" id="it7"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day6.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day6.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{viewcontrollerBundle.SUNDAY}" id="c21">
+                        <af:inputText value="#{row.bindings.Day7.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Day7.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Day7.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Day7.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Day7.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Day7.tooltip}" id="it8"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Day7.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.Day7.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}" id="c22"
+                               visible="false">
+                        <af:inputText value="#{row.bindings.TimeSheetId.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.tooltip}" id="it9">
+                            <f:validator binding="#{row.bindings.TimeSheetId.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetDaysVO1.hints.TimeSheetId.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetDaysVO1.hints.Notes.label}" id="c24">
+                        <af:inputText value="#{row.bindings.Notes.inputValue}"
+                                      label="#{bindings.TimeSheetDaysVO1.hints.Notes.label}"
+                                      required="#{bindings.TimeSheetDaysVO1.hints.Notes.mandatory}"
+                                      columns="#{bindings.TimeSheetDaysVO1.hints.Notes.displayWidth}"
+                                      maximumLength="#{bindings.TimeSheetDaysVO1.hints.Notes.precision}"
+                                      shortDesc="#{bindings.TimeSheetDaysVO1.hints.Notes.tooltip}" id="it10"
+                                      readOnly="#{bindings.Status eq 'Approved'}">
+                            <f:validator binding="#{row.bindings.Notes.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                </af:table>
+                <af:spacer width="10" height="25" id="s3"/>
+                <af:panelGroupLayout id="pgl3" visible="#{bindings.Status ne 'Approved'}" valign="middle"
+                                     halign="center">
+                    <af:inputFile label="#{viewcontrollerBundle.File}" id="if1" value="#{TimeSheetsViewBean.myFile}"
+                                  />
+                    <af:button text="#{viewcontrollerBundle.Upload}" id="b8" action="#{TimeSheetsViewBean.uploadFile}"
+                               icon="/images/file-upload.png"/>
+                    <af:button text="#{viewcontrollerBundle.Add}" id="b5"
+                               action="#{TimeSheetsViewBean.addTsHourssAction}" icon="/images/add-icon.png"/>
+                    <af:button text="#{viewcontrollerBundle.Save}" id="b11" action="#{TimeSheetsViewBean.saveTs}"
+                               icon="/images/save.png"/>
+                    <af:button text="#{viewcontrollerBundle.Submit}" id="b6" icon="/images/submit.png">
+                        <af:showPopupBehavior popupId="submitConfrmPopup" triggerType="click"/>
+                    </af:button>
+                    <af:button text="#{viewcontrollerBundle.Delete}" id="b7" icon="/images/delete_16.png">
+                        <af:showPopupBehavior popupId="delTsDaysPopup" triggerType="click"/>
+                    </af:button>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="20" id="s2"/>
+                <af:table value="#{bindings.TimeSheetAttachmentsVO3.collectionModel}" var="row"
+                          rows="#{bindings.TimeSheetAttachmentsVO3.rangeSize}"
+                          emptyText="#{bindings.TimeSheetAttachmentsVO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.TimeSheetAttachmentsVO3.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.TimeSheetAttachmentsVO3.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.TimeSheetAttachmentsVO3.rangeSize}" id="t4"
+                          partialTriggers="::b8 ::t3">
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.AttachmentId.label}" id="c12"
+                               visible="false">
+                        <af:outputText value="#{row.AttachmentId}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.AttachmentId.tooltip}"
+                                       id="ot12">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO3.hints.AttachmentId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.TimesheetId.label}" id="c26"
+                               visible="false">
+                        <af:outputText value="#{row.TimesheetId}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.TimesheetId.tooltip}"
+                                       id="ot14">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO3.hints.TimesheetId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.FileType.label}" id="c27">
+                        <af:outputText value="#{row.FileType}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.FileType.tooltip}"
+                                       id="ot15"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.FileName.label}" id="c28">
+                        <af:outputText value="#{row.FileName}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.FileName.tooltip}"
+                                       id="ot16"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.AttachedFile.label}" id="c29"
+                               visible="false">
+                        <af:outputText value="#{row.AttachedFile}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.AttachedFile.tooltip}"
+                                       id="ot17"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.CreatedBy.label}" id="c30"
+                               visible="false">
+                        <af:outputText value="#{row.CreatedBy}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.CreatedBy.tooltip}"
+                                       id="ot18">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO3.hints.CreatedBy.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.CreatedDate.label}" id="c31"
+                               visible="false">
+                        <af:outputText value="#{row.CreatedDate}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.CreatedDate.tooltip}"
+                                       id="ot19">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetAttachmentsVO3.hints.CreatedDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.LastUpdatedBy.label}" id="c32"
+                               visible="false">
+                        <af:outputText value="#{row.LastUpdatedBy}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.LastUpdatedBy.tooltip}"
+                                       id="ot20">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO3.hints.LastUpdatedBy.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO3.hints.LastUpdatedDate.label}" id="c33"
+                               visible="false">
+                        <af:outputText value="#{row.LastUpdatedDate}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO3.hints.LastUpdatedDate.tooltip}"
+                                       id="ot21">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetAttachmentsVO3.hints.LastUpdatedDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+                <!--<af:table value="#{bindings.TimeSheetAttachmentsVO1.collectionModel}" var="row"
+                          rows="#{bindings.TimeSheetAttachmentsVO1.rangeSize}"
+                          emptyText="#{bindings.TimeSheetAttachmentsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.TimeSheetAttachmentsVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.TimeSheetAttachmentsVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.TimeSheetAttachmentsVO1.rangeSize}" id="t6"
+                          partialTriggers="::b8 ::t3">
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.AttachmentId.label}" id="c12"
+                               visible="false">
+                        <af:outputText value="#{row.AttachmentId}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.AttachmentId.tooltip}"
+                                       id="ot12">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.AttachmentId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.TimesheetId.label}" id="c26"
+                               visible="false">
+                        <af:outputText value="#{row.TimesheetId}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.TimesheetId.tooltip}"
+                                       id="ot14">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.TimesheetId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.FileType.label}" id="c27">
+                        <af:outputText value="#{row.FileType}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.FileType.tooltip}"
+                                       id="ot15"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.FileName.label}" id="c28">
+                        <af:outputText value="#{row.FileName}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.FileName.tooltip}"
+                                       id="ot16"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.AttachedFile.label}" id="c29">
+                        <af:outputText value="#{row.AttachedFile}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.AttachedFile.tooltip}"
+                                       id="ot17"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedBy.label}" id="c30"
+                               visible="false">
+                        <af:outputText value="#{row.CreatedBy}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedBy.tooltip}"
+                                       id="ot18">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedBy.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedDate.label}" id="c31"
+                               visible="false">
+                        <af:outputText value="#{row.CreatedDate}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedDate.tooltip}"
+                                       id="ot19">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetAttachmentsVO1.hints.CreatedDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedBy.label}" id="c32"
+                               visible="false">
+                        <af:outputText value="#{row.LastUpdatedBy}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedBy.tooltip}"
+                                       id="ot20">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedBy.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedDate.label}" id="c33"
+                               visible="false">
+                        <af:outputText value="#{row.LastUpdatedDate}"
+                                       shortDesc="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedDate.tooltip}"
+                                       id="ot21">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetAttachmentsVO1.hints.LastUpdatedDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>-->
+            </af:panelGroupLayout>
+        </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="createTsPopup"
+              binding="#{TimeSheetsViewBean.createTsPopup}" contentDelivery="lazyUncached">
+        <af:dialog id="d4" title="#{viewcontrollerBundle.NewTimesheet}">
+            <f:facet name="buttonBar"/>
+            <af:panelFormLayout id="pfl1">
+                <af:panelGroupLayout id="pgl2">
+                    <af:inputDate value="#{bindings.currentDate.inputValue}" label="#{bindings.currentDate.hints.label}"
+                                  required="#{bindings.currentDate.hints.mandatory}"
+                                  columns="#{bindings.currentDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.currentDate.hints.tooltip}" id="id1"
+                                  maxValue="#{TimeSheetsViewBean.currentDate}">
+                        <f:validator binding="#{bindings.currentDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.currentDate.format}"/>
+                    </af:inputDate>
+                    <af:button text="#{viewcontrollerBundle.createTimeSheet}" id="b14"
+                               action="#{TimeSheetsViewBean.createTsForSelectDate}"/>
+                </af:panelGroupLayout>
+                <af:table value="#{bindings.TimeSheetWeekVO11.collectionModel}" var="row"
+                          rows="#{bindings.TimeSheetWeekVO11.rangeSize}"
+                          emptyText="#{bindings.TimeSheetWeekVO11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.TimeSheetWeekVO11.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.TimeSheetWeekVO11.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.TimeSheetWeekVO11.rangeSize}" id="t7"
+                          width="100%">
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.label}" id="c34"
+                               visible="false">
+                        <af:outputText value="#{row.TimeSheetId}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.tooltip}" id="ot23">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetWeekVO11.hints.TimeSheetId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.label}" id="c35">
+                        <af:outputText value="#{row.WeekStartDate}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.tooltip}" id="ot24">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.WeekStartDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.label}" id="c36">
+                        <af:outputText value="#{row.WeekEndDate}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.tooltip}" id="ot25">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.WeekEndDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TotalHours.label}" id="c37">
+                        <af:outputText value="#{row.TotalHours}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.TotalHours.tooltip}" id="ot26">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetWeekVO11.hints.TotalHours.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.label}" id="c38">
+                        <af:outputText value="#{row.TotalExpences}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.tooltip}" id="ot27">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetWeekVO11.hints.TotalExpences.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApproverComments.label}" id="c39"
+                               visible="false">
+                        <af:outputText value="#{row.ApproverComments}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApproverComments.tooltip}"
+                                       id="ot28"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.UserId.label}" id="c40" visible="false">
+                        <af:outputText value="#{row.UserId}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.UserId.tooltip}" id="ot29">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetWeekVO11.hints.UserId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.Status.label}" id="c41">
+                        <af:outputText value="#{row.Status}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.Status.tooltip}" id="ot30"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.label}" id="c42"
+                               visible="false">
+                        <af:selectOneChoice value="#{row.bindings.SubmittedBy.inputValue}"
+                                            label="#{row.bindings.SubmittedBy.label}"
+                                            required="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.mandatory}"
+                                            shortDesc="#{bindings.TimeSheetWeekVO11.hints.SubmittedBy.tooltip}"
+                                            readOnly="true" id="soc4">
+                            <f:selectItems value="#{row.bindings.SubmittedBy.items}" id="si4"/>
+                            <f:validator binding="#{row.bindings.SubmittedBy.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.label}" id="c43"
+                               visible="false">
+                        <af:outputText value="#{row.SubmittedTs}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.tooltip}" id="ot31">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.SubmittedTs.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.label}" id="c44"
+                               visible="false">
+                        <af:outputText value="#{row.ApprovedTs}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.tooltip}" id="ot32">
+                            <af:convertDateTime pattern="#{bindings.TimeSheetWeekVO11.hints.ApprovedTs.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.label}" id="c45"
+                               visible="false">
+                        <af:selectOneChoice value="#{row.bindings.ApprovedBy.inputValue}"
+                                            label="#{row.bindings.ApprovedBy.label}"
+                                            required="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.mandatory}"
+                                            shortDesc="#{bindings.TimeSheetWeekVO11.hints.ApprovedBy.tooltip}"
+                                            readOnly="true" id="soc5">
+                            <f:selectItems value="#{row.bindings.ApprovedBy.items}" id="si5"/>
+                            <f:validator binding="#{row.bindings.ApprovedBy.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column headerText="#{bindings.TimeSheetWeekVO11.hints.TaskId.label}" id="c46" visible="false">
+                        <af:outputText value="#{row.TaskId}"
+                                       shortDesc="#{bindings.TimeSheetWeekVO11.hints.TaskId.tooltip}" id="ot33">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TimeSheetWeekVO11.hints.TaskId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                </af:table>
+                <af:button text="Edit" id="b15" icon="/images/edit_icon.png">
+                    <af:showPopupBehavior popupId="tsDaysPopup" triggerType="click"/>
+                </af:button>
+            </af:panelFormLayout>
+        </af:dialog>
+    </af:popup>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:TimeSheetsViewBean-->
 </ui:composition>

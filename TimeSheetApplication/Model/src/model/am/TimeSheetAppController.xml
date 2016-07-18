@@ -51,6 +51,15 @@
   <ViewUsage
     Name="StEnWeekVO1"
     ViewObjectName="model.vo.StEnWeekVO"/>
+  <ViewUsage
+    Name="TimeSheetDaysVO2"
+    ViewObjectName="model.vo.TimeSheetDaysVO"/>
+  <ViewUsage
+    Name="TimeSheetAttachmentsVO2"
+    ViewObjectName="model.vo.TimeSheetAttachmentsVO"/>
+  <ViewUsage
+    Name="TimeSheetAttachmentsVO3"
+    ViewObjectName="model.vo.TimeSheetAttachmentsVO"/>
   <ViewLinkUsage
     Name="TimeSheetWeekHoursVL"
     ViewLinkObjectName="model.vl.TimeSheetWeekHoursVL"
@@ -63,51 +72,23 @@
     SrcViewUsageName="model.am.TimeSheetAppController.TimeSheetRolesVO1"
     DstViewUsageName="model.am.TimeSheetAppController.TimeSheetUsersVO2"
     Reversed="false"/>
+  <ViewLinkUsage
+    Name="TimesheetAttachmentsWeeksVL"
+    ViewLinkObjectName="model.vl.TimesheetAttachmentsWeeksVL"
+    SrcViewUsageName="model.am.TimeSheetAppController.TimeSheetDaysVO2"
+    DstViewUsageName="model.am.TimeSheetAppController.TimeSheetAttachmentsVO2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="TimesheetAttachmentsWeeksVL1"
+    ViewLinkObjectName="model.vl.TimesheetAttachmentsWeeksVL"
+    SrcViewUsageName="model.am.TimeSheetAppController.TimeSheetDaysVO1"
+    DstViewUsageName="model.am.TimeSheetAppController.TimeSheetAttachmentsVO3"
+    Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">
     <Method
-      Name="getWeekList"
-      MethodName="getWeekList">
-      <Return
-        Name="_return_type_"
-        Type="java.util.ArrayList"/>
-      <Parameter
-        Name="systemDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
-      Name="getWeekList"
-      MethodName="getWeekList">
-      <Return
-        Name="_return_type_"
-        Type="java.util.ArrayList"/>
-      <Parameter
-        Name="systemDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
-      Name="initTimeSheet"
-      MethodName="initTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="addTimeSheetHours"
       MethodName="addTimeSheetHours">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="timeSheetId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="editTimeSheetHours"
-      MethodName="editTimeSheetHours">
       <Return
         Name="_return_type_"
         Type="void"/>
@@ -180,36 +161,6 @@
       <Parameter
         Name="timeSheetId"
         Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="editTimeSheetHours"
-      MethodName="editTimeSheetHours">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="timeSheetId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="getWeekList"
-      MethodName="getWeekList">
-      <Return
-        Name="_return_type_"
-        Type="java.util.ArrayList"/>
-      <Parameter
-        Name="systemDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
-      Name="initTimeSheet"
-      MethodName="initTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
     </Method>
     <Method
       Name="rejectTimeSheet"
@@ -331,16 +282,6 @@
         Type="java.math.BigDecimal"/>
     </Method>
     <Method
-      Name="createTimeSheet"
-      MethodName="createTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="uploadFile"
       MethodName="uploadFile">
       <Return
@@ -401,16 +342,6 @@
         Type="void"/>
     </Method>
     <Method
-      Name="createTimeSheet"
-      MethodName="createTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="createUsers"
       MethodName="createUsers">
       <Return
@@ -449,26 +380,6 @@
         Type="java.lang.Boolean"/>
     </Method>
     <Method
-      Name="editTimeSheetHours"
-      MethodName="editTimeSheetHours">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="timeSheetId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="getWeekList"
-      MethodName="getWeekList">
-      <Return
-        Name="_return_type_"
-        Type="java.util.ArrayList"/>
-      <Parameter
-        Name="systemDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="initSubmittedTS"
       MethodName="initSubmittedTS">
       <Return
@@ -477,16 +388,6 @@
       <Parameter
         Name="status"
         Type="java.lang.String"/>
-    </Method>
-    <Method
-      Name="initTimeSheet"
-      MethodName="initTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
     </Method>
     <Method
       Name="rejectTimeSheet"
@@ -588,51 +489,8 @@
         Type="java.lang.String"/>
     </Method>
     <Method
-      Name="saveRoleChange"
-      MethodName="saveRoleChange">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="userId"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="roleId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="getWeekList"
-      MethodName="getWeekList">
-      <Return
-        Name="_return_type_"
-        Type="java.util.ArrayList"/>
-      <Parameter
-        Name="systemDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
-      Name="initTimeSheet"
-      MethodName="initTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="addTimeSheetHours"
       MethodName="addTimeSheetHours">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="timeSheetId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="editTimeSheetHours"
-      MethodName="editTimeSheetHours">
       <Return
         Name="_return_type_"
         Type="void"/>
@@ -783,16 +641,6 @@
         Type="java.math.BigDecimal"/>
     </Method>
     <Method
-      Name="createTimeSheet"
-      MethodName="createTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="uploadFile"
       MethodName="uploadFile">
       <Return
@@ -832,51 +680,8 @@
         Type="java.lang.String"/>
     </Method>
     <Method
-      Name="saveRoleChange"
-      MethodName="saveRoleChange">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="userId"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="roleId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="getWeekList"
-      MethodName="getWeekList">
-      <Return
-        Name="_return_type_"
-        Type="java.util.ArrayList"/>
-      <Parameter
-        Name="systemDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
-      Name="initTimeSheet"
-      MethodName="initTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="java.math.BigDecimal"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="addTimeSheetHours"
       MethodName="addTimeSheetHours">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="timeSheetId"
-        Type="java.math.BigDecimal"/>
-    </Method>
-    <Method
-      Name="editTimeSheetHours"
-      MethodName="editTimeSheetHours">
       <Return
         Name="_return_type_"
         Type="void"/>
@@ -1027,16 +832,6 @@
         Type="java.math.BigDecimal"/>
     </Method>
     <Method
-      Name="createTimeSheet"
-      MethodName="createTimeSheet">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="currentDate"
-        Type="java.util.Date"/>
-    </Method>
-    <Method
       Name="uploadFile"
       MethodName="uploadFile">
       <Return
@@ -1076,17 +871,243 @@
         Type="java.lang.String"/>
     </Method>
     <Method
-      Name="saveRoleChange"
-      MethodName="saveRoleChange">
+      Name="saveTimeSheet"
+      MethodName="saveTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="createNewTimeSheet"
+      MethodName="createNewTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="currentDate"
+        Type="java.util.Date"/>
+    </Method>
+    <Method
+      Name="ViewAllTs"
+      MethodName="ViewAllTs">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="getAttachments"
+      MethodName="getAttachments">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="getUsersList"
+      MethodName="getUsersList">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="saveUserChange"
+      MethodName="saveUserChange">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="addTimeSheetHours"
+      MethodName="addTimeSheetHours">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="submitForApproval"
+      MethodName="submitForApproval">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="deleteTimeSheetHours"
+      MethodName="deleteTimeSheetHours">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
+      <Parameter
+        Name="timeSheetId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="approveTimeSheet"
+      MethodName="approveTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetID"
+        Type="java.math.BigDecimal"/>
+      <Parameter
+        Name="comments"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="rejectTimeSheet"
+      MethodName="rejectTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetID"
+        Type="java.math.BigDecimal"/>
+      <Parameter
+        Name="comments"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="saveUsers"
+      MethodName="saveUsers">
       <Return
         Name="_return_type_"
         Type="void"/>
       <Parameter
         Name="userId"
         Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="createUsers"
+      MethodName="createUsers">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="createRoles"
+      MethodName="createRoles">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="saveRoles"
+      MethodName="saveRoles">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
       <Parameter
         Name="roleId"
         Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="deleteTimeSheetRoles"
+      MethodName="deleteTimeSheetRoles">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
+    </Method>
+    <Method
+      Name="save"
+      MethodName="save">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="cancel"
+      MethodName="cancel">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="createTasks"
+      MethodName="createTasks">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="saveTasks"
+      MethodName="saveTasks">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="taskId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="deleteTimeSheetTasks"
+      MethodName="deleteTimeSheetTasks">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
+    </Method>
+    <Method
+      Name="deleteTimeSheetUsers"
+      MethodName="deleteTimeSheetUsers">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
+    </Method>
+    <Method
+      Name="unSubmitTimeSheet"
+      MethodName="unSubmitTimeSheet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="timeSheetId"
+        Type="java.math.BigDecimal"/>
+    </Method>
+    <Method
+      Name="uploadFile"
+      MethodName="uploadFile">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="fileName"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="contentType"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="file"
+        Type="oracle.jbo.domain.BlobDomain"/>
+    </Method>
+    <Method
+      Name="initSubmittedTS"
+      MethodName="initSubmittedTS">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="status"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="updatePassword"
+      MethodName="updatePassword">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="password"
+        Type="java.lang.String"/>
     </Method>
     <Method
       Name="saveTimeSheet"

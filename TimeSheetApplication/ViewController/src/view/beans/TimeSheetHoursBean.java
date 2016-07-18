@@ -20,7 +20,7 @@ public class TimeSheetHoursBean {
     public TimeSheetHoursBean() {
     }
 
-    public String initTimeSheet() {
+ /*   public String initTimeSheet() {
         // Add event code here...
         ADFContext con=ADFContext.getCurrent();
         Map scope = con.getPageFlowScope();
@@ -40,7 +40,7 @@ public class TimeSheetHoursBean {
             }
         return "view";
 
-    }
+    }*/
     public Date getCurrentDate(){
         return new Date();
         }
@@ -48,12 +48,11 @@ public class TimeSheetHoursBean {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
         }
 
-    public void createTimeSheet() {
+ /*   public void createTimeSheet() {
         // Add event code here...
         BindingContainer bc=getBindings();
         OperationBinding opr = bc.getOperationBinding("createTimeSheet");
         opr.execute();
-
-    }
+    }*/
 }
 

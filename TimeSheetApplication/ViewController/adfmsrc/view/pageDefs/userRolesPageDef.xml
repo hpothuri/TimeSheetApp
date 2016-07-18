@@ -37,15 +37,15 @@
         <Item Value="UserName"/>
       </AttrNames>
     </attributeValues>
-    <methodAction id="saveRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUsers"
+    <!--<methodAction id="saveRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUsers"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="userId" NDType="java.math.BigDecimal"/>
-    </methodAction>
-    <methodAction id="saveUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUsers"
+    </methodAction>-->
+    <!--<methodAction id="saveUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveUsers"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="userId" NDType="java.math.BigDecimal"/>
-    </methodAction>
+    </methodAction>-->
   </bindings>
 </pageDefinition>

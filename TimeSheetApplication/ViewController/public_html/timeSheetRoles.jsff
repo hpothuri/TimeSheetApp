@@ -4,13 +4,14 @@
   <c:set var="viewcontrollerBundle" value="#{adfBundle['view.ViewControllerBundle']}"/>
   <af:panelGroupLayout id="pgl1" layout="vertical">
     <af:toolbar id="t1">
-      <af:button text="#{viewcontrollerBundle.New}" id="b1" action="#{TimeSheetAdminPageBean.newRolesAction}">
+      <af:button text="#{viewcontrollerBundle.New}" id="b1" action="#{TimeSheetAdminPageBean.newRolesAction}"
+                 icon="/images/New-icon.png">
         <af:showPopupBehavior popupId="rolesPopUp" triggerType="click"/>
       </af:button>
-      <af:button text="#{viewcontrollerBundle.Edit}" id="b2">
+      <af:button text="#{viewcontrollerBundle.Edit}" id="b2" icon="/images/edit_icon.png">
         <af:showPopupBehavior popupId="rolesPopUp" triggerType="click"/>
       </af:button>
-      <af:button text="#{viewcontrollerBundle.Delete}" id="b3">
+      <af:button text="#{viewcontrollerBundle.Delete}" id="b3" icon="/images/delete_16.png">
         <af:showPopupBehavior popupId="delRolesPopup" triggerType="click"/>
       </af:button>
     </af:toolbar>
@@ -59,9 +60,10 @@
               <f:validator binding="#{bindings.Description.validator}"/>
             </af:inputText>
             <af:toolbar id="t3">
-              <af:button text="#{viewcontrollerBundle.Save}" id="b4" action="#{TimeSheetAdminPageBean.saveRolesAction}"/>
+              <af:button text="#{viewcontrollerBundle.Save}" id="b4" action="#{TimeSheetAdminPageBean.saveRolesAction}"
+                         icon="/images/save.png"/>
               <af:button text="#{viewcontrollerBundle.Cancel}" id="b5" action="#{TimeSheetAdminPageBean.cancelRolesAction}" immediate="true"
-                         partialSubmit="false"/>
+                         partialSubmit="false" icon="/images/No_icon.png"/>
             </af:toolbar>
           </af:panelFormLayout>
         </af:panelGroupLayout>
@@ -69,13 +71,15 @@
     </af:popup>
     <af:popup childCreation="deferred" autoCancel="disabled" id="delRolesPopup"
               binding="#{TimeSheetAdminPageBean.delRolesPopup}">
-      <af:dialog id="d2" type="none" contentWidth="200">
+      <af:dialog id="d2" type="none" contentWidth="150">
         <f:facet name="buttonBar"/>
         <af:panelGroupLayout id="pgl3" layout="vertical">
-          <af:outputText value="#{viewcontrollerBundle.DoyouwanttoDelete}" id="ot5"/>
+          <af:outputText value="#{viewcontrollerBundle.DoyouwanttoDelete}" id="ot5" inlineStyle="font-weight:bold;"/>
           <af:toolbar id="t4">
-            <af:button text="#{viewcontrollerBundle.Yes}" id="b6" action="#{TimeSheetAdminPageBean.deleteRolesAction}"/>
-            <af:button text="#{viewcontrollerBundle.No}" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteRole}"/>
+            <af:button text="#{viewcontrollerBundle.Yes}" id="b6" action="#{TimeSheetAdminPageBean.deleteRolesAction}"
+                       icon="/images/yes-icone.png"/>
+            <af:button text="#{viewcontrollerBundle.No}" id="b7" action="#{TimeSheetAdminPageBean.undoDeleteRole}"
+                       icon="/images/No_icon.png"/>
           </af:toolbar>
         </af:panelGroupLayout>
       </af:dialog>

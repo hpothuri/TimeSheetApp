@@ -75,7 +75,11 @@ public class LoginBean {
                                  "Incorrect user name or password was specified");
             ctx.addMessage(null, msg);
         } catch (LoginException e) {
-            e.printStackTrace();
+            FacesMessage msg =
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Login",
+                                 "Invalid Login");
+            ctx.addMessage(null, msg);
+           // e.printStackTrace();
         }
         return null;
 

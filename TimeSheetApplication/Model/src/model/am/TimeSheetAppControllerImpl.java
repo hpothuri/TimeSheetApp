@@ -1,19 +1,12 @@
 package model.am;
 
-import java.io.File;
-
 import java.math.BigDecimal;
 
 import java.sql.Timestamp;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import java.util.ArrayList;
 import java.util.Date;
-
-import java.util.List;
 
 import java.util.Map;
 
@@ -37,17 +30,11 @@ import model.vo.TimesheetUsersMappingVOImpl;
 import model.vo.TimesheetUsersMappingVORowImpl;
 import model.vo.USerRoleTransVOImpl;
 import model.vo.WeeksVVOImpl;
-import model.vo.WeeksVVORowImpl;
 
 import oracle.adf.share.ADFContext;
 
 import oracle.jbo.Key;
-import oracle.jbo.Row;
-import oracle.jbo.RowIterator;
 import oracle.jbo.RowSetIterator;
-import oracle.jbo.ViewCriteria;
-import oracle.jbo.ViewCriteriaRow;
-import oracle.jbo.ViewObject;
 import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.server.ApplicationModuleImpl;
 import oracle.jbo.server.ViewLinkImpl;
@@ -133,12 +120,10 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
      * @param systemDate
      * @return
      */
-    public ArrayList getWeekList(Date systemDate) {
+    /*  public ArrayList getWeekList(Date systemDate) {
         SimpleDateFormat sdfr = new SimpleDateFormat("dd/MMM/yyyy");
-        System.out.println("getweeklist systemDate " + systemDate);
         String date = sdfr.format(systemDate);
         WeeksVVOImpl weekVO = getWeeksVVO1();
-        System.out.println("getweeklist date " + date);
         weekVO.setsystemdate(date);
         weekVO.executeQuery();
         ArrayList weekList;
@@ -148,15 +133,14 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         while (rsi.hasNext()) {
             currentRow = (WeeksVVORowImpl) rsi.next();
             weekList.add(currentRow.getWeek());
-            System.out.println("getweeklist getweek " + currentRow.getWeek());
         }
         return weekList;
     }
-
+*/
     /**for initializing timesheet
      * @param currentDate
      */
-    public BigDecimal initTimeSheet(Date currentDate) {
+    /*  public BigDecimal initTimeSheet(Date currentDate) {
         // viewTs();
         SimpleDateFormat sdfr = new SimpleDateFormat("dd/MMM/yyyy");
         String date = sdfr.format(currentDate);
@@ -185,11 +169,10 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         }
         itr.closeRowSetIterator();
         addTimeSheetHours(timeSheetId);
-        return timeSheetId; //null;
+        return timeSheetId;
     }
-
-    public void createTimeSheet(Date currentDate) {
-        System.out.println("inside create timesheet ...." + currentDate);
+*/
+    /*   public void createTimeSheet(Date currentDate) {
         List<String> weeksList = getWeekList(currentDate);
 
         for (String temp : weeksList) {
@@ -201,12 +184,6 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
 
             boolean flag = findWeekExists(weekSt, weekEn);
             if (flag == true) {
-                /*       ViewCriteria vc = weekTsVO.getViewCriteria("TsFindWeekExistsVC");
-
-                weekTsVO.applyViewCriteria(vc);
-                weekTsVO.setNamedWhereClauseParam("p_week_st_date", stDate);
-                weekTsVO.setNamedWhereClauseParam("p_week_en_date", enDate);
-                weekTsVO.executeQuery();*/
                 break;
             } else {
 
@@ -217,20 +194,17 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
                 weekTsRow.setWeekEndDate(new Timestamp(enDate.getTime()));
                 weekTsVO.insertRow(weekTsRow);
                 weekTsVO.setApplyViewCriteriaNames(null);
-                //  weekTsVO.setCurrentRow(weekTsRow);
-                // break;
             }
 
         }
         save();
-        //weekTsRow.setWeekStartDate(value);
     }
-
+*/
     /** for editing timesheet hours for the given timesheetid
      * @param timeSheetId
      */
 
-    public void editTimeSheetHours(BigDecimal timeSheetId) {
+    /*   public void editTimeSheetHours(BigDecimal timeSheetId) {
 
         TimeSheetWeekVOImpl weekVO = getTimeSheetWeekVO1();
         TimeSheetWeekVORowImpl weekRow = (TimeSheetWeekVORowImpl) weekVO.getCurrentRow();
@@ -243,6 +217,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
             daysRow.getDay5() + daysRow.getDay6() + daysRow.getDay7();
         weekRow.setTotalHours(totalHours);
     }
+*/
 
     /** for creating timesheet hours with default values for the given timesheet id
      *
@@ -261,7 +236,6 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         daysRow.setDay7(0);
         daysVO.insertRow(daysRow);
         save();
-
     }
 
     public void submitForApproval(BigDecimal timeSheetId) {
@@ -269,8 +243,8 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         TimeSheetWeekVOImpl weekVO = getTimeSheetWeekVO1();
         TimeSheetWeekVORowImpl weekRow = (TimeSheetWeekVORowImpl) weekVO.getCurrentRow();
         int totalHours = 0;
-        totalHours = getTimeSheetHours(timeSheetId); //weekRow.getTotalHours();
-        weekRow.setTotalHours(totalHours); // + getTimeSheetHours(timeSheetId));
+        totalHours = getTimeSheetHours(timeSheetId);
+        weekRow.setTotalHours(totalHours);
         weekRow.setStatus("Submitted");
         weekRow.setSubmittedBy(userId);
         weekRow.setSubmittedTs(new Timestamp(new Date().getTime()));
@@ -335,18 +309,15 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         TimesheetUsersMappingVORowImpl mappingRow = (TimesheetUsersMappingVORowImpl) mappingVO.createRow();
         mappingRow.setTimeSheetId(timeSheetId);
         mappingRow.setSubmittedBy(getUserId());
-        //mappingRow.setSubmittedTo(value);
         mappingVO.insertRow(mappingRow);
         save();
     }
 
     public void approveTimeSheet(BigDecimal timeSheetID, String comments) {
-        System.out.println("inside approvetimesheet");
         TimeSheetWeekVOImpl timeSheetVO = getTimeSheetWeekVO1();
         TimeSheetWeekVORowImpl timeSheetRow = (TimeSheetWeekVORowImpl) timeSheetVO.getCurrentRow();
         timeSheetRow.setStatus("Approved");
         timeSheetRow.setApproverComments(comments);
-        System.out.println("added status");
         timeSheetRow.setApprovedBy(getUserId());
         timeSheetRow.setApprovedTs(new Timestamp(new Date().getTime()));
         //mappingRow.setSubmittedBy(value);
@@ -356,27 +327,23 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
     }
 
     public void rejectTimeSheet(BigDecimal timeSheetID, String comments) {
-        System.out.println("inside rejectTimeSheet");
         TimeSheetWeekVOImpl timeSheetVO = getTimeSheetWeekVO1();
         TimeSheetWeekVORowImpl timeSheetRow = (TimeSheetWeekVORowImpl) timeSheetVO.getCurrentRow();
         timeSheetRow.setStatus("Rejected");
         timeSheetRow.setApproverComments(comments);
-        System.out.println("added status");
         //mappingRow.setSubmittedBy(value);
         //mappingRow.setSubmittedTo(value);
         //mappingRow.setApprovedBy(value);
         save();
     }
 
-    public void viewTs() {
+    /*   public void viewTs() {
         TimeSheetWeekVOImpl tsWeekVO = getTimeSheetWeekVO1();
         long rowCount = tsWeekVO.getEstimatedRowCount();
         Date currentDate = new Date();
         if (rowCount == 0) {
-            //  initTimeSheet(currentDate);
             System.out.println("no rows");
         } else {
-
             SimpleDateFormat sdfr = new SimpleDateFormat("dd/MMM/yyyy");
             String date = sdfr.format(currentDate);
             String whereClause =
@@ -386,6 +353,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
             tsWeekVO.executeQuery();
         }
     }
+*/
 
     /**
      * Container's getter for TimeSheetRolesVO1.
@@ -443,7 +411,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         TimeSheetRolesVOImpl rolesVO = getTimeSheetRolesVO1();
         TimeSheetRolesVORowImpl rolesRow = (TimeSheetRolesVORowImpl) rolesVO.getRow(new Key(new Object[] { roleId }));
         rolesVO.setCurrentRow(rolesRow);
-        // getDBTransaction().commit();
+        save();
     }
 
     public Boolean deleteTimeSheetRoles() {
@@ -452,11 +420,9 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         rolesRow.remove();
         long count = rolesVO.getEstimatedRowCount();
         if (count == 0) {
-            //     getDBTransaction().commit();
             save();
             return Boolean.FALSE;
         } else {
-            //getDBTransaction().commit();
             save();
             return Boolean.TRUE;
         }
@@ -489,10 +455,10 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         tasksRow.remove();
         long count = tasksVO.getEstimatedRowCount();
         if (count == 0) {
-            //     getDBTransaction().commit();
+            save();
             return Boolean.FALSE;
         } else {
-            //getDBTransaction().commit();
+            save();
             return Boolean.TRUE;
         }
     }
@@ -503,15 +469,15 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         usersRow.remove();
         long count = usersVO.getEstimatedRowCount();
         if (count == 0) {
-            //     getDBTransaction().commit();
+            save();
             return Boolean.FALSE;
         } else {
-            //getDBTransaction().commit();
+            save();
             return Boolean.TRUE;
         }
     }
 
-    private boolean findWeekExists(String weekSt, String weekEn) {
+    /*   private boolean findWeekExists(String weekSt, String weekEn) {
         //check from timesheetweek
         TimeSheetWeekVOImpl weekVO = getTimeSheetWeekVO1();
 
@@ -523,25 +489,22 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         weekVO.executeQuery();
 
         long count = weekVO.getEstimatedRowCount();
-        //  weekVO.setApplyViewCriteriaNames(null);
-        System.out.println("count..." + count);
         if (count > 0) {
             return true;
         }
         return false;
     }
-
-    private Date getDate(String dateStr) {
-        System.out.println("inside getdate" + dateStr);
+*/
+    /*  private Date getDate(String dateStr) {
         DateFormat format = new SimpleDateFormat("dd-MM-yy");
         Date d = null;
         try {
             d = format.parse(dateStr);
-            System.out.println("date..." + d);
         } catch (ParseException e) {
         }
         return d;
     }
+*/
 
     /**
      * Container's getter for TimeSheetAttachmentsVO1.
@@ -559,7 +522,6 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         BigDecimal weekId = tsRow.getWeekId();
 
         row.setTimesheetId(weekId);
-        System.out.println("service current id..." + weekId);
         row.setFileName(fileName);
         row.setFileType(contentType);
         row.setAttachedFile(file);
@@ -573,25 +535,16 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
 
     public void initSubmittedTS(String status) {
         TimeSheetWeekVOImpl vo = getTimeSheetWeekVO1();
-        System.out.println("In servive initsubmit" + status);
         if (status.equalsIgnoreCase("Submitted")) {
-            //  vo.setWhereClause("STATUS ='Approved' or  or STATUS='Rejected'");
-            //  System.out.println("In Submitted");
-            //  vo.executeQuery();
             vo.setWhereClause("STATUS='Submitted' AND SUBMITTED_BY IN (select user_id from time_sheet_users where MANAGER_ID=" +
                               getUserId() + ")");
             vo.executeQuery();
-        } //if (status.equalsIgnoreCase("All")) {
-        else {
+        } else {
             vo.setWhereClause(null);
             vo.executeQuery();
             vo.setWhereClause("SUBMITTED_BY=" + getUserId());
-            // vo.setSortBy("WEEK_START_DATE desc");
             vo.executeQuery();
-            System.out.println("In all");
         }
-
-        System.out.println("executed query");
     }
 
     public void updatePassword(String userName, String password) {
@@ -606,21 +559,19 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         save();
     }
 
-    public void saveRoleChange(BigDecimal userId, BigDecimal roleId) {
+    /*public void saveRoleChange(BigDecimal userId, BigDecimal roleId) {
         TimeSheetUsersVOImpl vo = getTimeSheetUsersVO1();
-        System.out.println("serv user ID...." + userId);
         vo.setWhereClause("USER_ID =" + userId);
         vo.executeQuery();
         long count = vo.getEstimatedRowCount();
         if (count > 0) {
             TimeSheetUsersVORowImpl row = (TimeSheetUsersVORowImpl) vo.first();
             row.setRoleId(roleId);
-            System.out.println("serv Role ID...." + roleId);
         }
         save();
         vo.setWhereClause(null);
         vo.executeQuery();
-    }
+    }*/
 
     public void saveUserChange() {
         save();
@@ -652,7 +603,6 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         weekRow.setStatus("Open");
         weekRow.setSubmittedBy(userId);
         weekRow.setSubmittedTs(new Timestamp(new Date().getTime()));
-        //   submitTimeSheet(timeSheetId);
         save();
     }
 
@@ -661,7 +611,6 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         vo.setNamedWhereClauseParam("systemdate", new java.sql.Date(currentDate.getTime()));
         vo.executeQuery();
         if (vo.getEstimatedRowCount() > 0) {
-            System.out.println("in side if count...");
             StEnWeekVORowImpl row = (StEnWeekVORowImpl) vo.first();
             TimeSheetWeekVOImpl tsWeekVo = getTimeSheetWeekVO1();
             Date wkStDate = row.getWeekStartDate();
@@ -672,7 +621,6 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
             tsWeekVo.executeQuery();
 
             if (tsWeekVo.getEstimatedRowCount() == 0) {
-                System.out.println("inside tsweek if " + wkStDate + "end date..." + wkEnDate);
                 TimeSheetWeekVORowImpl weekTsRow = (TimeSheetWeekVORowImpl) tsWeekVo.createRow();
                 weekTsRow.setStatus("Open");
                 weekTsRow.setTotalHours(0);
@@ -681,15 +629,8 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
                 weekTsRow.setSubmittedBy(getUserId());
                 weekTsRow.setSubmittedTs(new Timestamp(new Date().getTime()));
                 tsWeekVo.insertRow(weekTsRow);
-                System.out.println("inserted....row");
-                // tsWeekVo.setApplyViewCriteriaNames(null);
-                // tsWeekVo.setWhereClause(null);
-                //  tsWeekVo.executeQuery();
-                System.out.println("view criteia to null...");
             }
         }
-
-
     }
 
     /**
@@ -707,7 +648,7 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
     }
 
     public void getAttachments() {
-        TimeSheetAttachmentsVOImpl vo = getTimeSheetAttachmentsVO1();
+        TimeSheetAttachmentsVOImpl vo = getTimeSheetAttachmentsVO3();
         vo.setWhereClause("CREATED_BY=" + getUserId());
         vo.executeQuery();
     }
@@ -717,5 +658,45 @@ public class TimeSheetAppControllerImpl extends ApplicationModuleImpl implements
         vo.setWhereClause(null);
         vo.executeQuery();
 
+    }
+
+    /**
+     * Container's getter for TimeSheetDaysVO2.
+     * @return TimeSheetDaysVO2
+     */
+    public TimeSheetDaysVOImpl getTimeSheetDaysVO2() {
+        return (TimeSheetDaysVOImpl) findViewObject("TimeSheetDaysVO2");
+    }
+
+    /**
+     * Container's getter for TimeSheetAttachmentsVO2.
+     * @return TimeSheetAttachmentsVO2
+     */
+    public TimeSheetAttachmentsVOImpl getTimeSheetAttachmentsVO2() {
+        return (TimeSheetAttachmentsVOImpl) findViewObject("TimeSheetAttachmentsVO2");
+    }
+
+    /**
+     * Container's getter for TimesheetAttachmentsWeeksVL.
+     * @return TimesheetAttachmentsWeeksVL
+     */
+    public ViewLinkImpl getTimesheetAttachmentsWeeksVL() {
+        return (ViewLinkImpl) findViewLink("TimesheetAttachmentsWeeksVL");
+    }
+
+    /**
+     * Container's getter for TimeSheetAttachmentsVO3.
+     * @return TimeSheetAttachmentsVO3
+     */
+    public TimeSheetAttachmentsVOImpl getTimeSheetAttachmentsVO3() {
+        return (TimeSheetAttachmentsVOImpl) findViewObject("TimeSheetAttachmentsVO3");
+    }
+
+    /**
+     * Container's getter for TimesheetAttachmentsWeeksVL1.
+     * @return TimesheetAttachmentsWeeksVL1
+     */
+    public ViewLinkImpl getTimesheetAttachmentsWeeksVL1() {
+        return (ViewLinkImpl) findViewLink("TimesheetAttachmentsWeeksVL1");
     }
 }

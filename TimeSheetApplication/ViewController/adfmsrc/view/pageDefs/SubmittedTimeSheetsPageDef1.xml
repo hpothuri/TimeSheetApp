@@ -1,99 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="SubmittedTimeSheetsPageDef1"
                 Package="view.pageDefs">
-  <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-    <iterator Binds="TimeSheetWeekVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
-              id="TimeSheetWeekVO1Iterator"/>
-    <iterator Binds="TimeSheetDaysVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
-              id="TimeSheetDaysVO1Iterator"/>
-    <iterator Binds="TimeSheetAttachmentsVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
-              id="TimeSheetAttachmentsVO1Iterator"/>
-  </executables>
-  <bindings>
-    <tree IterBinding="TimeSheetWeekVO1Iterator" id="TimeSheetWeekVO1">
-      <nodeDefinition DefName="model.vo.TimeSheetWeekVO" Name="TimeSheetWeekVO10">
-        <AttrNames>
-          <Item Value="TimeSheetId"/>
-          <Item Value="WeekStartDate"/>
-          <Item Value="WeekEndDate"/>
-          <Item Value="TotalHours"/>
-          <Item Value="TotalExpences"/>
-          <Item Value="ApproverComments"/>
-          <Item Value="UserId"/>
-          <Item Value="Status"/>
-          <Item Value="SubmittedBy"/>
-          <Item Value="SubmittedTs"/>
-          <Item Value="ApprovedTs"/>
-          <Item Value="ApprovedBy"/>
-          <Item Value="TaskId"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="TimeSheetDaysVO1Iterator" id="TimeSheetDaysVO1">
-      <nodeDefinition DefName="model.vo.TimeSheetDaysVO" Name="TimeSheetDaysVO10">
-        <AttrNames>
-          <Item Value="WeekId"/>
-          <Item Value="Day1"/>
-          <Item Value="Day2"/>
-          <Item Value="Day3"/>
-          <Item Value="Day4"/>
-          <Item Value="Day5"/>
-          <Item Value="Day6"/>
-          <Item Value="Day7"/>
-          <Item Value="TimeSheetId"/>
-          <Item Value="TaskId"/>
-          <Item Value="Notes"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <methodAction id="approveTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="approveTimeSheet"
-                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
-                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
-      <NamedData NDName="timeSheetID" NDType="java.math.BigDecimal"/>
-      <NamedData NDName="comments" NDType="java.lang.String"/>
-    </methodAction>
-    <methodAction id="rejectTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rejectTimeSheet"
-                  IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
-                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
-      <NamedData NDName="timeSheetID" NDType="java.math.BigDecimal"/>
-      <NamedData NDName="comments" NDType="java.lang.String"/>
-    </methodAction>
-    <attributeValues IterBinding="TimeSheetWeekVO1Iterator" id="Status">
-      <AttrNames>
-        <Item Value="Status"/>
-      </AttrNames>
-    </attributeValues>
-    <tree IterBinding="TimeSheetAttachmentsVO1Iterator" id="TimeSheetAttachmentsVO1">
-      <nodeDefinition DefName="model.vo.TimeSheetAttachmentsVO" Name="TimeSheetAttachmentsVO10">
-        <AttrNames>
-          <Item Value="AttachmentId"/>
-          <Item Value="TimesheetId"/>
-          <Item Value="FileType"/>
-          <Item Value="FileName"/>
-          <Item Value="AttachedFile"/>
-          <Item Value="CreatedBy"/>
-          <Item Value="CreatedDate"/>
-          <Item Value="LastUpdatedBy"/>
-          <Item Value="LastUpdatedDate"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <attributeValues IterBinding="TimeSheetAttachmentsVO1Iterator" id="AttachedFile">
-      <AttrNames>
-        <Item Value="AttachedFile"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="TimeSheetWeekVO1Iterator" id="TimeSheetId">
-      <AttrNames>
-        <Item Value="TimeSheetId"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="WeekId">
-      <AttrNames>
-        <Item Value="WeekId"/>
-      </AttrNames>
-    </attributeValues>
-  </bindings>
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="TimeSheetWeekVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+                  id="TimeSheetWeekVO1Iterator"/>
+        <iterator Binds="TimeSheetDaysVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+                  id="TimeSheetDaysVO1Iterator"/>
+        <iterator Binds="TimeSheetAttachmentsVO1" RangeSize="25" DataControl="TimeSheetAppControllerDataControl"
+                  id="TimeSheetAttachmentsVO1Iterator"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="TimeSheetWeekVO1Iterator" id="TimeSheetWeekVO1">
+            <nodeDefinition DefName="model.vo.TimeSheetWeekVO" Name="TimeSheetWeekVO10">
+                <AttrNames>
+                    <Item Value="TimeSheetId"/>
+                    <Item Value="WeekStartDate"/>
+                    <Item Value="WeekEndDate"/>
+                    <Item Value="TotalHours"/>
+                    <Item Value="TotalExpences"/>
+                    <Item Value="ApproverComments"/>
+                    <Item Value="UserId"/>
+                    <Item Value="Status"/>
+                    <Item Value="SubmittedBy"/>
+                    <Item Value="SubmittedTs"/>
+                    <Item Value="ApprovedTs"/>
+                    <Item Value="ApprovedBy"/>
+                    <Item Value="TaskId"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="TimeSheetDaysVO1Iterator" id="TimeSheetDaysVO1">
+            <nodeDefinition DefName="model.vo.TimeSheetDaysVO" Name="TimeSheetDaysVO10">
+                <AttrNames>
+                    <Item Value="WeekId"/>
+                    <Item Value="Day1"/>
+                    <Item Value="Day2"/>
+                    <Item Value="Day3"/>
+                    <Item Value="Day4"/>
+                    <Item Value="Day5"/>
+                    <Item Value="Day6"/>
+                    <Item Value="Day7"/>
+                    <Item Value="TimeSheetId"/>
+                    <Item Value="TaskId"/>
+                    <Item Value="Notes"/>
+                    <Item Value="IsAttached"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <methodAction id="approveTimeSheet" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="approveTimeSheet" IsViewObjectMethod="false"
+                      DataControl="TimeSheetAppControllerDataControl"
+                      InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+            <NamedData NDName="timeSheetID" NDType="java.math.BigDecimal"/>
+            <NamedData NDName="comments" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="rejectTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rejectTimeSheet"
+                      IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
+                      InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
+            <NamedData NDName="timeSheetID" NDType="java.math.BigDecimal"/>
+            <NamedData NDName="comments" NDType="java.lang.String"/>
+        </methodAction>
+        <attributeValues IterBinding="TimeSheetWeekVO1Iterator" id="Status">
+            <AttrNames>
+                <Item Value="Status"/>
+            </AttrNames>
+        </attributeValues>
+        <tree IterBinding="TimeSheetAttachmentsVO1Iterator" id="TimeSheetAttachmentsVO1">
+            <nodeDefinition DefName="model.vo.TimeSheetAttachmentsVO" Name="TimeSheetAttachmentsVO10">
+                <AttrNames>
+                    <Item Value="AttachmentId"/>
+                    <Item Value="TimesheetId"/>
+                    <Item Value="FileType"/>
+                    <Item Value="FileName"/>
+                    <Item Value="AttachedFile"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="LastUpdatedBy"/>
+                    <Item Value="LastUpdatedDate"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <attributeValues IterBinding="TimeSheetAttachmentsVO1Iterator" id="AttachedFile">
+            <AttrNames>
+                <Item Value="AttachedFile"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="TimeSheetWeekVO1Iterator" id="TimeSheetId">
+            <AttrNames>
+                <Item Value="TimeSheetId"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="TimeSheetDaysVO1Iterator" id="WeekId">
+            <AttrNames>
+                <Item Value="WeekId"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
 </pageDefinition>

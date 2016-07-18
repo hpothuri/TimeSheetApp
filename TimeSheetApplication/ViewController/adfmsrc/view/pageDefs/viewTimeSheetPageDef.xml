@@ -8,11 +8,11 @@
               id="TimeSheetDaysVO1Iterator"/>
   </executables>
   <bindings>
-    <methodAction id="initTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initTimeSheet"
+    <!--<methodAction id="initTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initTimeSheet"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="currentDate" NDType="java.util.Date"/>
-    </methodAction>
+    </methodAction>-->
     <tree IterBinding="TimeSheetDaysVO1Iterator" id="TimeSheetDaysVO1">
       <nodeDefinition DefName="model.vo.TimeSheetDaysVO" Name="TimeSheetDaysVO10">
         <AttrNames>

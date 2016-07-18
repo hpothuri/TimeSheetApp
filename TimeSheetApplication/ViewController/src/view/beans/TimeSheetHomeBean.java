@@ -42,7 +42,7 @@ public class TimeSheetHomeBean {
     private RichInputText confirmNewPwd;
     private RichPopup changePwdPopup;
     private RichPopup changeRolePopup;
-   
+
     public TimeSheetHomeBean() {
     }
 
@@ -130,10 +130,6 @@ public class TimeSheetHomeBean {
 
     public String cancelChangePassword() {
         // Add event code here...
-        /*       BindingContainer bc = getBindings();
-        OperationBinding opr = bc.getOperationBinding("cancel");
-        opr.execute();*/
-
         changePwdPopup.hide();
         return null;
     }
@@ -161,7 +157,6 @@ public class TimeSheetHomeBean {
         }
     }
 
-
     public void setChangeRolePopup(RichPopup changeRolePopup) {
         this.changeRolePopup = changeRolePopup;
     }
@@ -177,27 +172,9 @@ public class TimeSheetHomeBean {
 
     }
 
- /*   public String saveRoleChange() {
-        // Add event code here...
-        BindingContainer bc = getBindings();
-        OperationBinding opr = bc.getOperationBinding("saveRoleChange");
-        AttributeBinding attr1 = (AttributeBinding) bc.get("UserId");
-        BigDecimal userId = (BigDecimal) attr1.getInputValue();
-        opr.getParamsMap().put("userId", userId);
-        System.out.println("user ID...." + userId);
-        AttributeBinding attr2 = (AttributeBinding) bc.get("RoleId");
-        BigDecimal roleId = (BigDecimal) attr2.getInputValue();
-        System.out.println("Role ID...." + roleId);
-        opr.getParamsMap().put("roleId", roleId);
-        opr.execute();
-        System.out.println("after execute");
-        changeRolePopup.hide();
-        return null;
-    }*/
-
     public String createUserRole() {
         // Add event code here...
-        
+
         BindingContainer bc = getBindings();
         DCIteratorBinding itr = (DCIteratorBinding) bc.get("USerRoleTransVO1Iterator");
         ViewObject vo = itr.getViewObject();
@@ -214,7 +191,6 @@ public class TimeSheetHomeBean {
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("saveUserChange");
         opr.execute();
-        System.out.println("after execute");
         changeRolePopup.hide();
         return null;
     }

@@ -15,6 +15,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class TimeSheetAttachmentsVORowImpl extends ViewRowImpl {
+
     public static final int ENTITY_TIMESHEETATTACHMENTSEO = 0;
 
     /**
@@ -30,7 +31,8 @@ public class TimeSheetAttachmentsVORowImpl extends ViewRowImpl {
         CreatedDate,
         LastUpdatedBy,
         LastUpdatedDate;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -52,6 +54,7 @@ public class TimeSheetAttachmentsVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int ATTACHMENTID = AttributesEnum.AttachmentId.index();
     public static final int TIMESHEETID = AttributesEnum.TimesheetId.index();
     public static final int FILETYPE = AttributesEnum.FileType.index();

@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 import model.eo.TimeSheetDaysEOImpl;
 
+import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.BFileDomain;
 import oracle.jbo.domain.DBSequence;
@@ -37,6 +38,8 @@ public class TimeSheetDaysVORowImpl extends ViewRowImpl {
         TimeSheetId,
         TaskId,
         Notes,
+        IsAttached,
+        TimeSheetAttachmentsVO,
         TimeSheetTasksVO1;
         static AttributesEnum[] vals = null;
         ;
@@ -74,6 +77,8 @@ public class TimeSheetDaysVORowImpl extends ViewRowImpl {
     public static final int TIMESHEETID = AttributesEnum.TimeSheetId.index();
     public static final int TASKID = AttributesEnum.TaskId.index();
     public static final int NOTES = AttributesEnum.Notes.index();
+    public static final int ISATTACHED = AttributesEnum.IsAttached.index();
+    public static final int TIMESHEETATTACHMENTSVO = AttributesEnum.TimeSheetAttachmentsVO.index();
     public static final int TIMESHEETTASKSVO1 = AttributesEnum.TimeSheetTasksVO1.index();
 
     /**
@@ -265,6 +270,29 @@ public class TimeSheetDaysVORowImpl extends ViewRowImpl {
      */
     public void setNotes(String value) {
         setAttributeInternal(NOTES, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute IsAttached.
+     * @return the IsAttached
+     */
+    public Boolean getIsAttached() {
+        return (Boolean) getAttributeInternal(ISATTACHED);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute IsAttached.
+     * @param value value to set the  IsAttached
+     */
+    public void setIsAttached(Boolean value) {
+        setAttributeInternal(ISATTACHED, value);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link TimeSheetAttachmentsVO.
+     */
+    public RowIterator getTimeSheetAttachmentsVO() {
+        return (RowIterator) getAttributeInternal(TIMESHEETATTACHMENTSVO);
     }
 
     /**

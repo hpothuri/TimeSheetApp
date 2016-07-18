@@ -39,13 +39,13 @@ public class TimeSheetUsersBean {
         return "home";
     }
 
-    public String createUsersView() {
+ /*   public String createUsersView() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("createUsers");
         opr.execute();
         return "createUser";
-    }
+    }*/
 
     public BindingContainer getBindings() {
         return BindingContext.getCurrent().getCurrentBindingsEntry();

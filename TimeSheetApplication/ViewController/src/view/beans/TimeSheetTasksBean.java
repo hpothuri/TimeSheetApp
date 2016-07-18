@@ -26,19 +26,19 @@ public class TimeSheetTasksBean {
     public TimeSheetTasksBean() {
     }
 
-    public String createTaskView() {
+  /*  public String createTaskView() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("createTasks");
         opr.execute();
         return "createTasks";
     }
-
+*/
     private BindingContainer getBindings() {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
     }
 
-    public String addTasks() {
+    /*public String addTasks() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("saveTasks");
@@ -47,11 +47,9 @@ public class TimeSheetTasksBean {
         opr.getParamsMap().put("taskId", taskId);
         opr.execute();
         showPopup(tsTasksPopup, false);
-
-
         return null;
     }
-
+*/
     public String editTasks() {
         // Add event code here...
         showPopup(tsTasksPopup, false);
@@ -89,7 +87,7 @@ public class TimeSheetTasksBean {
         return tsTasksPopup;
     }
 
-    public String deleteTasks() {
+ /*   public String deleteTasks() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("deleteTimeSheetTasks");
@@ -103,7 +101,7 @@ public class TimeSheetTasksBean {
         }
 
     }
-
+*/
     public String saveTsTasks() {
         // Add event code here...
         BindingContainer bc = getBindings();
@@ -120,11 +118,11 @@ public class TimeSheetTasksBean {
         return "home";
     }
 
-    public void createTask(DisclosureEvent disclosureEvent) {
+  /*  public void createTask(DisclosureEvent disclosureEvent) {
         // Add event code here...
         createTaskView();
     }
-
+*/
     public String cancelEditPopup() {
         // Add event code here...
         showPopup(tsTasksPopup, false);

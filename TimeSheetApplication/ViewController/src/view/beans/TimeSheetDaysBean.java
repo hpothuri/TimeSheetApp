@@ -41,7 +41,7 @@ public class TimeSheetDaysBean {
     private RichPopup delTsDaysPopup;
 
     public TimeSheetDaysBean() {
-        
+
     }
 
     public void setList(List<SelectItem> list) {
@@ -60,14 +60,14 @@ public class TimeSheetDaysBean {
         return timeSheetDate;
     }
 
-    public void initTimeSheet(ActionEvent actionEvent) {
+ /*   public void initTimeSheet(ActionEvent actionEvent) {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("initTimeSheet");
         opr.getParamsMap().put("currentDate", new Date());
         opr.execute();
     }
-
+*/
     public BindingContainer getBindings() {
         return BindingContext.getCurrent().getCurrentBindingsEntry();
     }
@@ -125,46 +125,15 @@ public class TimeSheetDaysBean {
         return timeSheetDaysPopup;
     }
 
-    public void showTimeSheetHours(ActionEvent actionEvent) {
+ /*   public String deleteOperation() {
         // Add event code here...
         BindingContainer bc = getBindings();
-        DCIteratorBinding itr = (DCIteratorBinding) bc.get("TimeSheetDaysVO1Iterator");
-        ViewObject daysVO = itr.getViewObject();
-        long count = daysVO.getEstimatedRowCount();
-        if (count == 0) {
-            OperationBinding opr = bc.getOperationBinding("addTimeSheetHours");
-            AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
-            BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
-            opr.getParamsMap().put("timeSheetId", timeSheetId);
-            opr.execute();
-
-        }
-
-        showPopup(timeSheetDaysPopup, true);
-
-    }
-
-    public String deleteOperation() {
-        // Add event code here...
-        BindingContainer bc = getBindings();
-        /*DCIteratorBinding itr = (DCIteratorBinding) bc.get("TimeSheetDaysVO1Iterator");
-        ViewObject daysVO = itr.getViewObject();
-        Row daysRow = daysVO.getCurrentRow();
-        daysRow.remove();
-        long count = daysVO.getEstimatedRowCount();
-        if (count == 0) {
-            DCIteratorBinding weekItr = (DCIteratorBinding) bc.get("TimeSheetWeekVO1Iterator");
-            ViewObjectImpl weekVO = (ViewObjectImpl) weekItr.getViewObject();
-            Row weekRow = weekVO.getCurrentRow();
-            weekRow.setAttribute("TotalHours", 0);
-            showPopup(timeSheetDaysPopup, false);
-        }*/
         OperationBinding opr = bc.getOperationBinding("deleteTimeSheetHours");
         AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
         BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetId);
         Boolean flag = (Boolean) opr.execute();
-        
+
         if (flag == Boolean.FALSE) {
             showPopup(timeSheetDaysPopup, false);
         } else {
@@ -172,9 +141,9 @@ public class TimeSheetDaysBean {
         }
 
         return null;
-    }
+    }*/
 
-    public String editHours() {
+ /*   public String editHours() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("editTimeSheetHours");
@@ -182,12 +151,10 @@ public class TimeSheetDaysBean {
         BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetId);
         opr.execute();
-
-
         return null;
-    }
+    }*/
 
-    public String submitTimeSheet() {
+ /*   public String submitTimeSheet() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("submitForApproval");
@@ -198,8 +165,8 @@ public class TimeSheetDaysBean {
         showPopup(timeSheetDaysPopup, false);
         return null;
     }
-
-    public String addTimeSheetHoursForTasks() {
+*/
+ /*   public String addTimeSheetHoursForTasks() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("addTimeSheetHours");
@@ -208,26 +175,5 @@ public class TimeSheetDaysBean {
         opr.getParamsMap().put("timeSheetId", timeSheetId);
         opr.execute();
         return null;
-    }
-
-  /*  public List<SelectItem> populateList() {
-        BindingContainer bc = getBindings();
-        OperationBinding opr = bc.getOperationBinding("populateWeekList");
-        opr.getParamsMap().put("currentDate", new Date());
-        Map weekMap = (Map) opr.execute();
-        Set keys = weekMap.keySet();
-        Iterator itr = keys.iterator();
-
-        String key;
-        List stDate;
-        while (itr.hasNext()) {
-            key = (String) itr.next();
-            stDate = (List) weekMap.get(key);
-
-        }
-        return null;
     }*/
-
-  
-
 }

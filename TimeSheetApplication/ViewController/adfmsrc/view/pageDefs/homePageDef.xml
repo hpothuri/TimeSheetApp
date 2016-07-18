@@ -21,15 +21,15 @@
               id="TimeSheetUsersVO1Iterator"/>
   </executables>
   <bindings>
-    <methodAction id="createUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createUsers"
+    <!--<methodAction id="createUsers" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createUsers"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
-                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
-    <methodAction id="createRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createRoles"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>-->
+    <!--<methodAction id="createRoles" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createRoles"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
-                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
-    <methodAction id="createTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTasks"
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>-->
+    <!--<methodAction id="createTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTasks"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
-                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>
+                  InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"/>-->
     <methodAction id="initSubmittedTS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initSubmittedTS"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
@@ -47,12 +47,12 @@
       <NamedData NDName="userName" NDType="java.lang.String"/>
       <NamedData NDName="password" NDType="java.lang.String"/>
     </methodAction>
-    <methodAction id="saveRoleChange" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveRoleChange"
+    <!--<methodAction id="saveRoleChange" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveRoleChange"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="userId" NDType="java.math.BigDecimal"/>
       <NamedData NDName="roleId" NDType="java.math.BigDecimal"/>
-    </methodAction>
+    </methodAction>-->
     <list IterBinding="USerRoleTransVO1Iterator" StaticList="false" Uses="LOV_UserId" id="UserId"
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <list IterBinding="USerRoleTransVO1Iterator" StaticList="false" Uses="LOV_RoleId" id="RoleId"

@@ -52,6 +52,7 @@ public class TimeSheetAttachmentsEOImpl extends EntityImpl {
             return vals;
         }
     }
+
     public static final int ATTACHMENTID = AttributesEnum.AttachmentId.index();
     public static final int TIMESHEETID = AttributesEnum.TimesheetId.index();
     public static final int FILETYPE = AttributesEnum.FileType.index();
@@ -66,6 +67,13 @@ public class TimeSheetAttachmentsEOImpl extends EntityImpl {
      * This is the default constructor (do not remove).
      */
     public TimeSheetAttachmentsEOImpl() {
+    }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("model.eo.TimeSheetAttachmentsEO");
     }
 
     /**
@@ -212,6 +220,7 @@ public class TimeSheetAttachmentsEOImpl extends EntityImpl {
         setAttributeInternal(LASTUPDATEDDATE, value);
     }
 
+
     /**
      * @param attachmentId key constituent
 
@@ -219,13 +228,6 @@ public class TimeSheetAttachmentsEOImpl extends EntityImpl {
      */
     public static Key createPrimaryKey(BigDecimal attachmentId) {
         return new Key(new Object[] { attachmentId });
-    }
-
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("model.eo.TimeSheetAttachmentsEO");
     }
 
     /**

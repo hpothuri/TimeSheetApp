@@ -17,7 +17,8 @@
                     </af:panelGroupLayout>
                     <af:panelGroupLayout id="pgl7" halign="right"
                                          inlineStyle="text-align:justify; column-width:inherit;" layout="horizontal">
-                        <af:link text="#{viewcontrollerBundle.Logout}" id="l1" action="#{LoginBean.doLogout}"/>
+                        <af:link text="#{viewcontrollerBundle.Logout}" id="l1" action="#{LoginBean.doLogout}"
+                                 icon="/images/blue-logout-16.png" inlineStyle="font-weight:bold;"/>
                     </af:panelGroupLayout>
                     <af:panelGroupLayout id="pgl2" layout="horizontal">
                         <af:spacer width="70" height="30" id="s1"/>
@@ -34,18 +35,9 @@
                             </af:menu>
                         </af:menuBar>
                         <af:spacer width="40" height="10" id="s4"/>
-                        <!--<af:button text="#{viewcontrollerBundle.Save}" id="b5" icon="/images/save.png"
-                                   action="#{TimeSheetHomeBean.saveAction}"/>
-                        --><!--<af:link text="#{viewcontrollerBundle.Save}" id="l2" action="#{TimeSheetHomeBean.saveAction}"/>--><!--
-                        <af:spacer width="25" height="10" id="s5"/>
-                        <af:button text="#{viewcontrollerBundle.Cancel}" id="b6" icon="/images/redo.png"
-                                   action="#{TimeSheetHomeBean.cancelAction}"/>-->
-                        <!--<af:link text="#{viewcontrollerBundle.Cancel}" id="l3"
-                                 action="#{TimeSheetHomeBean.cancelAction}"/>-->
                     </af:panelGroupLayout>
                     <af:panelGroupLayout id="pgl3" layout="vertical">
                         <af:panelGroupLayout id="pgl4" halign="left" layout="horizontal">
-                            <!--<af:link text="#{viewcontrollerBundle.ChangePassword}" id="l4"/>-->
                             <af:popup childCreation="deferred" autoCancel="disabled" id="changePwdPopup"
                                       binding="#{TimeSheetHomeBean.changePwdPopup}" contentDelivery="lazyUncached">
                                 <af:dialog id="d2" type="none">
@@ -69,30 +61,11 @@
                                 </af:dialog>
                             </af:popup>
                             <af:spacer width="30" height="10" id="s2"/>
-                            <!--<af:link text="#{viewcontrollerBundle.ChangeRole}" id="l5"
-                                     disabled="#{!securityContext.userInRole['Admin']}"
-                                     action="#{TimeSheetHomeBean.createUserRole}"/>-->
                             <af:popup childCreation="deferred" autoCancel="disabled" id="changeRolePopup"
                                       contentDelivery="lazyUncached" binding="#{TimeSheetHomeBean.changeRolePopup}">
                                 <af:dialog id="d3" type="none" contentWidth="150" contentHeight="100">
                                     <f:facet name="buttonBar"/>
                                     <af:panelFormLayout id="pfl2">
-                                        <!--<af:panelFormLayout id="pfl3" labelAlignment="start">
-                                            <af:selectOneChoice value="#{bindings.UserId.inputValue}"
-                                                                label="#{bindings.UserId.label}"
-                                                                required="#{bindings.UserId.hints.mandatory}"
-                                                                shortDesc="#{bindings.UserId.hints.tooltip}" id="soc1">
-                                                <f:selectItems value="#{bindings.UserId.items}" id="si1"/>
-                                                <f:validator binding="#{bindings.UserId.validator}"/>
-                                            </af:selectOneChoice>
-                                            <af:selectOneChoice value="#{bindings.RoleId.inputValue}"
-                                                                label="#{bindings.RoleId.label}"
-                                                                required="#{bindings.RoleId.hints.mandatory}"
-                                                                shortDesc="#{bindings.RoleId.hints.tooltip}" id="soc2">
-                                                <f:selectItems value="#{bindings.RoleId.items}" id="si2"/>
-                                                <f:validator binding="#{bindings.RoleId.validator}"/>
-                                            </af:selectOneChoice>
-                                        </af:panelFormLayout>-->
                                         <af:panelFormLayout id="pfl4" labelAlignment="start">
                                             <af:inputText value="#{bindings.UserEmailId.inputValue}"
                                                           label="#{bindings.UserEmailId.hints.label}"

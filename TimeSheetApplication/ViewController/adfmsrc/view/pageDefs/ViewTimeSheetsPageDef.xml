@@ -51,28 +51,28 @@
         <Item Value="TimeSheetId"/>
       </AttrNames>
     </attributeValues>
-    <methodAction id="deleteTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod"
+    <!--<methodAction id="deleteTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="deleteTimeSheetHours" IsViewObjectMethod="false"
                   DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider"
                   ReturnName="data.TimeSheetAppControllerDataControl.methodResults.deleteTimeSheetHours_TimeSheetAppControllerDataControl_dataProvider_deleteTimeSheetHours_result">
       <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
-    </methodAction>
-    <methodAction id="submitForApproval" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitForApproval"
+    </methodAction>-->
+    <!--<methodAction id="submitForApproval" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitForApproval"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
-    </methodAction>
-    <methodAction id="unSubmitTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="unSubmitTimeSheet"
+    </methodAction>-->
+    <!--<methodAction id="unSubmitTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="unSubmitTimeSheet"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="timeSheetId" NDType="java.math.BigDecimal"/>
-    </methodAction>
-    <methodAction id="createTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTimeSheet"
+    </methodAction>-->
+    <!--<methodAction id="createTimeSheet" RequiresUpdateModel="true" Action="invokeMethod" MethodName="createTimeSheet"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">
       <NamedData NDName="currentDate" NDType="java.util.Date"/>
-    </methodAction>
+    </methodAction>-->
     <methodAction id="addTimeSheetHours" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addTimeSheetHours"
                   IsViewObjectMethod="false" DataControl="TimeSheetAppControllerDataControl"
                   InstanceName="data.TimeSheetAppControllerDataControl.dataProvider">

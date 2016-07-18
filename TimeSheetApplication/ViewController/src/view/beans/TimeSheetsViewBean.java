@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 
 import java.sql.SQLException;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 import oracle.adf.model.AttributeBinding;
@@ -176,15 +178,14 @@ public class TimeSheetsViewBean {
         return null;
     }
 
-    public String newTsAction() {
+ /*   public String newTsAction() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("createTimeSheet");
         opr.getParamsMap().put("currentDate", new Date());
-        System.out.println("inside newTsAction");
         opr.execute();
         return null;
-    }
+    }*/
 
     private Date getDate() {
         String dateStr = "22/Jan/2016";
@@ -210,12 +211,9 @@ public class TimeSheetsViewBean {
             opr.getParamsMap().put("timeSheetId", (BigDecimal) attr.getInputValue());
             opr.execute();
         }
-        
+
         OperationBinding opr1 = bc.getOperationBinding("getAttachments");
         opr1.execute();
-        //opr.getParamsMap().put("currentDate", getDate());
-        System.out.println("inside editTsAction");
-
         return null;
     }
 
@@ -232,12 +230,6 @@ public class TimeSheetsViewBean {
 
     public String viewAllAction() {
         // Add event code here...
-        /*BindingContainer bc = getBindings();
-        DCIteratorBinding itr = (DCIteratorBinding) bc.get("TimeSheetWeekVO1Iterator");
-        ViewObjectImpl vo = (ViewObjectImpl) itr.getViewObject();
-        vo.setApplyViewCriteriaName(null);
-        vo.executeQuery();
-        */
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("ViewAllTs");
         opr.execute();
@@ -272,17 +264,15 @@ public class TimeSheetsViewBean {
         String fName = myfile.getFilename();
 
         OperationBinding opr = bc.getOperationBinding("uploadFile");
-
-        // System.out.println("current id..."+currWeekId);
         opr.getParamsMap().put("fileName", fName);
         opr.getParamsMap().put("contentType", contentType);
         opr.getParamsMap().put("file", createBlobDomain(myfile));
         opr.execute();
+       
+        DCIteratorBinding itr = (DCIteratorBinding) bc.get("TimeSheetAttachmentsVO3Iterator");
+        ViewObject attchVO = itr.getViewObject();
+        attchVO.executeQuery();
         showPopup(uploadPopup, false);
-        //execute attachment view object to time sheet days id
-    /*    ViewObject vo = ((DCIteratorBinding) bc.get("TimeSheetAttachmentsVO1Iterator")).getViewObject();
-        vo.setWhereClause("TIMESHEET_ID=" + (BigDecimal) ((AttributeBinding) bc.get("WeekId")).getInputValue());
-        vo.executeQuery();*/
         return null;
     }
 
@@ -317,7 +307,6 @@ public class TimeSheetsViewBean {
     }
 
     public String saveTs() {
-        // Add event code here...
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("saveTimeSheet");
@@ -357,10 +346,16 @@ public class TimeSheetsViewBean {
         OperationBinding opr = bc.getOperationBinding("createNewTimeSheet");
         AttributeBinding attr = (AttributeBinding) bc.get("currentDate");
         Date selectedDate = (Date) attr.getInputValue();
-        opr.getParamsMap().put("currentDate",selectedDate);
-        System.out.println("selectedDate..."+selectedDate);
-        System.out.println("inside newTsAction");
+        opr.getParamsMap().put("currentDate", selectedDate);
         opr.execute();
         return null;
+    }
+
+    public Date getCurrentDate() {
+
+        Date cdate = new Date();
+
+        return cdate;
+
     }
 }

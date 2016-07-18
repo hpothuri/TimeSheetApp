@@ -13,14 +13,14 @@ import oracle.jbo.domain.BlobDomain;
 // ---    Tue Jun 14 12:23:27 IST 2016
 // ---------------------------------------------------------------------
 public interface TimeSheetAppController extends ApplicationModule {
-    ArrayList getWeekList(Date systemDate);
+  //  ArrayList getWeekList(Date systemDate);
 
 
-    BigDecimal initTimeSheet(Date currentDate);
+    //BigDecimal initTimeSheet(Date currentDate);
 
     void addTimeSheetHours(BigDecimal timeSheetId);
 
-    void editTimeSheetHours(BigDecimal timeSheetId);
+    //void editTimeSheetHours(BigDecimal timeSheetId);
 
     void submitForApproval(BigDecimal timeSheetId);
 
@@ -54,7 +54,7 @@ public interface TimeSheetAppController extends ApplicationModule {
 
     void unSubmitTimeSheet(BigDecimal timeSheetId);
 
-    void createTimeSheet(Date currentDate);
+//    void createTimeSheet(Date currentDate);
 
     void uploadFile(String fileName, String contentType, BlobDomain file);
 
@@ -62,7 +62,7 @@ public interface TimeSheetAppController extends ApplicationModule {
 
     void updatePassword(String userName,String password);
 
-    void saveRoleChange(BigDecimal userId, BigDecimal roleId);
+    //void saveRoleChange(BigDecimal userId, BigDecimal roleId);
 
     void saveTimeSheet(BigDecimal timeSheetId);
 

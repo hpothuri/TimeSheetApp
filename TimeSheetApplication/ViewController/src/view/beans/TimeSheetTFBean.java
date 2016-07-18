@@ -13,7 +13,7 @@ public class TimeSheetTFBean {
     public TimeSheetTFBean() {
     }
 
-    public String initTimeSheet() {
+    /*public String initTimeSheet() {
         // Add event code here...
         BindingContainer bc = getBindings();
         OperationBinding opr = bc.getOperationBinding("initSubmittedTS");
@@ -21,7 +21,7 @@ public class TimeSheetTFBean {
         opr.execute();
         return "view";
 
-    }
+    }*/
     public BindingContainer getBindings(){
         return BindingContext.getCurrent().getCurrentBindingsEntry();
         }

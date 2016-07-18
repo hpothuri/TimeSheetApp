@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 
 import oracle.adf.model.AttributeBinding;
 import oracle.adf.model.BindingContext;
+import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
 import oracle.adf.view.rich.component.rich.PartialRichPopup;
 import oracle.adf.view.rich.component.rich.RichPopup;
@@ -22,6 +23,7 @@ import oracle.binding.BindingContainer;
 import oracle.binding.OperationBinding;
 
 import oracle.jbo.Row;
+import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
 import oracle.jbo.domain.BlobDomain;
 import oracle.jbo.uicli.binding.JUCtrlListBinding;
@@ -34,7 +36,7 @@ public class SubmittedTimeSheetsBean {
     private RichPopup submittedTSPopup;
     private RichInputText comments;
     private RichPopup attachmentsPopup;
-    Boolean flag = Boolean.FALSE;
+    Boolean flag = Boolean.TRUE;
 
     public SubmittedTimeSheetsBean() {
     }
@@ -65,7 +67,8 @@ public class SubmittedTimeSheetsBean {
 
     public String viewSubmittedTs() {
         // Add event code here...
-        showPopup(submittedTSPopup, true);
+        enableAttachment();
+        submittedTSPopup.show(new RichPopup.PopupHints());
         return null;
     }
 
@@ -101,7 +104,6 @@ public class SubmittedTimeSheetsBean {
         BigDecimal timeSheetId = (BigDecimal) tsRow.getAttribute("TimeSheetId");
         OperationBinding opr = bc.getOperationBinding("approveTimeSheet");
         AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
-        // BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetId);
         opr.getParamsMap().put("comments", comments.getValue());
         opr.execute();
@@ -122,7 +124,6 @@ public class SubmittedTimeSheetsBean {
         BigDecimal timeSheetId = (BigDecimal) tsRow.getAttribute("TimeSheetId");
         OperationBinding opr = bc.getOperationBinding("rejectTimeSheet");
         AttributeBinding attr = (AttributeBinding) bc.get("TimeSheetId");
-        // BigDecimal timeSheetId = (BigDecimal) attr.getInputValue();
         opr.getParamsMap().put("timeSheetId", timeSheetId);
         opr.getParamsMap().put("comments", comments.getValue());
         opr.execute();
@@ -142,9 +143,7 @@ public class SubmittedTimeSheetsBean {
         // Add event code here...
         AttributeBinding idAttr = (AttributeBinding) getBindings().get("WeekId");
         BigDecimal weekId = (BigDecimal) idAttr.getInputValue();
-        filterAttachmentViewObject(weekId);
-        System.out.println("111 time sheet id..." + weekId);
-        RichPopup.PopupHints ph = new RichPopup.PopupHints();
+       // filterAttachmentViewObject(weekId);
         attachmentsPopup.show(new RichPopup.PopupHints());
         return null;
     }
@@ -167,15 +166,52 @@ public class SubmittedTimeSheetsBean {
     }
 
     public void filterAttachmentViewObject(BigDecimal weekId) {
-        DCIteratorBinding itr = (DCIteratorBinding) getBindings().get("TimeSheetAttachmentsVO1Iterator");
+        DCIteratorBinding itr = (DCIteratorBinding) getBindings().get("TimeSheetAttachmentsVO3Iterator");
         ViewObject vo = itr.getViewObject();
         vo.setWhereClause("TIMESHEET_ID=" + weekId);
-        System.out.println("time sheet id..." + weekId);
         vo.executeQuery();
         if (vo.getEstimatedRowCount() > 0) {
             this.flag = Boolean.TRUE;
         } else {
             this.flag = Boolean.FALSE;
         }
+    }
+
+    /**
+     * Set values on transient attributes, set read-only indicators, etc.  Called by View, Copy, and Reverse listeners
+     * @param
+     */
+    public void enableAttachment() {
+
+        BindingContext bc = BindingContext.getCurrent();
+        DCBindingContainer bindings = (DCBindingContainer) bc.getCurrentBindingsEntry();
+        // Get the Attachments iteraor
+        DCIteratorBinding glIter = bindings.findIteratorBinding("TimeSheetDaysVO1Iterator");
+        if (glIter != null && glIter.getRowSetIterator().getRowCount() > 0) {
+            RowSetIterator rsi = glIter.getViewObject().createRowSetIterator(null);
+            Row glRow;
+            while (rsi.next() != null) {
+                glRow = rsi.getCurrentRow();
+                BigDecimal weekId = (BigDecimal) glRow.getAttribute("WeekId");
+                // Set “rendered” indicators
+                DCIteratorBinding itr = (DCIteratorBinding) getBindings().get("TimeSheetAttachmentsVO1Iterator");
+                ViewObject vo = itr.getViewObject();
+                vo.setWhereClause("TIMESHEET_ID=" + weekId);
+                vo.executeQuery();
+
+                if (vo.getEstimatedRowCount() > 0) {
+                    this.flag = Boolean.TRUE;
+                } else {
+                    this.flag = Boolean.FALSE;
+                }
+                if (this.flag) {
+                    glRow.setAttribute("IsAttached", Boolean.FALSE);
+                } else {
+                    glRow.setAttribute("IsAttached", Boolean.TRUE);
+                }
+            }
+            rsi.closeRowSetIterator();
+        }
+
     }
 }
