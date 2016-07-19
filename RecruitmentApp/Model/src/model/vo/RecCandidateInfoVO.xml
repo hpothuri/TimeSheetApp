@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RecCandidateInfoVO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full"
+  RowClass="model.vo.RecCandidateInfoVORowImpl"
+  ComponentClass="model.vo.RecCandidateInfoVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="GenderCodes1"
+    ViewObjectName="model.vo.GenderCodes"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="StatesVVO1"
+    ViewObjectName="model.vvo.StatesVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="CitiesVVO1"
+    ViewObjectName="model.vvo.CitiesVVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="state_id">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[State]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_Gender"
+    ListVOName="GenderCodes1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Gender"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="GenderCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="GenderCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_State"
+    ListVOName="StatesVVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="State"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StateId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StateName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_City"
+    ListVOName="CitiesVVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="City"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CityId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CityName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="RecCandidateInfoEO"
+    Entity="model.eo.RecCandidateInfoEO"/>
+  <ViewAttribute
+    Name="CandidateId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CandidateId"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="CANDIDATE_ID"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="LastName"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="MiddleName"
+    PrecisionRule="true"
+    EntityAttrName="MiddleName"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="MIDDLE_NAME"/>
+  <ViewAttribute
+    Name="Dob"
+    PrecisionRule="true"
+    EntityAttrName="Dob"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="DOB"/>
+  <ViewAttribute
+    Name="Gender"
+    PrecisionRule="true"
+    EntityAttrName="Gender"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="GENDER"
+    LOVName="LOV_Gender">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmailId"
+    PrecisionRule="true"
+    EntityAttrName="EmailId"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="EMAIL_ID"/>
+  <ViewAttribute
+    Name="MobileNo"
+    PrecisionRule="true"
+    EntityAttrName="MobileNo"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="MOBILE_NO"/>
+  <ViewAttribute
+    Name="LandlineNo"
+    PrecisionRule="true"
+    EntityAttrName="LandlineNo"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="LANDLINE_NO"/>
+  <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="ADDRESS"/>
+  <ViewAttribute
+    Name="Pin"
+    PrecisionRule="true"
+    EntityAttrName="Pin"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="PIN"/>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="CITY"
+    LOVName="LOV_City">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="State"
+    PrecisionRule="true"
+    EntityAttrName="State"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="STATE"
+    LOVName="LOV_State">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Relocate"
+    PrecisionRule="true"
+    EntityAttrName="Relocate"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="RELOCATE"/>
+  <ViewAttribute
+    Name="Travel"
+    PrecisionRule="true"
+    EntityAttrName="Travel"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="TRAVEL"/>
+  <ViewAttribute
+    Name="ReasonsForChange"
+    PrecisionRule="true"
+    EntityAttrName="ReasonsForChange"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="REASONS_FOR_CHANGE"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="RecCandidateInfoEO"
+    AliasName="STATUS"/>
+  <ViewLinkAccessor
+    Name="RecEduInfoVO"
+    ViewLink="model.vo.vl.CandidateEduVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="RecExpInfoVO"
+    ViewLink="model.vo.vl.CandidateExpVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="RecReferralInfoVO"
+    ViewLink="model.vo.vl.CandidateReferralVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="RecReferencesInfoVO"
+    ViewLink="model.vo.vl.CandidateReferanceVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

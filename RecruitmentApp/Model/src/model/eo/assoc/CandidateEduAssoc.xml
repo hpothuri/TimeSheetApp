@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CandidateEduAssoc"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="RecCandidateInfoEO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.eo.RecCandidateInfoEO"
+    CascadeUpdate="true"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="RecCandidateInfoEO"/>
+      <Attr Name="_foreignKey" Value="model.eo.RecCandidateInfoEO.RecCandidatesPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.RecCandidateInfoEO.CandidateId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="RecEduInfoEO"
+    Cardinality="-1"
+    Owner="model.eo.RecEduInfoEO"
+    HasOwner="true">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="RecEduInfoEO"/>
+      <Attr Name="_foreignKey" Value="model.eo.RecEduInfoEO.fk_RecEduInfoEO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.RecEduInfoEO.CandidatenId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

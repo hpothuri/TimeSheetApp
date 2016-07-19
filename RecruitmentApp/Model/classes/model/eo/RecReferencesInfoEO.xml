@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RecReferencesInfoEO"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="REC_REFERENCES_INFO"
+  AliasName="RecReferencesInfoEO"
+  BindingStyle="OracleName"
+  RowClass="model.eo.RecReferencesInfoEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="RefId"
+    IsNotNull="true"
+    ColumnName="REF_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="REC_REFERENCES_INFO"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CandidateId"
+    ColumnName="CANDIDATE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="REC_REFERENCES_INFO"/>
+  <Attribute
+    Name="RefName"
+    Precision="100"
+    ColumnName="REF_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Designation"
+    Precision="30"
+    ColumnName="DESIGNATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EmailId"
+    Precision="100"
+    ColumnName="EMAIL_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TelephoneNo"
+    Precision="10"
+    Scale="0"
+    ColumnName="TELEPHONE_NO"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="REC_REFERENCES_INFO"/>
+  <Attribute
+    Name="Organization"
+    Precision="30"
+    ColumnName="ORGANIZATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Address"
+    Precision="200"
+    ColumnName="ADDRESS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProfRelation"
+    Precision="50"
+    ColumnName="PROF_RELATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Association"
+    Precision="40"
+    ColumnName="ASSOCIATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    Precision="30"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedOn"
+    ColumnName="CREATED_ON"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="REC_REFERENCES_INFO"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="UpdatedBy"
+    Precision="30"
+    ColumnName="UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="REC_REFERENCES_INFO"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UpdatedOn"
+    ColumnName="UPDATED_ON"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="REC_REFERENCES_INFO"
+    HistoryColumn="DateHistory"/>
+  <Key
+    Name="RecReferencesInfoPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="REC_REFERENCES_INFO_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.RecReferencesInfoEO.RefId"/>
+    </AttrArray>
+  </Key>
+</Entity>

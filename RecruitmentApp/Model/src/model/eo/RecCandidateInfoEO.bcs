@@ -1,0 +1,12 @@
+//Groovy Scripts for model.eo.RecCandidateInfoEO
+
+package model.eo
+
+import oracle.jbo.script.annotation.ValidatorExpression;
+
+@ValidatorExpression(name="DobRule0", attributeName="Dob")
+def Dob_DobRule0_ValidationRuleScript_ValidationRule()
+{
+adf.currentDate
+}
+
